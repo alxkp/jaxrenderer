@@ -44,6 +44,7 @@ class _TransformedBoundsLocator:
         specify the position of the inset Axes.
         """
         ...
+
     def __call__(self, ax, renderer):  # -> TransformedBbox:
         ...
 
@@ -62,14 +63,18 @@ class _process_plot_var_args:
     def __init__(self, axes, command=...) -> None: ...
     def __getstate__(self):  # -> dict[str, Unknown | str]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
+
     def set_prop_cycle(self, cycler):  # -> None:
         ...
+
     def __call__(
         self, *args, data=..., **kwargs
     ):  # -> Generator[Unknown | tuple[Line2D, dict[Unknown | str, Unknown]] | tuple[Polygon, dict[str, Unknown]] | Line2D | Polygon, Unknown, None]:
         ...
+
     def get_next_color(self):  # -> Literal['k']:
         """Return the next color in the cycle."""
         ...
@@ -139,23 +144,31 @@ class _AxesBase(martist.Artist):
             The new `~.axes.Axes` object.
         """
         ...
+
     def __init_subclass__(cls, **kwargs):  # -> None:
         ...
+
     def __getstate__(self):  # -> dict[str, Any]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
+
     def __repr__(self):  # -> str:
         ...
+
     def get_subplotspec(self):  # -> None:
         """Return the `.SubplotSpec` associated with the subplot, or None."""
         ...
+
     def set_subplotspec(self, subplotspec):  # -> None:
         """Set the `.SubplotSpec`. associated with the subplot."""
         ...
+
     def get_gridspec(self):  # -> None:
         """Return the `.GridSpec` associated with the subplot, or None."""
         ...
+
     @_api.delete_parameter("3.6", "args")
     @_api.delete_parameter("3.6", "kwargs")
     def get_window_extent(self, renderer=..., *args, **kwargs):  # -> TransformedBbox:
@@ -174,11 +187,14 @@ class _AxesBase(martist.Artist):
         matplotlib.spines.Spine.get_window_extent
         """
         ...
+
     def set_figure(self, fig):  # -> None:
         ...
+
     @property
     def viewLim(self):  # -> Bbox:
         ...
+
     def get_xaxis_transform(
         self, which=...
     ):  # -> BlendedAffine2D | BlendedGenericTransform:
@@ -199,6 +215,7 @@ class _AxesBase(martist.Artist):
         which : {'grid', 'tick1', 'tick2'}
         """
         ...
+
     def get_xaxis_text1_transform(
         self, pad_points
     ):  # -> tuple[Transform | BlendedAffine2D | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType | BlendedGenericTransform | Unknown, Literal['top'], Unknown | None]:
@@ -222,6 +239,7 @@ class _AxesBase(martist.Artist):
         may need to place axis elements in different locations.
         """
         ...
+
     def get_xaxis_text2_transform(
         self, pad_points
     ):  # -> tuple[Transform | BlendedAffine2D | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType | BlendedGenericTransform | Unknown, Literal['bottom'], Unknown | None]:
@@ -245,6 +263,7 @@ class _AxesBase(martist.Artist):
         may need to place axis elements in different locations.
         """
         ...
+
     def get_yaxis_transform(
         self, which=...
     ):  # -> BlendedAffine2D | BlendedGenericTransform:
@@ -265,6 +284,7 @@ class _AxesBase(martist.Artist):
         which : {'grid', 'tick1', 'tick2'}
         """
         ...
+
     def get_yaxis_text1_transform(
         self, pad_points
     ):  # -> tuple[Transform | BlendedAffine2D | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType | BlendedGenericTransform | Unknown, Unknown | None, Literal['right']]:
@@ -288,6 +308,7 @@ class _AxesBase(martist.Artist):
         may need to place axis elements in different locations.
         """
         ...
+
     def get_yaxis_text2_transform(
         self, pad_points
     ):  # -> tuple[Transform | BlendedAffine2D | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType | BlendedGenericTransform | Unknown, Unknown | None, Literal['left']]:
@@ -311,6 +332,7 @@ class _AxesBase(martist.Artist):
         may need to place axis elements in different locations.
         """
         ...
+
     def get_position(self, original=...):  # -> Bbox:
         """
         Return the position of the Axes within the figure as a `.Bbox`.
@@ -328,6 +350,7 @@ class _AxesBase(martist.Artist):
 
         """
         ...
+
     def set_position(self, pos, which=...):  # -> None:
         """
         Set the Axes position.
@@ -352,6 +375,7 @@ class _AxesBase(martist.Artist):
         matplotlib.transforms.Bbox.from_extents
         """
         ...
+
     def reset_position(self):  # -> None:
         """
         Reset the active position to the original position.
@@ -361,6 +385,7 @@ class _AxesBase(martist.Artist):
         constraints.
         """
         ...
+
     def set_axes_locator(self, locator):  # -> None:
         """
         Set the Axes locator.
@@ -370,11 +395,13 @@ class _AxesBase(martist.Artist):
         locator : Callable[[Axes, Renderer], Bbox]
         """
         ...
+
     def get_axes_locator(self):  # -> None:
         """
         Return the axes_locator.
         """
         ...
+
     def sharex(self, other):  # -> None:
         """
         Share the x-axis with *other*.
@@ -384,6 +411,7 @@ class _AxesBase(martist.Artist):
         another Axes.
         """
         ...
+
     def sharey(self, other):  # -> None:
         """
         Share the y-axis with *other*.
@@ -393,9 +421,11 @@ class _AxesBase(martist.Artist):
         another Axes.
         """
         ...
+
     def clear(self):  # -> None:
         """Clear the Axes."""
         ...
+
     def cla(self):  # -> None:
         """Clear the Axes."""
         ...
@@ -432,45 +462,59 @@ class _AxesBase(martist.Artist):
                 types will be excluded.
             """
             ...
+
         def __repr__(self):  # -> str:
             ...
+
         def __len__(self):  # -> int:
             ...
+
         def __iter__(self):  # -> Generator[Unknown, Any, None]:
             ...
+
         def __getitem__(self, key): ...
         def __add__(
             self, other
         ):  # -> list[Unknown] | tuple[Unknown, ...] | _NotImplementedType:
             ...
+
         def __radd__(
             self, other
         ):  # -> list[Unknown] | tuple[Unknown, ...] | _NotImplementedType:
             ...
+
     @property
     def artists(self):  # -> ArtistList:
         ...
+
     @property
     def collections(self):  # -> ArtistList:
         ...
+
     @property
     def images(self):  # -> ArtistList:
         ...
+
     @property
     def lines(self):  # -> ArtistList:
         ...
+
     @property
     def patches(self):  # -> ArtistList:
         ...
+
     @property
     def tables(self):  # -> ArtistList:
         ...
+
     @property
     def texts(self):  # -> ArtistList:
         ...
+
     def get_facecolor(self):
         """Get the facecolor of the Axes."""
         ...
+
     def set_facecolor(self, color):
         """
         Set the facecolor of the Axes.
@@ -480,6 +524,7 @@ class _AxesBase(martist.Artist):
         color : color
         """
         ...
+
     def set_prop_cycle(self, *args, **kwargs):  # -> None:
         """
         Set the property cycle of the Axes.
@@ -544,6 +589,7 @@ class _AxesBase(martist.Artist):
 
         """
         ...
+
     def get_aspect(self):  # -> str:
         """
         Return the aspect ratio of the axes scaling.
@@ -551,6 +597,7 @@ class _AxesBase(martist.Artist):
         This is either "auto" or a float giving the ratio of y/x-scale.
         """
         ...
+
     def set_aspect(self, aspect, adjustable=..., anchor=..., share=...):  # -> None:
         """
         Set the aspect ratio of the axes scaling, i.e. y/x-scale.
@@ -600,6 +647,7 @@ class _AxesBase(martist.Artist):
             Set the position in case of extra space.
         """
         ...
+
     def get_adjustable(self):  # -> str:
         """
         Return whether the Axes will adjust its physical dimension ('box') or
@@ -613,6 +661,7 @@ class _AxesBase(martist.Artist):
             For a description of aspect handling.
         """
         ...
+
     def set_adjustable(self, adjustable, share=...):  # -> None:
         """
         Set how the Axes adjusts to achieve the required aspect ratio.
@@ -644,6 +693,7 @@ class _AxesBase(martist.Artist):
         and independently on each Axes as it is drawn.
         """
         ...
+
     def get_box_aspect(self):
         """
         Return the Axes box aspect, i.e. the ratio of height to width.
@@ -659,6 +709,7 @@ class _AxesBase(martist.Artist):
             for a description of aspect handling.
         """
         ...
+
     def set_box_aspect(self, aspect=...):  # -> None:
         """
         Set the Axes box aspect, i.e. the ratio of height to width.
@@ -683,6 +734,7 @@ class _AxesBase(martist.Artist):
             for a description of aspect handling.
         """
         ...
+
     def get_anchor(self):  # -> str:
         """
         Get the anchor location.
@@ -695,6 +747,7 @@ class _AxesBase(martist.Artist):
             for a description of aspect handling.
         """
         ...
+
     def set_anchor(self, anchor, share=...):  # -> None:
         """
         Define the anchor location.
@@ -729,6 +782,7 @@ class _AxesBase(martist.Artist):
             for a description of aspect handling.
         """
         ...
+
     def get_data_ratio(self):  # -> float:
         """
         Return the aspect ratio of the scaled data.
@@ -738,6 +792,7 @@ class _AxesBase(martist.Artist):
         This method is intended to be overridden by new projection types.
         """
         ...
+
     def apply_aspect(self, position=...):  # -> None:
         """
         Adjust the Axes for a specified data aspect ratio.
@@ -769,6 +824,7 @@ class _AxesBase(martist.Artist):
             Set the position in case of extra space.
         """
         ...
+
     def axis(self, arg=..., /, *, emit=..., **kwargs):  # -> tuple[Unknown, ...]:
         """
         Convenience method to get or set some axis properties.
@@ -828,15 +884,19 @@ class _AxesBase(martist.Artist):
         matplotlib.axes.Axes.set_ylim
         """
         ...
+
     def get_legend(self):  # -> None:
         """Return the `.Legend` instance, or None if no legend is defined."""
         ...
+
     def get_images(self):  # -> silent_list:
         r"""Return a list of `.AxesImage`\s contained by the Axes."""
         ...
+
     def get_lines(self):  # -> silent_list:
         """Return a list of lines contained by the Axes."""
         ...
+
     def get_xaxis(self):  # -> XAxis:
         """
         [*Discouraged*] Return the XAxis instance.
@@ -847,6 +907,7 @@ class _AxesBase(martist.Artist):
             directly access the attribute ``ax.xaxis``.
         """
         ...
+
     def get_yaxis(self):  # -> YAxis:
         """
         [*Discouraged*] Return the YAxis instance.
@@ -870,6 +931,7 @@ class _AxesBase(martist.Artist):
         anything.
         """
         ...
+
     def add_artist(self, a):
         """
         Add an `.Artist` to the Axes; return the artist.
@@ -884,6 +946,7 @@ class _AxesBase(martist.Artist):
         ``ax.transData``.
         """
         ...
+
     def add_child_axes(self, ax):
         """
         Add an `.AxesBase` to the Axes' children; return the child Axes.
@@ -891,36 +954,43 @@ class _AxesBase(martist.Artist):
         This is the lowlevel version.  See `.axes.Axes.inset_axes`.
         """
         ...
+
     def add_collection(self, collection, autolim=...):
         """
         Add a `.Collection` to the Axes; return the collection.
         """
         ...
+
     def add_image(self, image):
         """
         Add an `.AxesImage` to the Axes; return the image.
         """
         ...
+
     def add_line(self, line):
         """
         Add a `.Line2D` to the Axes; return the line.
         """
         ...
+
     def add_patch(self, p):
         """
         Add a `.Patch` to the Axes; return the patch.
         """
         ...
+
     def add_table(self, tab):
         """
         Add a `.Table` to the Axes; return the table.
         """
         ...
+
     def add_container(self, container):
         """
         Add a `.Container` to the Axes' containers; return the container.
         """
         ...
+
     def relim(self, visible_only=...):  # -> None:
         """
         Recompute the data limits based on current artists.
@@ -933,6 +1003,7 @@ class _AxesBase(martist.Artist):
             Whether to exclude invisible artists.
         """
         ...
+
     def update_datalim(self, xys, updatex=..., updatey=...):  # -> None:
         """
         Extend the `~.Axes.dataLim` Bbox to include the given points.
@@ -952,6 +1023,7 @@ class _AxesBase(martist.Artist):
             Whether to update the x/y limits.
         """
         ...
+
     def in_axes(self, mouseevent):
         """
         Return whether the given event (in display coords) is in the Axes.
@@ -964,6 +1036,7 @@ class _AxesBase(martist.Artist):
     def get_autoscale_on(self):  # -> bool:
         """Return True if each axis is autoscaled, False otherwise."""
         ...
+
     def set_autoscale_on(self, b):  # -> None:
         """
         Set whether autoscaling is applied to each axis on the next draw or
@@ -974,6 +1047,7 @@ class _AxesBase(martist.Artist):
         b : bool
         """
         ...
+
     @property
     def use_sticky_edges(self):  # -> bool:
         """
@@ -990,9 +1064,11 @@ class _AxesBase(martist.Artist):
         `autoscale` or `autoscale_view` is called.
         """
         ...
+
     @use_sticky_edges.setter
     def use_sticky_edges(self, b):  # -> None:
         ...
+
     def set_xmargin(self, m):  # -> None:
         """
         Set padding of X data limits prior to autoscaling.
@@ -1010,6 +1086,7 @@ class _AxesBase(martist.Artist):
         m : float greater than -0.5
         """
         ...
+
     def set_ymargin(self, m):  # -> None:
         """
         Set padding of Y data limits prior to autoscaling.
@@ -1027,6 +1104,7 @@ class _AxesBase(martist.Artist):
         m : float greater than -0.5
         """
         ...
+
     def margins(
         self, *margins, x=..., y=..., tight=...
     ):  # -> tuple[Unknown | int | None, Unknown | int | None] | None:
@@ -1081,6 +1159,7 @@ class _AxesBase(martist.Artist):
         before calling :meth:`margins`.
         """
         ...
+
     def set_rasterization_zorder(self, z):  # -> None:
         """
         Set the zorder threshold for rasterization for vector graphics output.
@@ -1099,9 +1178,11 @@ class _AxesBase(martist.Artist):
             If ``None`` rasterization based on zorder is deactivated.
         """
         ...
+
     def get_rasterization_zorder(self):  # -> None:
         """Return the zorder value below which artists will be rasterized."""
         ...
+
     def autoscale(self, enable=..., axis=..., tight=...):  # -> None:
         """
         Autoscale the axis view to the data (toggle).
@@ -1125,6 +1206,7 @@ class _AxesBase(martist.Artist):
             its value); see the description of its behavior there.
         """
         ...
+
     def autoscale_view(self, tight=..., scalex=..., scaley=...):  # -> None:
         """
         Autoscale the view limits using the data limits.
@@ -1165,24 +1247,29 @@ class _AxesBase(martist.Artist):
         See :meth:`matplotlib.axes.Axes.autoscale` for an alternative.
         """
         ...
+
     @martist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def draw_artist(self, a):  # -> None:
         """
         Efficiently redraw a single artist.
         """
         ...
+
     def redraw_in_frame(self):  # -> None:
         """
         Efficiently redraw Axes data, but not axis ticks, labels, etc.
         """
         ...
+
     @_api.deprecated("3.6", alternative="Axes.figure.canvas.get_renderer()")
     def get_renderer_cache(self): ...
     def get_frame_on(self):  # -> bool:
         """Get whether the Axes rectangle patch is drawn."""
         ...
+
     def set_frame_on(self, b):  # -> None:
         """
         Set whether the Axes rectangle patch is drawn.
@@ -1192,6 +1279,7 @@ class _AxesBase(martist.Artist):
         b : bool
         """
         ...
+
     def get_axisbelow(self):  # -> bool | str:
         """
         Get whether axis ticks and gridlines are above or below most artists.
@@ -1205,6 +1293,7 @@ class _AxesBase(martist.Artist):
         set_axisbelow
         """
         ...
+
     def set_axisbelow(self, b):  # -> None:
         """
         Set whether axis ticks and gridlines are above or below most artists.
@@ -1229,6 +1318,7 @@ class _AxesBase(martist.Artist):
         get_axisbelow
         """
         ...
+
     @_docstring.dedent_interpd
     def grid(self, visible=..., which=..., axis=..., **kwargs):  # -> None:
         """
@@ -1267,6 +1357,7 @@ class _AxesBase(martist.Artist):
         `~.Artist.set_zorder` method of each axis.
         """
         ...
+
     def ticklabel_format(
         self,
         *,
@@ -1321,6 +1412,7 @@ class _AxesBase(martist.Artist):
             If the current formatter is not a `.ScalarFormatter`.
         """
         ...
+
     def locator_params(self, axis=..., tight=..., **kwargs):  # -> None:
         """
         Control behavior of major tick locators.
@@ -1355,6 +1447,7 @@ class _AxesBase(martist.Artist):
 
         """
         ...
+
     def tick_params(self, axis=..., **kwargs):  # -> None:
         """
         Change the appearance of ticks, tick labels, and gridlines.
@@ -1420,6 +1513,7 @@ class _AxesBase(martist.Artist):
 
         """
         ...
+
     def set_axis_off(self):  # -> None:
         """
         Turn the x- and y-axis off.
@@ -1427,6 +1521,7 @@ class _AxesBase(martist.Artist):
         This affects the axis lines, ticks, ticklabels, grid and axis labels.
         """
         ...
+
     def set_axis_on(self):  # -> None:
         """
         Turn the x- and y-axis on.
@@ -1434,11 +1529,13 @@ class _AxesBase(martist.Artist):
         This affects the axis lines, ticks, ticklabels, grid and axis labels.
         """
         ...
+
     def get_xlabel(self):  # -> str:
         """
         Get the xlabel text string.
         """
         ...
+
     def set_xlabel(
         self, xlabel, fontdict=..., labelpad=..., *, loc=..., **kwargs
     ):  # -> Text:
@@ -1468,6 +1565,7 @@ class _AxesBase(martist.Artist):
         text : Documents the properties supported by `.Text`.
         """
         ...
+
     def invert_xaxis(self):  # -> None:
         """
         Invert the x-axis.
@@ -1491,6 +1589,7 @@ class _AxesBase(martist.Artist):
         invert_xaxis, xaxis_inverted
         """
         ...
+
     def set_xbound(self, lower=..., upper=...):  # -> None:
         """
         Set the lower and upper numerical bounds of the x-axis.
@@ -1511,6 +1610,7 @@ class _AxesBase(martist.Artist):
         invert_xaxis, xaxis_inverted
         """
         ...
+
     def get_xlim(self):  # -> tuple[Unknown, ...]:
         """
         Return the x-axis view limits.
@@ -1532,6 +1632,7 @@ class _AxesBase(martist.Artist):
         be greater than the *right* value.
         """
         ...
+
     @_api.make_keyword_only("3.6", "emit")
     def set_xlim(
         self, left=..., right=..., emit=..., auto=..., *, xmin=..., xmax=...
@@ -1614,6 +1715,7 @@ class _AxesBase(martist.Artist):
         Get the ylabel text string.
         """
         ...
+
     def set_ylabel(
         self, ylabel, fontdict=..., labelpad=..., *, loc=..., **kwargs
     ):  # -> Text:
@@ -1643,6 +1745,7 @@ class _AxesBase(martist.Artist):
         text : Documents the properties supported by `.Text`.
         """
         ...
+
     def invert_yaxis(self):  # -> None:
         """
         Invert the y-axis.
@@ -1666,6 +1769,7 @@ class _AxesBase(martist.Artist):
         invert_yaxis, yaxis_inverted
         """
         ...
+
     def set_ybound(self, lower=..., upper=...):  # -> None:
         """
         Set the lower and upper numerical bounds of the y-axis.
@@ -1686,6 +1790,7 @@ class _AxesBase(martist.Artist):
         invert_yaxis, yaxis_inverted
         """
         ...
+
     def get_ylim(self):  # -> tuple[Unknown, ...]:
         """
         Return the y-axis view limits.
@@ -1707,6 +1812,7 @@ class _AxesBase(martist.Artist):
         will be greater than the *top* value.
         """
         ...
+
     @_api.make_keyword_only("3.6", "emit")
     def set_ylim(
         self, bottom=..., top=..., emit=..., auto=..., *, ymin=..., ymax=...
@@ -1794,6 +1900,7 @@ class _AxesBase(martist.Artist):
         else will fall back on the xaxis major formatter.
         """
         ...
+
     def format_ydata(self, y):
         """
         Return *y* formatted as a y-value.
@@ -1802,9 +1909,11 @@ class _AxesBase(martist.Artist):
         else will fall back on the yaxis major formatter.
         """
         ...
+
     def format_coord(self, x, y):  # -> LiteralString:
         """Return a format string formatting the *x*, *y* coordinates."""
         ...
+
     def minorticks_on(self):  # -> None:
         """
         Display minor ticks on the Axes.
@@ -1813,24 +1922,29 @@ class _AxesBase(martist.Artist):
         using `minorticks_off()` if drawing speed is a problem.
         """
         ...
+
     def minorticks_off(self):  # -> None:
         """Remove minor ticks from the Axes."""
         ...
+
     def can_zoom(self):  # -> Literal[True]:
         """
         Return whether this Axes supports the zoom box button functionality.
         """
         ...
+
     def can_pan(self):  # -> Literal[True]:
         """
         Return whether this Axes supports any pan/zoom button functionality.
         """
         ...
+
     def get_navigate(self):
         """
         Get whether the Axes responds to navigation commands.
         """
         ...
+
     def set_navigate(self, b):  # -> None:
         """
         Set whether the Axes responds to navigation toolbar commands.
@@ -1840,11 +1954,13 @@ class _AxesBase(martist.Artist):
         b : bool
         """
         ...
+
     def get_navigate_mode(self):
         """
         Get the navigation toolbar button status: 'PAN', 'ZOOM', or None.
         """
         ...
+
     def set_navigate_mode(self, b):  # -> None:
         """
         Set the navigation toolbar button status.
@@ -1854,6 +1970,7 @@ class _AxesBase(martist.Artist):
 
         """
         ...
+
     def start_pan(self, x, y, button):  # -> None:
         """
         Called when a pan operation has started.
@@ -1870,6 +1987,7 @@ class _AxesBase(martist.Artist):
         This is intended to be overridden by new projection types.
         """
         ...
+
     def end_pan(self):  # -> None:
         """
         Called when a pan operation completes (when the mouse button is up.)
@@ -1879,6 +1997,7 @@ class _AxesBase(martist.Artist):
         This is intended to be overridden by new projection types.
         """
         ...
+
     def drag_pan(self, button, key, x, y):  # -> None:
         """
         Called when the mouse moves during a pan operation.
@@ -1897,16 +2016,20 @@ class _AxesBase(martist.Artist):
         This is intended to be overridden by new projection types.
         """
         ...
+
     def get_children(self):  # -> list[Unknown | Any | Text]:
         ...
+
     def contains(self, mouseevent):  # -> tuple[Literal[False], dict[Unknown, Unknown]]:
         ...
+
     def contains_point(self, point):
         """
         Return whether *point* (pair of pixel coordinates) is inside the Axes
         patch.
         """
         ...
+
     def get_default_bbox_extra_artists(
         self,
     ):  # -> list[_AxesBase | Axis | AnnotationBbox | OffsetBox | Unknown | Any | Text]:
@@ -1918,6 +2041,7 @@ class _AxesBase(martist.Artist):
         ``artist.set_in_layout(False)``.
         """
         ...
+
     def get_tightbbox(
         self,
         renderer=...,
@@ -1967,6 +2091,7 @@ class _AxesBase(martist.Artist):
         matplotlib.spines.Spine.get_window_extent
         """
         ...
+
     def twinx(self):
         """
         Create a twin Axes sharing the xaxis.
@@ -1988,6 +2113,7 @@ class _AxesBase(martist.Artist):
         events are only called for the artists in the top-most Axes.
         """
         ...
+
     def twiny(self):
         """
         Create a twin Axes sharing the yaxis.
@@ -2009,12 +2135,15 @@ class _AxesBase(martist.Artist):
         events are only called for the artists in the top-most Axes.
         """
         ...
+
     def get_shared_x_axes(self):  # -> GrouperView:
         """Return an immutable view on the shared x-axes Grouper."""
         ...
+
     def get_shared_y_axes(self):  # -> GrouperView:
         """Return an immutable view on the shared y-axes Grouper."""
         ...
+
     def label_outer(self):  # -> None:
         """
         Only show "outer" labels and tick labels.

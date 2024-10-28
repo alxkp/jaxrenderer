@@ -47,36 +47,50 @@ class RendererAgg(RendererBase):
     def __init__(self, width, height, dpi) -> None: ...
     def __getstate__(self):  # -> dict[str, Unknown]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
+
     def draw_path(self, gc, path, transform, rgbFace=...):  # -> None:
         ...
+
     def draw_mathtext(self, gc, x, y, s, prop, angle):  # -> None:
         """Draw mathtext using :mod:`matplotlib.mathtext`."""
         ...
+
     def draw_text(self, gc, x, y, s, prop, angle, ismath=..., mtext=...):  # -> None:
         ...
+
     def get_text_width_height_descent(
         self, s, prop, ismath
     ):  # -> tuple[Literal[0], Literal[0], Literal[0]] | tuple[Unknown, Unknown, Unknown]:
         ...
+
     def draw_tex(self, gc, x, y, s, prop, angle, *, mtext=...):  # -> None:
         ...
+
     def get_canvas_width_height(self):  # -> tuple[Unknown, Unknown]:
         ...
+
     def points_to_pixels(self, points): ...
     def buffer_rgba(self):  # -> memoryview:
         ...
+
     def tostring_argb(self):  # -> bytes:
         ...
+
     def tostring_rgb(self):  # -> bytes:
         ...
+
     def clear(self):  # -> None:
         ...
+
     def option_image_nocomposite(self):  # -> Literal[True]:
         ...
+
     def option_scale_image(self):  # -> Literal[False]:
         ...
+
     def restore_region(self, region, bbox=..., xy=...):  # -> None:
         """
         Restore the saved region. If bbox (instance of BboxBase, or
@@ -92,11 +106,13 @@ class RendererAgg(RendererBase):
 
         """
         ...
+
     def start_filter(self):  # -> None:
         """
         Start filtering. It simply creates a new canvas (the old one is saved).
         """
         ...
+
     def stop_filter(self, post_processing):  # -> None:
         """
         Save the plot in the current canvas as an image and apply
@@ -121,11 +137,14 @@ class FigureCanvasAgg(FigureCanvasBase):
     def copy_from_bbox(self, bbox): ...
     def restore_region(self, region, bbox=..., xy=...):  # -> None:
         ...
+
     def draw(self):  # -> None:
         ...
+
     @_api.delete_parameter("3.6", "cleared", alternative="renderer.clear()")
     def get_renderer(self, cleared=...):  # -> RendererAgg:
         ...
+
     def tostring_rgb(self):  # -> bytes:
         """
         Get the image as RGB `bytes`.
@@ -134,6 +153,7 @@ class FigureCanvasAgg(FigureCanvasBase):
         to update the renderer for any subsequent changes to the Figure.
         """
         ...
+
     def tostring_argb(self):  # -> bytes:
         """
         Get the image as ARGB `bytes`.
@@ -142,6 +162,7 @@ class FigureCanvasAgg(FigureCanvasBase):
         to update the renderer for any subsequent changes to the Figure.
         """
         ...
+
     def buffer_rgba(self):  # -> memoryview:
         """
         Get the image as a `memoryview` to the renderer's buffer.
@@ -150,6 +171,7 @@ class FigureCanvasAgg(FigureCanvasBase):
         to update the renderer for any subsequent changes to the Figure.
         """
         ...
+
     def print_raw(self, filename_or_obj):  # -> None:
         ...
     print_rgba = ...
@@ -201,8 +223,10 @@ class FigureCanvasAgg(FigureCanvasBase):
             *metadata*, including the default 'Software' key.
         """
         ...
+
     def print_to_buffer(self):  # -> tuple[bytes, tuple[int, int]]:
         ...
+
     def print_jpg(self, filename_or_obj, *, pil_kwargs=...):  # -> None:
         ...
     print_jpeg = ...

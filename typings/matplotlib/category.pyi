@@ -40,6 +40,7 @@ class StrCategoryConverter(units.ConversionInterface):
         float or `~numpy.ndarray` of float
         """
         ...
+
     @staticmethod
     def axisinfo(unit, axis):  # -> AxisInfo:
         """
@@ -61,6 +62,7 @@ class StrCategoryConverter(units.ConversionInterface):
 
         """
         ...
+
     @staticmethod
     def default_units(data, axis):
         """
@@ -90,8 +92,10 @@ class StrCategoryLocator(ticker.Locator):
             Mapping of category names (str) to indices (int).
         """
         ...
+
     def __call__(self):  # -> list[Unknown]:
         ...
+
     def tick_values(self, vmin, vmax):  # -> list[Unknown]:
         ...
 
@@ -106,8 +110,10 @@ class StrCategoryFormatter(ticker.Formatter):
             Mapping of category names (str) to indices (int).
         """
         ...
+
     def __call__(self, x, pos=...):  # -> str:
         ...
+
     def format_ticks(self, values):  # -> list[str]:
         ...
 
@@ -122,6 +128,7 @@ class UnitData:
             sequence of string values
         """
         ...
+
     def update(self, data):  # -> None:
         """
         Map new values to integer identifiers.

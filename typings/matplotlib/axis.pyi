@@ -70,19 +70,25 @@ class Tick(martist.Artist):
         size is the tick size in points
         """
         ...
+
     @property
     @_api.deprecated("3.1", alternative="Tick.label1", removal="3.8")
     def label(self):  # -> Text:
         ...
+
     def get_tickdir(self):  # -> None:
         ...
+
     def get_tick_padding(self):
         """Get the length of the tick outside of the Axes."""
         ...
+
     def get_children(self):  # -> list[Line2D | Text]:
         ...
+
     def set_clip_path(self, clippath, transform=...):  # -> None:
         ...
+
     @_api.deprecated("3.6")
     def get_pad_pixels(self): ...
     def contains(self, mouseevent):  # -> tuple[Literal[False], dict[Unknown, Unknown]]:
@@ -93,6 +99,7 @@ class Tick(martist.Artist):
         axis as a whole contains the mouse rather than the set of tick marks.
         """
         ...
+
     def set_pad(self, val):  # -> None:
         """
         Set the tick label pad in points
@@ -102,15 +109,19 @@ class Tick(martist.Artist):
         val : float
         """
         ...
+
     def get_pad(self):  # -> None:
         """Get the value of the tick label pad in points."""
         ...
+
     def get_loc(self):  # -> Unknown:
         """Return the tick location (data coords) as a scalar."""
         ...
+
     @martist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def set_label1(self, s):  # -> None:
         """
         Set the label1 text.
@@ -130,6 +141,7 @@ class Tick(martist.Artist):
         s : str
         """
         ...
+
     def set_url(self, url):  # -> None:
         """
         Set the url of label1 and label2.
@@ -139,11 +151,13 @@ class Tick(martist.Artist):
         url : str
         """
         ...
+
     def get_view_interval(self):
         """
         Return the view limits ``(min, max)`` of the axis the tick belongs to.
         """
         ...
+
     def update_position(self, loc):
         """Set the location of tick in data coords with scalar *loc*."""
         ...
@@ -159,6 +173,7 @@ class XTick(Tick):
     def update_position(self, loc):  # -> None:
         """Set the location of tick in data coords with scalar *loc*."""
         ...
+
     def get_view_interval(self): ...
 
 class YTick(Tick):
@@ -172,6 +187,7 @@ class YTick(Tick):
     def update_position(self, loc):  # -> None:
         """Set the location of tick in data coords with scalar *loc*."""
         ...
+
     def get_view_interval(self): ...
 
 class Ticker:
@@ -190,12 +206,15 @@ class Ticker:
     @property
     def locator(self):  # -> Locator | None:
         ...
+
     @locator.setter
     def locator(self, locator):  # -> None:
         ...
+
     @property
     def formatter(self):  # -> Formatter | None:
         ...
+
     @formatter.setter
     def formatter(self, formatter):  # -> None:
         ...
@@ -258,27 +277,35 @@ class Axis(martist.Artist):
             `.Axis.contains`.
         """
         ...
+
     @property
     def isDefault_majloc(self):  # -> bool:
         ...
+
     @isDefault_majloc.setter
     def isDefault_majloc(self, value):  # -> None:
         ...
+
     @property
     def isDefault_majfmt(self):  # -> bool:
         ...
+
     @isDefault_majfmt.setter
     def isDefault_majfmt(self, value):  # -> None:
         ...
+
     @property
     def isDefault_minloc(self):  # -> bool:
         ...
+
     @isDefault_minloc.setter
     def isDefault_minloc(self, value):  # -> None:
         ...
+
     @property
     def isDefault_minfmt(self):  # -> bool:
         ...
+
     @isDefault_minfmt.setter
     def isDefault_minfmt(self, value):  # -> None:
         ...
@@ -286,6 +313,7 @@ class Axis(martist.Artist):
     minorTicks = ...
     def get_remove_overlapping_locs(self):  # -> bool:
         ...
+
     def set_remove_overlapping_locs(self, val):  # -> None:
         ...
     remove_overlapping_locs = ...
@@ -302,19 +330,24 @@ class Axis(martist.Artist):
         coordinate system: (0, 0) is bottom left, (0.5, 0.5) is center, etc.
         """
         ...
+
     def get_transform(
         self,
     ):  # -> IdentityTransform | LogTransform | SymmetricalLogTransform | AsinhTransform | LogitTransform | FuncTransform | Transform | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType:
         ...
+
     def get_scale(self):  # -> str:
         """Return this Axis' scale (as a str)."""
         ...
+
     def limit_range_for_scale(
         self, vmin, vmax
     ):  # -> tuple[Unknown, Unknown] | tuple[float | Unknown, float | Unknown]:
         ...
+
     def get_children(self):  # -> list[Text | Unknown]:
         ...
+
     def clear(self):  # -> None:
         """
         Clear the axis.
@@ -329,6 +362,7 @@ class Axis(martist.Artist):
         - registered callbacks
         """
         ...
+
     def reset_ticks(self):  # -> None:
         """
         Re-initialize the major and minor Tick lists.
@@ -336,6 +370,7 @@ class Axis(martist.Artist):
         Each list starts with a single fresh Tick.
         """
         ...
+
     def set_tick_params(self, which=..., reset=..., **kwargs):  # -> None:
         """
         Set appearance parameters for ticks, ticklabels, and gridlines.
@@ -350,6 +385,7 @@ class Axis(martist.Artist):
             gridlines.
         """
         ...
+
     def get_tick_params(self, which=...):  # -> dict[str, Unknown]:
         """
         Get appearance parameters for ticks, ticklabels, and gridlines.
@@ -398,11 +434,14 @@ class Axis(martist.Artist):
 
         """
         ...
+
     def set_clip_path(self, clippath, transform=...):  # -> None:
         ...
+
     def get_view_interval(self):
         """Return the ``(min, max)`` view limits of this axis."""
         ...
+
     def set_view_interval(self, vmin, vmax, ignore=...):
         """
         Set the axis view limits.  This method is for internal use; Matplotlib
@@ -417,9 +456,11 @@ class Axis(martist.Artist):
         vmax)`` in that order.
         """
         ...
+
     def get_data_interval(self):
         """Return the ``(min, max)`` data limits of this axis."""
         ...
+
     def set_data_interval(self, vmin, vmax, ignore=...):
         """
         Set the axis data limits.  This method is for internal use.
@@ -433,6 +474,7 @@ class Axis(martist.Artist):
         vmax)`` in that order.
         """
         ...
+
     def get_inverted(self):
         """
         Return whether this Axis is oriented in the "inverse" direction.
@@ -442,6 +484,7 @@ class Axis(martist.Artist):
         left for the x-axis and to the bottom for the y-axis.
         """
         ...
+
     def set_inverted(self, inverted):  # -> None:
         """
         Set whether this Axis is oriented in the "inverse" direction.
@@ -451,16 +494,19 @@ class Axis(martist.Artist):
         left for the x-axis and to the bottom for the y-axis.
         """
         ...
+
     def set_default_intervals(self):  # -> None:
         """
         Set the default limits for the axis data and view interval if they
         have not been not mutated yet.
         """
         ...
+
     @_api.deprecated("3.6")
     def get_ticklabel_extents(self, renderer):  # -> tuple[Bbox, Bbox]:
         """Get the extents of the tick labels on either side of the axes."""
         ...
+
     def get_tightbbox(self, renderer=..., *, for_layout_only=...):  # -> Bbox | None:
         """
         Return a bounding box that encloses the axis. It only accounts
@@ -472,29 +518,38 @@ class Axis(martist.Artist):
         too-long labels when doing their layout.
         """
         ...
+
     def get_tick_padding(self):  # -> int:
         ...
+
     @martist.allow_rasterization
     def draw(self, renderer, *args, **kwargs):  # -> None:
         ...
+
     def get_gridlines(self):  # -> silent_list:
         r"""Return this Axis' grid lines as a list of `.Line2D`\s."""
         ...
+
     def get_label(self):  # -> Text:
         """Return the axis label as a Text instance."""
         ...
+
     def get_offset_text(self):  # -> Text:
         """Return the axis offsetText as a Text instance."""
         ...
+
     def get_pickradius(self):  # -> Number:
         """Return the depth of the axis used by the picker."""
         ...
+
     def get_majorticklabels(self):  # -> list[Unknown]:
         """Return this Axis' major tick labels, as a list of `~.text.Text`."""
         ...
+
     def get_minorticklabels(self):  # -> list[Unknown]:
         """Return this Axis' minor tick labels, as a list of `~.text.Text`."""
         ...
+
     def get_ticklabels(self, minor=..., which=...):  # -> list[Unknown]:
         """
         Get this Axis' tick labels.
@@ -514,21 +569,27 @@ class Axis(martist.Artist):
         list of `~matplotlib.text.Text`
         """
         ...
+
     def get_majorticklines(self):  # -> silent_list:
         r"""Return this Axis' major tick lines as a list of `.Line2D`\s."""
         ...
+
     def get_minorticklines(self):  # -> silent_list:
         r"""Return this Axis' minor tick lines as a list of `.Line2D`\s."""
         ...
+
     def get_ticklines(self, minor=...):  # -> silent_list:
         r"""Return this Axis' tick lines as a list of `.Line2D`\s."""
         ...
+
     def get_majorticklocs(self):
         """Return this Axis' major tick locations in data coordinates."""
         ...
+
     def get_minorticklocs(self):  # -> ndarray[Any, dtype[Unknown]]:
         """Return this Axis' minor tick locations in data coordinates."""
         ...
+
     def get_ticklocs(self, *, minor=...):  # -> ndarray[Any, dtype[Unknown]]:
         """
         Return this Axis' tick locations in data coordinates.
@@ -547,6 +608,7 @@ class Axis(martist.Artist):
         numpy array of tick locations
         """
         ...
+
     def get_ticks_direction(self, minor=...):  # -> NDArray[Unknown]:
         """
         Get the tick directions as a numpy array
@@ -562,27 +624,35 @@ class Axis(martist.Artist):
         numpy array of tick directions
         """
         ...
+
     def get_label_text(self):  # -> str:
         """Get the text of the label."""
         ...
+
     def get_major_locator(self):  # -> Locator | None:
         """Get the locator of the major ticker."""
         ...
+
     def get_minor_locator(self):  # -> Locator | None:
         """Get the locator of the minor ticker."""
         ...
+
     def get_major_formatter(self):  # -> Formatter | None:
         """Get the formatter of the major ticker."""
         ...
+
     def get_minor_formatter(self):  # -> Formatter | None:
         """Get the formatter of the minor ticker."""
         ...
+
     def get_major_ticks(self, numticks=...):  # -> list[Unknown]:
         r"""Return the list of major `.Tick`\s."""
         ...
+
     def get_minor_ticks(self, numticks=...):  # -> list[Unknown]:
         r"""Return the list of minor `.Tick`\s."""
         ...
+
     def grid(self, visible=..., which=..., **kwargs):  # -> None:
         """
         Configure the grid lines.
@@ -605,6 +675,7 @@ class Axis(martist.Artist):
                 grid(color='r', linestyle='-', linewidth=2)
         """
         ...
+
     def update_units(self, data):  # -> bool:
         """
         Introspect *data* for units converter and update the
@@ -612,8 +683,10 @@ class Axis(martist.Artist):
         if *data* is registered for unit conversion.
         """
         ...
+
     def have_units(self):  # -> bool:
         ...
+
     def convert_units(self, x): ...
     def set_units(self, u):  # -> None:
         """
@@ -628,9 +701,11 @@ class Axis(martist.Artist):
         The units of any shared axis will also be updated.
         """
         ...
+
     def get_units(self):  # -> None:
         """Return the units for axis."""
         ...
+
     def set_label_text(self, label, fontdict=..., **kwargs):  # -> Text:
         """
         Set the text value of the axis label.
@@ -645,6 +720,7 @@ class Axis(martist.Artist):
             Merged into fontdict.
         """
         ...
+
     def set_major_formatter(self, formatter):  # -> None:
         """
         Set the formatter of the major ticker.
@@ -670,6 +746,7 @@ class Axis(martist.Artist):
         formatter : `~matplotlib.ticker.Formatter`, ``str``, or function
         """
         ...
+
     def set_minor_formatter(self, formatter):  # -> None:
         """
         Set the formatter of the minor ticker.
@@ -683,6 +760,7 @@ class Axis(martist.Artist):
         formatter : `~matplotlib.ticker.Formatter`, ``str``, or function
         """
         ...
+
     def set_major_locator(self, locator):  # -> None:
         """
         Set the locator of the major ticker.
@@ -692,6 +770,7 @@ class Axis(martist.Artist):
         locator : `~matplotlib.ticker.Locator`
         """
         ...
+
     def set_minor_locator(self, locator):  # -> None:
         """
         Set the locator of the minor ticker.
@@ -701,6 +780,7 @@ class Axis(martist.Artist):
         locator : `~matplotlib.ticker.Locator`
         """
         ...
+
     def set_pickradius(self, pickradius):  # -> None:
         """
         Set the depth of the axis used by the picker.
@@ -761,6 +841,7 @@ class Axis(martist.Artist):
             ``tick.label2`` if it is visible, in that order.
         """
         ...
+
     def set_ticks(self, ticks, labels=..., *, minor=..., **kwargs):  # -> list[Unknown]:
         """
         Set this Axis' tick locations and optionally labels.
@@ -796,6 +877,7 @@ class Axis(martist.Artist):
         ticks.
         """
         ...
+
     def axis_date(self, tz=...):  # -> None:
         """
         Set up axis ticks and labels to treat data along this Axis as dates.
@@ -806,14 +888,17 @@ class Axis(martist.Artist):
             The timezone used to create date labels.
         """
         ...
+
     def get_tick_space(self):
         """Return the estimated number of ticks that can fit on the axis."""
         ...
+
     def get_label_position(self):
         """
         Return the label position (top or bottom)
         """
         ...
+
     def set_label_position(self, position):
         """
         Set the label position (top or bottom)
@@ -823,6 +908,7 @@ class Axis(martist.Artist):
         position : {'top', 'bottom'}
         """
         ...
+
     def get_minpos(self): ...
 
 class XAxis(Axis):
@@ -835,6 +921,7 @@ class XAxis(Axis):
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown, dict[Unknown, Unknown]]:
         """Test whether the mouse event occurred in the x-axis."""
         ...
+
     def set_label_position(self, position):  # -> None:
         """
         Set the label position (top or bottom)
@@ -844,6 +931,7 @@ class XAxis(Axis):
         position : {'top', 'bottom'}
         """
         ...
+
     @_api.deprecated("3.6")
     def get_text_heights(self, renderer):  # -> tuple[Unknown | float, Unknown | float]:
         """
@@ -851,6 +939,7 @@ class XAxis(Axis):
         Axes, as a pair of floats.
         """
         ...
+
     def set_ticks_position(self, position):  # -> None:
         """
         Set the ticks position.
@@ -865,24 +954,29 @@ class XAxis(Axis):
             affect only the ticks, not the labels.
         """
         ...
+
     def tick_top(self):  # -> None:
         """
         Move ticks and ticklabels (if present) to the top of the Axes.
         """
         ...
+
     def tick_bottom(self):  # -> None:
         """
         Move ticks and ticklabels (if present) to the bottom of the Axes.
         """
         ...
+
     def get_ticks_position(self):  # -> str:
         """
         Return the ticks position ("top", "bottom", "default", or "unknown").
         """
         ...
+
     def get_minpos(self): ...
     def set_default_intervals(self):  # -> None:
         ...
+
     def get_tick_space(self):  # -> int | Any:
         ...
 
@@ -895,6 +989,7 @@ class YAxis(Axis):
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown, dict[Unknown, Unknown]]:
         ...
+
     def set_label_position(self, position):  # -> None:
         """
         Set the label position (left or right)
@@ -904,6 +999,7 @@ class YAxis(Axis):
         position : {'left', 'right'}
         """
         ...
+
     def set_offset_position(self, position):  # -> None:
         """
         Parameters
@@ -911,9 +1007,11 @@ class YAxis(Axis):
         position : {'left', 'right'}
         """
         ...
+
     @_api.deprecated("3.6")
     def get_text_widths(self, renderer):  # -> tuple[Unknown | float, Unknown | float]:
         ...
+
     def set_ticks_position(self, position):  # -> None:
         """
         Set the ticks position.
@@ -928,23 +1026,28 @@ class YAxis(Axis):
             affect only the ticks, not the labels.
         """
         ...
+
     def tick_right(self):  # -> None:
         """
         Move ticks and ticklabels (if present) to the right of the Axes.
         """
         ...
+
     def tick_left(self):  # -> None:
         """
         Move ticks and ticklabels (if present) to the left of the Axes.
         """
         ...
+
     def get_ticks_position(self):  # -> str:
         """
         Return the ticks position ("left", "right", "default", or "unknown").
         """
         ...
+
     def get_minpos(self): ...
     def set_default_intervals(self):  # -> None:
         ...
+
     def get_tick_space(self):  # -> int | Any:
         ...

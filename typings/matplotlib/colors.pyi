@@ -51,6 +51,7 @@ class _ColorMapping(dict):
     def __init__(self, mapping) -> None: ...
     def __setitem__(self, key, value):  # -> None:
         ...
+
     def __delitem__(self, key):  # -> None:
         ...
 
@@ -83,14 +84,18 @@ class ColorSequenceRegistry(Mapping):
 
         mpl.color_sequences.register('rgb', ['r', 'g', 'b'])
     """
+
     _BUILTIN_COLOR_SEQUENCES = ...
     def __init__(self) -> None: ...
     def __getitem__(self, item):  # -> list[tuple[float, float, float]]:
         ...
+
     def __iter__(self):  # -> Iterator[str]:
         ...
+
     def __len__(self):  # -> int:
         ...
+
     def __str__(self) -> str: ...
     def register(self, name, color_list):  # -> None:
         """
@@ -113,6 +118,7 @@ class ColorSequenceRegistry(Mapping):
 
         """
         ...
+
     def unregister(self, name):  # -> None:
         """
         Remove a sequence from the registry.
@@ -258,6 +264,7 @@ class Colormap:
             The number of RGB quantization levels.
         """
         ...
+
     def __call__(self, X, alpha=..., bytes=...):  # -> tuple[Unknown, ...]:
         """
         Parameters
@@ -282,33 +289,42 @@ class Colormap:
         RGBA values with a shape of ``X.shape + (4, )``.
         """
         ...
+
     def __copy__(self):  # -> Colormap:
         ...
+
     def __eq__(self, other) -> bool: ...
     def get_bad(self):  # -> NDArray[Unknown]:
         """Get the color for masked values."""
         ...
+
     def set_bad(self, color=..., alpha=...):  # -> None:
         """Set the color for masked values."""
         ...
+
     def get_under(self):  # -> NDArray[Unknown]:
         """Get the color for low out-of-range values."""
         ...
+
     def set_under(self, color=..., alpha=...):  # -> None:
         """Set the color for low out-of-range values."""
         ...
+
     def get_over(self):  # -> NDArray[Unknown]:
         """Get the color for high out-of-range values."""
         ...
+
     def set_over(self, color=..., alpha=...):  # -> None:
         """Set the color for high out-of-range values."""
         ...
+
     def set_extremes(self, *, bad=..., under=..., over=...):  # -> None:
         """
         Set the colors for masked (*bad*) values and, when ``norm.clip =
         False``, low (*under*) and high (*over*) out-of-range values.
         """
         ...
+
     def with_extremes(self, *, bad=..., under=..., over=...):  # -> Colormap:
         """
         Return a copy of the colormap, for which the colors for masked (*bad*)
@@ -316,12 +332,15 @@ class Colormap:
         out-of-range values, have been set accordingly.
         """
         ...
+
     def is_gray(self):  # -> bool_:
         """Return whether the colormap is grayscale."""
         ...
+
     def resampled(self, lutsize):
         """Return a new colormap with *lutsize* entries."""
         ...
+
     def reversed(self, name=...):
         """
         Return a reversed instance of the Colormap.
@@ -340,6 +359,7 @@ class Colormap:
         ListedColormap.reversed
         """
         ...
+
     def copy(self):  # -> Colormap:
         """Return a copy of the colormap."""
         ...
@@ -398,9 +418,11 @@ class LinearSegmentedColormap(Colormap):
             LinearSegmentedColormap.
         """
         ...
+
     def set_gamma(self, gamma):  # -> None:
         """Set a new gamma value and regenerate colormap."""
         ...
+
     @staticmethod
     def from_list(name, colors, N=..., gamma=...):  # -> LinearSegmentedColormap:
         """
@@ -421,9 +443,11 @@ class LinearSegmentedColormap(Colormap):
         gamma : float
         """
         ...
+
     def resampled(self, lutsize):  # -> LinearSegmentedColormap:
         """Return a new colormap with *lutsize* entries."""
         ...
+
     def reversed(self, name=...):  # -> LinearSegmentedColormap:
         """
         Return a reversed instance of the Colormap.
@@ -474,6 +498,7 @@ class ListedColormap(Colormap):
     def resampled(self, lutsize):  # -> ListedColormap:
         """Return a new colormap with *lutsize* entries."""
         ...
+
     def reversed(self, name=...):  # -> ListedColormap:
         """
         Return a reversed instance of the Colormap.
@@ -520,24 +545,31 @@ class Normalize:
         Returns 0 if ``vmin == vmax``.
         """
         ...
+
     @property
     def vmin(self):  # -> float | None:
         ...
+
     @vmin.setter
     def vmin(self, value):  # -> None:
         ...
+
     @property
     def vmax(self):  # -> float | None:
         ...
+
     @vmax.setter
     def vmax(self, value):  # -> None:
         ...
+
     @property
     def clip(self):  # -> bool:
         ...
+
     @clip.setter
     def clip(self, value):  # -> None:
         ...
+
     @staticmethod
     def process_value(value):  # -> tuple[Unknown, bool]:
         """
@@ -560,6 +592,7 @@ class Normalize:
         greatly improves speed for large arrays.
         """
         ...
+
     def __call__(self, value, clip=...):
         """
         Normalize *value* data in the ``[vmin, vmax]`` interval into the
@@ -579,13 +612,16 @@ class Normalize:
         initialized using ``self.autoscale_None(value)``.
         """
         ...
+
     def inverse(self, value): ...
     def autoscale(self, A):  # -> None:
         """Set *vmin*, *vmax* to min, max of *A*."""
         ...
+
     def autoscale_None(self, A):  # -> None:
         """If vmin or vmax are not set, use the min/max of *A* to set them."""
         ...
+
     def scaled(self):  # -> bool:
         """Return whether vmin and vmax are set."""
         ...
@@ -623,22 +659,27 @@ class TwoSlopeNorm(Normalize):
             array([0., 0.25, 0.5, 0.625, 0.75, 0.875, 1.0])
         """
         ...
+
     @property
     def vcenter(self):  # -> Unknown:
         ...
+
     @vcenter.setter
     def vcenter(self, value):  # -> None:
         ...
+
     def autoscale_None(self, A):  # -> None:
         """
         Get vmin and vmax, and then clip at vcenter
         """
         ...
+
     def __call__(self, value, clip=...):  # -> Any | masked_array:
         """
         Map value to the interval [0, 1]. The *clip* argument is unused.
         """
         ...
+
     def inverse(self, value):  # -> NDArray[float64]:
         ...
 
@@ -681,35 +722,45 @@ class CenteredNorm(Normalize):
             array([0.25, 0.5 , 1.  ])
         """
         ...
+
     def autoscale(self, A):  # -> None:
         """
         Set *halfrange* to ``max(abs(A-vcenter))``, then set *vmin* and *vmax*.
         """
         ...
+
     def autoscale_None(self, A):  # -> None:
         """Set *vmin* and *vmax*."""
         ...
+
     @property
     def vmin(self):  # -> float:
         ...
+
     @vmin.setter
     def vmin(self, value):  # -> None:
         ...
+
     @property
     def vmax(self):  # -> float:
         ...
+
     @vmax.setter
     def vmax(self, value):  # -> None:
         ...
+
     @property
     def vcenter(self):  # -> int:
         ...
+
     @vcenter.setter
     def vcenter(self, vcenter):  # -> None:
         ...
+
     @property
     def halfrange(self):  # -> float | None:
         ...
+
     @halfrange.setter
     def halfrange(self, halfrange):  # -> None:
         ...
@@ -904,12 +955,14 @@ class BoundaryNorm(Normalize):
         colors in the middle of the colormap.
         """
         ...
+
     def __call__(self, value, clip=...):  # -> int:
         """
         This method behaves similarly to `.Normalize.__call__`, except that it
         returns integers or arrays of int16.
         """
         ...
+
     def inverse(self, value):
         """
         Raises
@@ -1005,10 +1058,12 @@ class LightSource:
         See the documentation for `blend_hsv` for more details.
         """
         ...
+
     @property
     def direction(self):  # -> NDArray[Any]:
         """The unit vector direction towards the light source."""
         ...
+
     def hillshade(self, elevation, vert_exag=..., dx=..., dy=..., fraction=...):
         """
         Calculate the illumination intensity for a surface using the defined
@@ -1045,6 +1100,7 @@ class LightSource:
             completely in shadow and 1 is completely illuminated.
         """
         ...
+
     def shade_normals(self, normals, fraction=...):
         """
         Calculate the illumination intensity for the normal vectors of a
@@ -1071,6 +1127,7 @@ class LightSource:
             completely in shadow and 1 is completely illuminated.
         """
         ...
+
     def shade(
         self,
         data,
@@ -1145,6 +1202,7 @@ class LightSource:
             An MxNx4 array of floats ranging between 0-1.
         """
         ...
+
     def shade_rgb(
         self,
         rgb,
@@ -1202,6 +1260,7 @@ class LightSource:
             An (m, n, 3) array of floats ranging between 0-1.
         """
         ...
+
     def blend_hsv(
         self,
         rgb,
@@ -1249,6 +1308,7 @@ class LightSource:
             An MxNx3 RGB array representing the combined images.
         """
         ...
+
     def blend_soft_light(self, rgb, intensity):
         """
         Combine an RGB image with an intensity map using "soft light" blending,
@@ -1267,6 +1327,7 @@ class LightSource:
             An MxNx3 RGB array representing the combined images.
         """
         ...
+
     def blend_overlay(self, rgb, intensity):  # -> NDArray[Any]:
         """
         Combine an RGB image with an intensity map using "overlay" blending.

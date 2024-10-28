@@ -54,6 +54,7 @@ class ToolBase:
     def figure(self):  # -> None:
         """The Figure affected by this tool, or None."""
         ...
+
     @figure.setter
     def figure(self, figure):  # -> None:
         ...
@@ -74,6 +75,7 @@ class ToolBase:
             Extra data.
         """
         ...
+
     @_api.deprecated("3.6", alternative="tool_removed_event")
     def destroy(self):  # -> None:
         """
@@ -105,6 +107,7 @@ class ToolToggleBase(ToolBase):
     def trigger(self, sender, event, data=...):  # -> None:
         """Calls `enable` or `disable` based on `toggled` value."""
         ...
+
     def enable(self, event=...):  # -> None:
         """
         Enable the toggle tool.
@@ -112,6 +115,7 @@ class ToolToggleBase(ToolBase):
         `trigger` calls this method when `toggled` is False.
         """
         ...
+
     def disable(self, event=...):  # -> None:
         """
         Disable the toggle tool.
@@ -126,10 +130,12 @@ class ToolToggleBase(ToolBase):
           (from the same `.ToolManager`).
         """
         ...
+
     @property
     def toggled(self):  # -> bool:
         """State of the toggled tool."""
         ...
+
     def set_figure(self, figure):  # -> None:
         ...
 
@@ -155,6 +161,7 @@ class ToolCursorPosition(ToolBase):
     def __init__(self, *args, **kwargs) -> None: ...
     def set_figure(self, figure):  # -> None:
         ...
+
     def send_message(self, event):  # -> None:
         """Call `matplotlib.backend_managers.ToolManager.message_event`."""
         ...
@@ -165,6 +172,7 @@ class RubberbandBase(ToolBase):
     def trigger(self, sender, event, data=...):  # -> None:
         """Call `draw_rubberband` or `remove_rubberband` based on data."""
         ...
+
     def draw_rubberband(self, *data):
         """
         Draw rubberband.
@@ -172,6 +180,7 @@ class RubberbandBase(ToolBase):
         This method must get implemented per backend.
         """
         ...
+
     def remove_rubberband(self):  # -> None:
         """
         Remove rubberband.
@@ -225,8 +234,10 @@ class AxisScaleBase(ToolToggleBase):
 
     def trigger(self, sender, event, data=...):  # -> None:
         ...
+
     def enable(self, event=...):  # -> None:
         ...
+
     def disable(self, event=...):  # -> None:
         ...
 
@@ -264,9 +275,11 @@ class ToolViewsPositions(ToolBase):
     def add_figure(self, figure):  # -> None:
         """Add the current figure to the stack of views and positions."""
         ...
+
     def clear(self, figure):  # -> None:
         """Reset the axes stack."""
         ...
+
     def update_view(self):  # -> None:
         """
         Update the view limits and position for each axes from the current
@@ -275,23 +288,28 @@ class ToolViewsPositions(ToolBase):
         don't update *any* positions.
         """
         ...
+
     def push_current(self, figure=...):  # -> None:
         """
         Push the current view limits and position onto their respective stacks.
         """
         ...
+
     def update_home_views(self, figure=...):  # -> None:
         """
         Make sure that ``self.home_views`` has an entry for all axes present
         in the figure.
         """
         ...
+
     def home(self):  # -> None:
         """Recall the first view and position from the stack."""
         ...
+
     def back(self):  # -> None:
         """Back one step in the stack of views and positions."""
         ...
+
     def forward(self):  # -> None:
         """Forward one step in the stack of views and positions."""
         ...
@@ -347,11 +365,14 @@ class ZoomPanBase(ToolToggleBase):
     def enable(self, event=...):  # -> None:
         """Connect press/release events and lock the canvas."""
         ...
+
     def disable(self, event=...):  # -> None:
         """Release the canvas and disconnect press/release events."""
         ...
+
     def trigger(self, sender, event, data=...):  # -> None:
         ...
+
     def scroll_zoom(self, event):  # -> None:
         ...
 

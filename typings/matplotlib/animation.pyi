@@ -47,6 +47,7 @@ class MovieWriterRegistry:
                 pass
         """
         ...
+
     def is_available(self, name):  # -> Literal[False]:
         """
         Check if given writer is available by name.
@@ -60,12 +61,15 @@ class MovieWriterRegistry:
         bool
         """
         ...
+
     def __iter__(self):  # -> Generator[Unknown, Any, None]:
         """Iterate over names of available writer class."""
         ...
+
     def list(self):  # -> list[Unknown]:
         """Get a list of available MovieWriters."""
         ...
+
     def __getitem__(self, name):
         """Get an available writer class from its name."""
         ...
@@ -108,10 +112,12 @@ class AbstractMovieWriter(abc.ABC):
             in pixels of the resulting movie file.
         """
         ...
+
     @property
     def frame_size(self):  # -> tuple[int, int]:
         """A tuple ``(width, height)`` in pixels of a movie frame."""
         ...
+
     @abc.abstractmethod
     def grab_frame(self, **savefig_kwargs):  # -> None:
         """
@@ -121,10 +127,12 @@ class AbstractMovieWriter(abc.ABC):
         `~.Figure.savefig` call that saves the figure.
         """
         ...
+
     @abc.abstractmethod
     def finish(self):  # -> None:
         """Finish any processing for writing the movie."""
         ...
+
     @contextlib.contextmanager
     def saving(
         self, fig, outfile, dpi, *args, **kwargs
@@ -178,13 +186,17 @@ class MovieWriter(AbstractMovieWriter):
             title, artist, genre, subject, copyright, srcform, comment.
         """
         ...
+
     def setup(self, fig, outfile, dpi=...):  # -> None:
         ...
+
     def finish(self):  # -> None:
         """Finish any processing for writing the movie."""
         ...
+
     def grab_frame(self, **savefig_kwargs):  # -> None:
         ...
+
     @classmethod
     def bin_path(cls):  # -> str:
         """
@@ -193,6 +205,7 @@ class MovieWriter(AbstractMovieWriter):
         before making a particular MovieWriter subclass available.
         """
         ...
+
     @classmethod
     def isAvailable(cls):  # -> bool:
         """Return whether a MovieWriter subclass is actually available."""
@@ -226,8 +239,10 @@ class FileMovieWriter(MovieWriter):
             deleted.
         """
         ...
+
     def __del__(self):  # -> None:
         ...
+
     @property
     def frame_format(self):  # -> str:
         """
@@ -235,11 +250,14 @@ class FileMovieWriter(MovieWriter):
         decided by the individual subclasses.
         """
         ...
+
     @frame_format.setter
     def frame_format(self, frame_format):  # -> None:
         ...
+
     def grab_frame(self, **savefig_kwargs):  # -> None:
         ...
+
     def finish(self):  # -> None:
         ...
 
@@ -248,10 +266,13 @@ class PillowWriter(AbstractMovieWriter):
     @classmethod
     def isAvailable(cls):  # -> Literal[True]:
         ...
+
     def setup(self, fig, outfile, dpi=...):  # -> None:
         ...
+
     def grab_frame(self, **savefig_kwargs):  # -> None:
         ...
+
     def finish(self):  # -> None:
         ...
 
@@ -309,6 +330,7 @@ class ImageMagickBase:
     @property
     def output_args(self):  # -> list[Unknown]:
         ...
+
     @classmethod
     def bin_path(cls): ...
     @classmethod
@@ -346,6 +368,7 @@ class HTMLWriter(FileMovieWriter):
     @classmethod
     def isAvailable(cls):  # -> Literal[True]:
         ...
+
     def __init__(
         self,
         fps=...,
@@ -359,8 +382,10 @@ class HTMLWriter(FileMovieWriter):
     ) -> None: ...
     def setup(self, fig, outfile, dpi=..., frame_dir=...):  # -> None:
         ...
+
     def grab_frame(self, **savefig_kwargs):  # -> None:
         ...
+
     def finish(self):  # -> None:
         ...
 
@@ -401,6 +426,7 @@ class Animation:
     def __init__(self, fig, event_source=..., blit=...) -> None: ...
     def __del__(self):  # -> None:
         ...
+
     def save(
         self,
         filename,
@@ -489,12 +515,15 @@ class Animation:
         is a `.MovieWriter`, a `RuntimeError` will be raised.
         """
         ...
+
     def new_frame_seq(self):
         """Return a new sequence of frame information."""
         ...
+
     def new_saved_frame_seq(self):
         """Return a new sequence of saved/cached frame information."""
         ...
+
     def to_html5_video(self, embed_limit=...):  # -> str:
         """
         Convert the animation to an HTML5 ``<video>`` tag.
@@ -521,6 +550,7 @@ class Animation:
             "Video too large to embed."
         """
         ...
+
     def to_jshtml(self, fps=..., embed_frames=..., default_mode=...):  # -> str:
         """
         Generate HTML representation of the animation.
@@ -537,9 +567,11 @@ class Animation:
             parameter is True, otherwise ``'once'``.
         """
         ...
+
     def pause(self):  # -> None:
         """Pause the animation."""
         ...
+
     def resume(self):  # -> None:
         """Resume the animation."""
         ...
@@ -738,6 +770,7 @@ class FuncAnimation(TimedAnimation):
         self,
     ):  # -> count[int] | Generator[Any, Unknown, None] | Iterator[Any] | Iterator[int]:
         ...
+
     def new_saved_frame_seq(
         self,
     ):  # -> Iterator[Unknown] | Generator[Any, Any, None] | islice[Any]:

@@ -29,15 +29,19 @@ class LockDraw:
     def __call__(self, o):  # -> None:
         """Reserve the lock for *o*."""
         ...
+
     def release(self, o):  # -> None:
         """Release the lock from *o*."""
         ...
+
     def available(self, o):  # -> bool:
         """Return whether drawing is available to *o*."""
         ...
+
     def isowner(self, o):  # -> bool:
         """Return whether *o* owns this lock."""
         ...
+
     def locked(self):  # -> bool:
         """Return whether the lock is currently held by an owner."""
         ...
@@ -53,6 +57,7 @@ class Widget:
     def set_active(self, active):  # -> None:
         """Set whether the widget is active."""
         ...
+
     def get_active(self):  # -> bool:
         """Get whether the widget is active."""
         ...
@@ -96,6 +101,7 @@ class AxesWidget(Widget):
         function stores callback ids for later clean up.
         """
         ...
+
     def disconnect_events(self):  # -> None:
         """Disconnect all events created by this widget."""
         ...
@@ -143,6 +149,7 @@ class Button(AxesWidget):
             .. versionadded:: 3.7
         """
         ...
+
     def on_clicked(self, func):  # -> int:
         """
         Connect the callback function *func* to button click events.
@@ -150,6 +157,7 @@ class Button(AxesWidget):
         Returns a connection id, which can be used to disconnect the callback.
         """
         ...
+
     def disconnect(self, cid):  # -> None:
         """Remove the callback function with connection id *cid*."""
         ...
@@ -184,6 +192,7 @@ class SliderBase(AxesWidget):
             Connection id of the observer to be removed.
         """
         ...
+
     def reset(self):  # -> None:
         """Reset the slider to the initial value."""
         ...
@@ -301,6 +310,7 @@ class Slider(SliderBase):
         ``edgecolor``, ``alpha``, etc.).
         """
         ...
+
     def set_val(self, val):  # -> None:
         """
         Set slider value to *val*.
@@ -310,6 +320,7 @@ class Slider(SliderBase):
         val : float
         """
         ...
+
     def on_changed(self, func):  # -> int:
         """
         Connect *func* as callback function to changes of the slider value.
@@ -425,6 +436,7 @@ class RangeSlider(SliderBase):
         ``edgecolor``, ``alpha``, etc.).
         """
         ...
+
     def set_min(self, min):  # -> None:
         """
         Set the lower value of the slider to *min*.
@@ -434,6 +446,7 @@ class RangeSlider(SliderBase):
         min : float
         """
         ...
+
     def set_max(self, max):  # -> None:
         """
         Set the lower value of the slider to *max*.
@@ -443,6 +456,7 @@ class RangeSlider(SliderBase):
         max : float
         """
         ...
+
     def set_val(self, val):  # -> None:
         """
         Set slider value to *val*.
@@ -452,6 +466,7 @@ class RangeSlider(SliderBase):
         val : tuple or array-like of float
         """
         ...
+
     def on_changed(self, func):  # -> int:
         """
         Connect *func* as callback function to changes of the slider value.
@@ -491,6 +506,7 @@ class CheckButtons(AxesWidget):
         List of lines for the x's in the checkboxes.  These lines exist for
         each box, but have ``set_visible(False)`` when its box is not checked.
     """
+
     def __init__(
         self,
         ax,
@@ -537,6 +553,7 @@ class CheckButtons(AxesWidget):
             .. versionadded:: 3.7
         """
         ...
+
     def set_label_props(self, props):  # -> None:
         """
         Set properties of the `.Text` labels.
@@ -549,6 +566,7 @@ class CheckButtons(AxesWidget):
             Dictionary of `.Text` properties to be used for the labels.
         """
         ...
+
     def set_frame_props(self, props):  # -> None:
         """
         Set properties of the check button frames.
@@ -562,6 +580,7 @@ class CheckButtons(AxesWidget):
             button frames.
         """
         ...
+
     def set_check_props(self, props):  # -> None:
         """
         Set properties of the check button checks.
@@ -575,6 +594,7 @@ class CheckButtons(AxesWidget):
             button check.
         """
         ...
+
     def set_active(self, index):  # -> None:
         """
         Toggle (activate or deactivate) a check button by index.
@@ -592,11 +612,13 @@ class CheckButtons(AxesWidget):
             If *index* is invalid.
         """
         ...
+
     def get_status(self):  # -> list[bool]:
         """
         Return a list of the status (True/False) of all of the check buttons.
         """
         ...
+
     def on_clicked(self, func):  # -> int:
         """
         Connect the callback function *func* to button click events.
@@ -604,13 +626,16 @@ class CheckButtons(AxesWidget):
         Returns a connection id, which can be used to disconnect the callback.
         """
         ...
+
     def disconnect(self, cid):  # -> None:
         """Remove the observer with connection id *cid*."""
         ...
+
     @_api.deprecated("3.7", addendum="Any custom property styling may be lost.")
     @property
     def rectangles(self):  # -> list[Rectangle]:
         ...
+
     @_api.deprecated("3.7", addendum="Any custom property styling may be lost.")
     @property
     def lines(self):  # -> list[Unknown]:
@@ -669,15 +694,19 @@ class TextBox(AxesWidget):
             The horizontal location of the text.
         """
         ...
+
     @property
     def text(self): ...
     def set_val(self, val):  # -> None:
         ...
+
     @_api.delete_parameter("3.7", "x")
     def begin_typing(self, x=...):  # -> None:
         ...
+
     def stop_typing(self):  # -> None:
         ...
+
     def on_text_change(self, func):  # -> int:
         """
         When the text changes, call this *func* with event.
@@ -685,6 +714,7 @@ class TextBox(AxesWidget):
         A connection id is returned which can be used to disconnect.
         """
         ...
+
     def on_submit(self, func):  # -> int:
         """
         When the user hits enter or leaves the submission box, call this
@@ -693,6 +723,7 @@ class TextBox(AxesWidget):
         A connection id is returned which can be used to disconnect.
         """
         ...
+
     def disconnect(self, cid):  # -> None:
         """Remove the observer with connection id *cid*."""
         ...
@@ -767,6 +798,7 @@ class RadioButtons(AxesWidget):
             .. versionadded:: 3.7
         """
         ...
+
     def set_label_props(self, props):  # -> None:
         """
         Set properties of the `.Text` labels.
@@ -779,6 +811,7 @@ class RadioButtons(AxesWidget):
             Dictionary of `.Text` properties to be used for the labels.
         """
         ...
+
     def set_radio_props(self, props):  # -> None:
         """
         Set properties of the `.Text` labels.
@@ -792,12 +825,15 @@ class RadioButtons(AxesWidget):
             buttons.
         """
         ...
+
     @property
     def activecolor(self):  # -> str:
         ...
+
     @activecolor.setter
     def activecolor(self, activecolor):  # -> None:
         ...
+
     def set_active(self, index):  # -> None:
         """
         Select button with number *index*.
@@ -805,6 +841,7 @@ class RadioButtons(AxesWidget):
         Callbacks will be triggered if :attr:`eventson` is True.
         """
         ...
+
     def on_clicked(self, func):  # -> int:
         """
         Connect the callback function *func* to button click events.
@@ -812,9 +849,11 @@ class RadioButtons(AxesWidget):
         Returns a connection id, which can be used to disconnect the callback.
         """
         ...
+
     def disconnect(self, cid):  # -> None:
         """Remove the observer with connection id *cid*."""
         ...
+
     @_api.deprecated("3.7", addendum="Any custom property styling may be lost.")
     @property
     def circles(self):  # -> list[Circle]:
@@ -872,6 +911,7 @@ class Cursor(AxesWidget):
     def clear(self, event):  # -> None:
         """Internal event handler to clear the cursor."""
         ...
+
     def onmove(self, event):  # -> None:
         """Internal event handler to draw the cursor when the mouse moves."""
         ...
@@ -924,12 +964,15 @@ class MultiCursor(Widget):
     def connect(self):  # -> None:
         """Connect events."""
         ...
+
     def disconnect(self):  # -> None:
         """Disconnect events."""
         ...
+
     def clear(self, event):  # -> None:
         """Clear the cursor."""
         ...
+
     def onmove(self, event):  # -> None:
         ...
 
@@ -947,60 +990,78 @@ class _SelectorWidget(AxesWidget):
     state_modifier_keys = ...
     def set_active(self, active):  # -> None:
         ...
+
     def update_background(self, event):  # -> None:
         """Force an update of the background."""
         ...
+
     def connect_default_events(self):  # -> None:
         """Connect the major canvas events to methods."""
         ...
+
     def ignore(self, event):  # -> bool:
         ...
+
     def update(self):  # -> None:
         """Draw using blit() or draw_idle(), depending on ``self.useblit``."""
         ...
+
     def press(self, event):  # -> bool:
         """Button press handler and validator."""
         ...
+
     def release(self, event):  # -> bool:
         """Button release event handler and validator."""
         ...
+
     def onmove(self, event):  # -> bool:
         """Cursor move event handler and validator."""
         ...
+
     def on_scroll(self, event):  # -> None:
         """Mouse scroll event handler and validator."""
         ...
+
     def on_key_press(self, event):  # -> None:
         """Key press event handler and validator for all selection widgets."""
         ...
+
     def on_key_release(self, event):  # -> None:
         """Key release event handler and validator."""
         ...
+
     def set_visible(self, visible):  # -> None:
         """Set the visibility of the selector artists."""
         ...
+
     def get_visible(self):  # -> bool:
         """Get the visibility of the selector artists."""
         ...
+
     @property
     def visible(self):  # -> bool:
         ...
+
     @visible.setter
     def visible(self, visible):  # -> None:
         ...
+
     def clear(self):  # -> None:
         """Clear the selection and set the selector ready to make a new one."""
         ...
+
     @property
     def artists(self):  # -> Any | tuple[Unknown]:
         """Tuple of the artists of the selector."""
         ...
+
     def set_props(self, **props):  # -> None:
         """
         Set the properties of the selector artist. See the `props` argument
         in the selector docstring to know which properties are supported.
         """
         ...
+
     def set_handle_props(self, **handle_props):  # -> None:
         """
         Set the properties of the handles selector artist. See the
@@ -1008,6 +1069,7 @@ class _SelectorWidget(AxesWidget):
         properties are supported.
         """
         ...
+
     def add_state(self, state):  # -> None:
         """
         Add a state to define the widget's behavior. See the
@@ -1026,6 +1088,7 @@ class _SelectorWidget(AxesWidget):
 
         """
         ...
+
     def remove_state(self, state):  # -> None:
         """
         Remove a state to define the widget's behavior. See the
@@ -1165,20 +1228,25 @@ class SpanSelector(_SelectorWidget):
     def new_axes(self, ax):  # -> None:
         """Set SpanSelector to operate on a new Axes."""
         ...
+
     def connect_default_events(self):  # -> None:
         ...
+
     @property
     def direction(self):
         """Direction of the span selector: 'vertical' or 'horizontal'."""
         ...
+
     @direction.setter
     def direction(self, direction):  # -> None:
         """Set the direction of the span selector."""
         ...
+
     @property
     def extents(self):  # -> tuple[Unknown, Unknown]:
         """Return extents of the span selector."""
         ...
+
     @extents.setter
     def extents(self, extents):  # -> None:
         ...
@@ -1210,14 +1278,17 @@ class ToolLineHandles:
     @property
     def artists(self):  # -> tuple[Unknown, ...]:
         ...
+
     @property
     def positions(self):  # -> list[Any]:
         """Positions of the handle in data coordinates."""
         ...
+
     @property
     def direction(self):  # -> Unknown:
         """Direction of the handle: 'vertical' or 'horizontal'."""
         ...
+
     def set_data(self, positions):  # -> None:
         """
         Set x- or y-positions of handles, depending on if the lines are
@@ -1229,15 +1300,19 @@ class ToolLineHandles:
             Set the positions of the handle in data coordinates
         """
         ...
+
     def set_visible(self, value):  # -> None:
         """Set the visibility state of the handles artist."""
         ...
+
     def set_animated(self, value):  # -> None:
         """Set the animated state of the handles artist."""
         ...
+
     def remove(self):  # -> None:
         """Remove the handles artist from the figure."""
         ...
+
     def closest(self, x, y):  # -> tuple[intp, Unknown]:
         """
         Return index and pixel distance to closest handle.
@@ -1280,19 +1355,25 @@ class ToolHandles:
     @property
     def x(self):  # -> NDArray[Unknown] | list[Unknown] | Iterable[Any] | None:
         ...
+
     @property
     def y(self):  # -> NDArray[Unknown] | list[Unknown] | Iterable[Any] | None:
         ...
+
     @property
     def artists(self):  # -> tuple[Line2D]:
         ...
+
     def set_data(self, pts, y=...):  # -> None:
         """Set x and y positions of handles."""
         ...
+
     def set_visible(self, val):  # -> None:
         ...
+
     def set_animated(self, val):  # -> None:
         ...
+
     def closest(self, x, y):  # -> tuple[intp, Any]:
         """Return index and pixel distance to closest index."""
         ...
@@ -1358,6 +1439,7 @@ class RectangleSelector(_SelectorWidget):
         moving clockwise.
         """
         ...
+
     @property
     def edge_centers(self):  # -> tuple[Unknown, Unknown]:
         """
@@ -1365,10 +1447,12 @@ class RectangleSelector(_SelectorWidget):
         moving anti-clockwise.
         """
         ...
+
     @property
     def center(self):  # -> tuple[Unknown, Unknown]:
         """Center of rectangle in data coordinates."""
         ...
+
     @property
     def extents(self):  # -> tuple[Unknown, Unknown, Unknown, Unknown]:
         """
@@ -1376,9 +1460,11 @@ class RectangleSelector(_SelectorWidget):
         bounding box before rotation.
         """
         ...
+
     @extents.setter
     def extents(self, extents):  # -> None:
         ...
+
     @property
     def rotation(self):  # -> Any:
         """
@@ -1386,9 +1472,11 @@ class RectangleSelector(_SelectorWidget):
         range to keep the implementation simple.
         """
         ...
+
     @rotation.setter
     def rotation(self, value):  # -> None:
         ...
+
     @property
     def geometry(self):  # -> NDArray[Unknown]:
         """
@@ -1559,12 +1647,14 @@ class PolygonSelector(_SelectorWidget):
     def onmove(self, event):  # -> bool:
         """Cursor move event handler and validator."""
         ...
+
     @property
     def verts(
         self,
     ):  # -> list[tuple[Literal[0], Literal[0]]] | list[tuple[Unknown, Unknown]] | list[Unknown]:
         """The polygon vertices, as a list of ``(x, y)`` pairs."""
         ...
+
     @verts.setter
     def verts(self, xys):  # -> None:
         """
@@ -1604,5 +1694,6 @@ class Lasso(AxesWidget):
     def __init__(self, ax, xy, callback, useblit=...) -> None: ...
     def onrelease(self, event):  # -> None:
         ...
+
     def onmove(self, event):  # -> None:
         ...

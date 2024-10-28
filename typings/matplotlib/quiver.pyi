@@ -94,13 +94,16 @@ class QuiverKey(martist.Artist):
             properties taken from *Q*.
         """
         ...
+
     @property
     def labelsep(self): ...
     @martist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def set_figure(self, fig):  # -> None:
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Literal[True], dict[Unknown, Unknown]]:
@@ -151,11 +154,14 @@ class Quiver(mcollections.PolyCollection):
         %s
         """
         ...
+
     def get_datalim(self, transData):  # -> Bbox:
         ...
+
     @martist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def set_UVC(self, U, V, C=...):  # -> None:
         ...
     quiver_doc = ...
@@ -200,8 +206,10 @@ class Barbs(mcollections.PolyCollection):
         %(barbs_doc)s
         """
         ...
+
     def set_UVC(self, U, V, C=...):  # -> None:
         ...
+
     def set_offsets(self, xy):  # -> None:
         """
         Set the offsets for the barb polygons.  This saves the offsets passed

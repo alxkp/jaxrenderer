@@ -532,7 +532,8 @@ def savefig(*args, **kwargs): ...
 def figlegend(*args, **kwargs):  # -> Legend:
     ...
 
-if Figure.legend.__doc__: ...
+if Figure.legend.__doc__:
+    ...
 
 @_docstring.dedent_interpd
 def axes(arg=..., **kwargs):  # -> Axes:
@@ -1527,7 +1528,8 @@ if (
     rcParams["backend_fallback"]
     and rcParams._get_backend_or_none() in (set(_interactive_bk) - "WebAgg", "nbAgg")
     and cbook._get_running_interactive_framework()
-): ...
+):
+    ...
 
 @_copy_docstring_and_deprecators(Figure.figimage)
 def figimage(

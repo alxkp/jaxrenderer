@@ -51,6 +51,7 @@ class Text(Artist):
     _charsize_cache = ...
     def __repr__(self):  # -> str:
         ...
+
     @_api.make_keyword_only("3.6", name="color")
     def __init__(
         self,
@@ -88,10 +89,13 @@ class Text(Artist):
         %(Text:kwdoc)s
         """
         ...
+
     def update(self, kwargs):  # -> None:
         ...
+
     def __getstate__(self):  # -> dict[str, Any]:
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown | bool, dict[Unknown, Unknown]]:
@@ -100,14 +104,17 @@ class Text(Artist):
         bounding-box of the text.
         """
         ...
+
     def get_rotation(self):  # -> Any | float:
         """Return the text angle in degrees between 0 and 360."""
         ...
+
     def get_transform_rotates_text(self):  # -> bool:
         """
         Return whether rotations of the transform affect the text direction.
         """
         ...
+
     def set_rotation_mode(self, m):  # -> None:
         """
         Set text rotation mode.
@@ -120,11 +127,14 @@ class Text(Artist):
             ``"anchor"``, then alignment occurs before rotation.
         """
         ...
+
     def get_rotation_mode(self):
         """Return the text rotation mode."""
         ...
+
     def update_from(self, other):  # -> None:
         ...
+
     def set_bbox(self, rectprops):  # -> None:
         """
         Draw a bounding box around self.
@@ -142,12 +152,14 @@ class Text(Artist):
             t.set_bbox(dict(facecolor='red', alpha=0.5))
         """
         ...
+
     def get_bbox_patch(self):  # -> FancyBboxPatch | None:
         """
         Return the bbox Patch, or None if the `.patches.FancyBboxPatch`
         is not made.
         """
         ...
+
     def update_bbox_position_size(self, renderer):  # -> None:
         """
         Update the location and the size of the bbox.
@@ -156,15 +168,20 @@ class Text(Artist):
         to be updated before actually drawing the bbox.
         """
         ...
+
     def set_clip_box(self, clipbox):  # -> None:
         ...
+
     def set_clip_path(self, path, transform=...):  # -> None:
         ...
+
     def set_clip_on(self, b):  # -> None:
         ...
+
     def get_wrap(self):
         """Return whether the text can be wrapped."""
         ...
+
     def set_wrap(self, wrap):  # -> None:
         """
         Set whether the text can be wrapped.
@@ -182,15 +199,19 @@ class Text(Artist):
         wrapping.
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def get_color(self):
         """Return the color of the text."""
         ...
+
     def get_fontproperties(self):  # -> FontProperties:
         """Return the `.font_manager.FontProperties`."""
         ...
+
     def get_fontfamily(self):  # -> list[str] | None:
         """
         Return the list of font families used for font lookup.
@@ -200,6 +221,7 @@ class Text(Artist):
         .font_manager.FontProperties.get_family
         """
         ...
+
     def get_fontname(self):
         """
         Return the font name as a string.
@@ -209,6 +231,7 @@ class Text(Artist):
         .font_manager.FontProperties.get_name
         """
         ...
+
     def get_fontstyle(self):  # -> None:
         """
         Return the font style as a string.
@@ -218,6 +241,7 @@ class Text(Artist):
         .font_manager.FontProperties.get_style
         """
         ...
+
     def get_fontsize(self):  # -> float:
         """
         Return the font size as an integer.
@@ -227,6 +251,7 @@ class Text(Artist):
         .font_manager.FontProperties.get_size_in_points
         """
         ...
+
     def get_fontvariant(self):  # -> None:
         """
         Return the font variant as a string.
@@ -236,6 +261,7 @@ class Text(Artist):
         .font_manager.FontProperties.get_variant
         """
         ...
+
     def get_fontweight(self):  # -> int | None:
         """
         Return the font weight as a string or a number.
@@ -245,6 +271,7 @@ class Text(Artist):
         .font_manager.FontProperties.get_weight
         """
         ...
+
     def get_stretch(self):  # -> int | None:
         """
         Return the font stretch as a string or a number.
@@ -254,27 +281,33 @@ class Text(Artist):
         .font_manager.FontProperties.get_stretch
         """
         ...
+
     def get_horizontalalignment(self):
         """
         Return the horizontal alignment as a string.  Will be one of
         'left', 'center' or 'right'.
         """
         ...
+
     def get_unitless_position(self):  # -> tuple[float, float]:
         """Return the (x, y) unitless position of the text."""
         ...
+
     def get_position(self):  # -> tuple[int | Unknown, int | Unknown]:
         """Return the (x, y) position of the text."""
         ...
+
     def get_text(self):  # -> str:
         """Return the text string."""
         ...
+
     def get_verticalalignment(self):
         """
         Return the vertical alignment as a string.  Will be one of
         'top', 'center', 'bottom', 'baseline' or 'center_baseline'.
         """
         ...
+
     def get_window_extent(self, renderer=..., dpi=...):  # -> Bbox:
         """
         Return the `.Bbox` bounding the text, in display units.
@@ -298,6 +331,7 @@ class Text(Artist):
             to match regions with a figure saved with a custom dpi value.
         """
         ...
+
     def set_backgroundcolor(self, color):  # -> None:
         """
         Set the background color of the text by updating the bbox.
@@ -311,6 +345,7 @@ class Text(Artist):
         .set_bbox : To change the position of the bounding box
         """
         ...
+
     def set_color(self, color):  # -> None:
         """
         Set the foreground color of the text
@@ -320,6 +355,7 @@ class Text(Artist):
         color : color
         """
         ...
+
     def set_horizontalalignment(self, align):  # -> None:
         """
         Set the horizontal alignment relative to the anchor point.
@@ -331,6 +367,7 @@ class Text(Artist):
         align : {'left', 'center', 'right'}
         """
         ...
+
     def set_multialignment(self, align):  # -> None:
         """
         Set the text alignment for multiline texts.
@@ -344,6 +381,7 @@ class Text(Artist):
         align : {'left', 'right', 'center'}
         """
         ...
+
     def set_linespacing(self, spacing):  # -> None:
         """
         Set the line spacing as a multiple of the font size.
@@ -355,6 +393,7 @@ class Text(Artist):
         spacing : float (multiple of font size)
         """
         ...
+
     def set_fontfamily(self, fontname):  # -> None:
         """
         Set the font family.  Can be either a single string, or a list of
@@ -377,6 +416,7 @@ class Text(Artist):
         .font_manager.FontProperties.set_family
         """
         ...
+
     def set_fontvariant(self, variant):  # -> None:
         """
         Set the font variant.
@@ -390,6 +430,7 @@ class Text(Artist):
         .font_manager.FontProperties.set_variant
         """
         ...
+
     def set_fontstyle(self, fontstyle):  # -> None:
         """
         Set the font style.
@@ -403,6 +444,7 @@ class Text(Artist):
         .font_manager.FontProperties.set_style
         """
         ...
+
     def set_fontsize(self, fontsize):  # -> None:
         """
         Set the font size.
@@ -419,6 +461,7 @@ class Text(Artist):
         .font_manager.FontProperties.set_size
         """
         ...
+
     def get_math_fontfamily(self):  # -> None:
         """
         Return the font family name for math text rendered by Matplotlib.
@@ -430,6 +473,7 @@ class Text(Artist):
         set_math_fontfamily
         """
         ...
+
     def set_math_fontfamily(self, fontfamily):  # -> None:
         """
         Set the font family for math text rendered by Matplotlib.
@@ -451,6 +495,7 @@ class Text(Artist):
         get_math_fontfamily
         """
         ...
+
     def set_fontweight(self, weight):  # -> None:
         """
         Set the font weight.
@@ -466,6 +511,7 @@ class Text(Artist):
         .font_manager.FontProperties.set_weight
         """
         ...
+
     def set_fontstretch(self, stretch):  # -> None:
         """
         Set the font stretch (horizontal condensation or expansion).
@@ -481,6 +527,7 @@ class Text(Artist):
         .font_manager.FontProperties.set_stretch
         """
         ...
+
     def set_position(self, xy):  # -> None:
         """
         Set the (*x*, *y*) position of the text.
@@ -490,6 +537,7 @@ class Text(Artist):
         xy : (float, float)
         """
         ...
+
     def set_x(self, x):  # -> None:
         """
         Set the *x* position of the text.
@@ -499,6 +547,7 @@ class Text(Artist):
         x : float
         """
         ...
+
     def set_y(self, y):  # -> None:
         """
         Set the *y* position of the text.
@@ -508,6 +557,7 @@ class Text(Artist):
         y : float
         """
         ...
+
     def set_rotation(self, s):  # -> None:
         """
         Set the rotation of the text.
@@ -519,6 +569,7 @@ class Text(Artist):
             (counterclockwise). 'horizontal' equals 0, 'vertical' equals 90.
         """
         ...
+
     def set_transform_rotates_text(self, t):  # -> None:
         """
         Whether rotations of the transform affect the text direction.
@@ -528,6 +579,7 @@ class Text(Artist):
         t : bool
         """
         ...
+
     def set_verticalalignment(self, align):  # -> None:
         """
         Set the vertical alignment relative to the anchor point.
@@ -539,6 +591,7 @@ class Text(Artist):
         align : {'bottom', 'baseline', 'center', 'center_baseline', 'top'}
         """
         ...
+
     def set_text(self, s):  # -> None:
         r"""
         Set the text string *s*.
@@ -552,6 +605,7 @@ class Text(Artist):
             ``None`` which is converted to an empty string.
         """
         ...
+
     def set_fontproperties(self, fp):  # -> None:
         """
         Set the font properties that control the text.
@@ -564,6 +618,7 @@ class Text(Artist):
             absolute path to a font file.
         """
         ...
+
     def set_usetex(self, usetex):  # -> None:
         """
         Parameters
@@ -573,9 +628,11 @@ class Text(Artist):
             :rc:`text.usetex`.
         """
         ...
+
     def get_usetex(self):  # -> bool | None:
         """Return whether this `Text` object uses TeX for rendering."""
         ...
+
     def set_parse_math(self, parse_math):  # -> None:
         """
         Override switch to disable any mathtext parsing for this `Text`.
@@ -587,9 +644,11 @@ class Text(Artist):
             will be used if there is an even number of unescaped dollar signs.
         """
         ...
+
     def get_parse_math(self):  # -> bool:
         """Return whether mathtext parsing is considered for this `Text`."""
         ...
+
     def set_fontname(self, fontname):
         """
         Alias for `set_family`.
@@ -630,6 +689,7 @@ class OffsetFrom:
             The screen units to use (pixels or points) for the offset input.
         """
         ...
+
     def set_unit(self, unit):  # -> None:
         """
         Set the unit for input to the transform used by ``__call__``.
@@ -639,9 +699,11 @@ class OffsetFrom:
         unit : {'points', 'pixels'}
         """
         ...
+
     def get_unit(self):
         """Return the unit for input to the transform used by ``__call__``."""
         ...
+
     def __call__(self, renderer):  # -> Affine2D:
         """
         Return the offset transform.
@@ -675,6 +737,7 @@ class _AnnotationBase:
               outside the axes and ``self.xycoords == "data"``.
         """
         ...
+
     def get_annotation_clip(self):
         """
         Return the annotation's clipping behavior.
@@ -682,6 +745,7 @@ class _AnnotationBase:
         See `set_annotation_clip` for the meaning of return values.
         """
         ...
+
     def draggable(self, state=..., use_blit=...):  # -> DraggableAnnotation | None:
         """
         Set whether the annotation is draggable with the mouse.
@@ -897,16 +961,20 @@ or callable, default: value of *xycoords*
 
         """
         ...
+
     def contains(
         self, event
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown | bool, dict[Unknown, Unknown]]:
         ...
+
     @property
     def xycoords(self):  # -> tuple[Unknown, ...]:
         ...
+
     @xycoords.setter
     def xycoords(self, xycoords):  # -> None:
         ...
+
     @property
     def xyann(self):  # -> tuple[int | Unknown, int | Unknown]:
         """
@@ -915,9 +983,11 @@ or callable, default: value of *xycoords*
         See also *xytext* in `.Annotation`.
         """
         ...
+
     @xyann.setter
     def xyann(self, xytext):  # -> None:
         ...
+
     def get_anncoords(self):  # -> tuple[Unknown, ...]:
         """
         Return the coordinate system to use for `.Annotation.xyann`.
@@ -925,6 +995,7 @@ or callable, default: value of *xycoords*
         See also *xycoords* in `.Annotation`.
         """
         ...
+
     def set_anncoords(self, coords):  # -> None:
         """
         Set the coordinate system to use for `.Annotation.xyann`.
@@ -935,15 +1006,19 @@ or callable, default: value of *xycoords*
     anncoords = ...
     def set_figure(self, fig):  # -> None:
         ...
+
     def update_positions(self, renderer):  # -> None:
         """
         Update the pixel positions of the annotation text and the arrow patch.
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         ...
+
     def get_tightbbox(self, renderer=...):  # -> Bbox | None:
         ...

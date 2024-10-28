@@ -48,17 +48,22 @@ class Spine(mpatches.Patch):
             %(Patch:kwdoc)s
         """
         ...
+
     def set_patch_arc(self, center, radius, theta1, theta2):  # -> None:
         """Set the spine to be arc-like."""
         ...
+
     def set_patch_circle(self, center, radius):  # -> None:
         """Set the spine to be circular."""
         ...
+
     def set_patch_line(self):  # -> None:
         """Set the spine to be linear."""
         ...
+
     def get_patch_transform(self):  # -> IdentityTransform | Affine2D:
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         """
         Return the window extent of the spines in display space, including
@@ -70,8 +75,10 @@ class Spine(mpatches.Patch):
         matplotlib.axes.Axes.get_window_extent
         """
         ...
+
     def get_path(self):  # -> Unknown | Path:
         ...
+
     def register_axis(self, axis):  # -> None:
         """
         Register an axis.
@@ -81,12 +88,15 @@ class Spine(mpatches.Patch):
         properties when needed.
         """
         ...
+
     def clear(self):  # -> None:
         """Clear the current spine."""
         ...
+
     @allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def set_position(self, position):  # -> None:
         """
         Set the position of the spine.
@@ -109,14 +119,17 @@ class Spine(mpatches.Patch):
         :doc:`/gallery/spines/spine_placement_demo`
         """
         ...
+
     def get_position(self):  # -> tuple[Literal['outward'], float] | None:
         """Return the spine position."""
         ...
+
     def get_spine_transform(
         self,
     ):  # -> BlendedAffine2D | BlendedGenericTransform | None:
         """Return the spine transform."""
         ...
+
     def set_bounds(self, low=..., high=...):  # -> None:
         """
         Set the spine bounds.
@@ -135,25 +148,30 @@ class Spine(mpatches.Patch):
             The higher spine bound. Passing *None* leaves the limit unchanged.
         """
         ...
+
     def get_bounds(
         self,
     ):  # -> tuple[Any | Unknown | None, Any | Unknown | None] | None:
         """Get the bounds of the spine."""
         ...
+
     @classmethod
     def linear_spine(cls, axes, spine_type, **kwargs):  # -> Self@Spine:
         """Create and return a linear `Spine`."""
         ...
+
     @classmethod
     def arc_spine(
         cls, axes, spine_type, center, radius, theta1, theta2, **kwargs
     ):  # -> Self@Spine:
         """Create and return an arc `Spine`."""
         ...
+
     @classmethod
     def circular_spine(cls, axes, center, radius, **kwargs):  # -> Self@Spine:
         """Create and return a circular `Spine`."""
         ...
+
     def set_color(self, c):  # -> None:
         """
         Set the edgecolor.
@@ -184,6 +202,7 @@ class SpinesProxy:
     def __init__(self, spine_dict) -> None: ...
     def __getattr__(self, name):  # -> partial[None]:
         ...
+
     def __dir__(self):  # -> list[Unknown]:
         ...
 
@@ -210,22 +229,30 @@ class Spines(MutableMapping):
     all ``set_*`` calls to its members, but cannot be used for any other
     operation.
     """
+
     def __init__(self, **kwargs) -> None: ...
     @classmethod
     def from_dict(cls, d):  # -> Self@Spines:
         ...
+
     def __getstate__(self):  # -> dict[str, Unknown]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
+
     def __getattr__(self, name): ...
     def __getitem__(self, key):  # -> SpinesProxy:
         ...
+
     def __setitem__(self, key, value):  # -> None:
         ...
+
     def __delitem__(self, key):  # -> None:
         ...
+
     def __iter__(self):  # -> Iterator[str]:
         ...
+
     def __len__(self):  # -> int:
         ...

@@ -43,11 +43,13 @@ class ColormapRegistry(Mapping):
 
         mpl.colormaps.register(my_colormap)
     """
+
     def __init__(self, cmaps) -> None: ...
     def __getitem__(self, item): ...
     def __iter__(self): ...
     def __len__(self):  # -> int:
         ...
+
     def __str__(self) -> str: ...
     def __call__(self):  # -> list[Unknown]:
         """
@@ -58,6 +60,7 @@ class ColormapRegistry(Mapping):
         now ``list(colormaps)``.
         """
         ...
+
     def register(self, cmap, *, name=..., force=...):  # -> None:
         """
         Register a new colormap.
@@ -84,6 +87,7 @@ class ColormapRegistry(Mapping):
             other than the builtin colormaps.
         """
         ...
+
     def unregister(self, name):  # -> None:
         """
         Remove a colormap from the registry.
@@ -112,6 +116,7 @@ class ColormapRegistry(Mapping):
             If you try to remove a default built-in colormap.
         """
         ...
+
     def get_cmap(self, cmap):  # -> Colormap:
         """
         Return a color map specified through *cmap*.
@@ -223,6 +228,7 @@ class ScalarMappable:
             The colormap used to map normalized data values to RGBA colors.
         """
         ...
+
     def to_rgba(self, x, alpha=..., bytes=..., norm=...):
         """
         Return a normalized rgba array corresponding to *x*.
@@ -254,6 +260,7 @@ class ScalarMappable:
 
         """
         ...
+
     def set_array(self, A):  # -> None:
         """
         Set the value array from array-like *A*.
@@ -267,6 +274,7 @@ class ScalarMappable:
             the dimensionality and shape of the value array *A*.
         """
         ...
+
     def get_array(self):  # -> None:
         """
         Return the array of values, that are mapped to colors.
@@ -275,9 +283,11 @@ class ScalarMappable:
         the dimensionality and shape of the array.
         """
         ...
+
     def get_cmap(self):  # -> Colormap | None:
         """Return the `.Colormap` instance."""
         ...
+
     def get_clim(
         self,
     ):  # -> tuple[Unknown | float | Any | None, Unknown | float | Any | None]:
@@ -285,6 +295,7 @@ class ScalarMappable:
         Return the values (min, max) that are mapped to the colormap limits.
         """
         ...
+
     def set_clim(self, vmin=..., vmax=...):  # -> None:
         """
         Set the norm limits for image scaling.
@@ -300,6 +311,7 @@ class ScalarMappable:
              .. ACCEPTS: (vmin: float, vmax: float)
         """
         ...
+
     def get_alpha(self):  # -> float:
         """
         Returns
@@ -308,6 +320,7 @@ class ScalarMappable:
             Always returns 1.
         """
         ...
+
     def set_cmap(self, cmap):  # -> None:
         """
         Set the colormap for luminance data.
@@ -317,12 +330,15 @@ class ScalarMappable:
         cmap : `.Colormap` or str or None
         """
         ...
+
     @property
     def norm(self):  # -> Normalize | Any | None:
         ...
+
     @norm.setter
     def norm(self, norm):  # -> None:
         ...
+
     def set_norm(self, norm):  # -> None:
         """
         Set the normalization instance.
@@ -338,18 +354,21 @@ class ScalarMappable:
         on the colorbar to default.
         """
         ...
+
     def autoscale(self):  # -> None:
         """
         Autoscale the scalar limits on the norm instance using the
         current array
         """
         ...
+
     def autoscale_None(self):  # -> None:
         """
         Autoscale the scalar limits on the norm instance using the
         current array, changing only limits that are None
         """
         ...
+
     def changed(self):  # -> None:
         """
         Call this whenever the mappable is changed to notify all the

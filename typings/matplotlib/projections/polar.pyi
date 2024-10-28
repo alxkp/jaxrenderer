@@ -24,6 +24,7 @@ class PolarTransform(mtransforms.Transform):
     Path segments at a fixed radius are automatically transformed to circular
     arcs as long as ``path._interpolation_steps > 1``.
     """
+
     output_dims = ...
     def __init__(
         self,
@@ -48,8 +49,10 @@ class PolarTransform(mtransforms.Transform):
     __str__ = ...
     def transform_non_affine(self, tr):  # -> NDArray[Any]:
         ...
+
     def transform_path_non_affine(self, path):  # -> Path:
         ...
+
     def inverted(self): ...
 
 class PolarAffine(mtransforms.Affine2DBase):
@@ -67,6 +70,7 @@ class PolarAffine(mtransforms.Affine2DBase):
     :math:`r_{\min}, r_{\max}` are the minimum and maximum radial limits after
     any scaling (e.g. log scaling) has been removed.
     """
+
     def __init__(self, scale_transform, limits) -> None:
         """
         Parameters
@@ -106,6 +110,7 @@ class InvertedPolarTransform(mtransforms.Transform):
     __str__ = ...
     def transform_non_affine(self, xy):  # -> NDArray[Unknown | Any]:
         ...
+
     def inverted(self): ...
 
 class ThetaFormatter(mticker.Formatter):
@@ -121,14 +126,19 @@ class _AxisWrapper:
     def __init__(self, axis) -> None: ...
     def get_view_interval(self):  # -> Any:
         ...
+
     def set_view_interval(self, vmin, vmax):  # -> None:
         ...
+
     def get_minpos(self):  # -> Any:
         ...
+
     def get_data_interval(self):  # -> Any:
         ...
+
     def set_data_interval(self, vmin, vmax):  # -> None:
         ...
+
     def get_tick_space(self): ...
 
 class ThetaLocator(mticker.Locator):
@@ -143,8 +153,10 @@ class ThetaLocator(mticker.Locator):
     def __init__(self, base) -> None: ...
     def set_axis(self, axis):  # -> None:
         ...
+
     def __call__(self):  # -> NDArray[floating[Any]] | Any:
         ...
+
     def view_limits(self, vmin, vmax):  # -> Any:
         ...
 
@@ -192,10 +204,13 @@ class RadialLocator(mticker.Locator):
     def __init__(self, base, axes=...) -> None: ...
     def set_axis(self, axis):  # -> None:
         ...
+
     def __call__(self):  # -> list[Unknown]:
         ...
+
     def nonsingular(self, vmin, vmax):  # -> tuple[Literal[0], Literal[1]]:
         ...
+
     def view_limits(self, vmin, vmax):  # -> tuple[float, float]:
         ...
 
@@ -290,39 +305,50 @@ class PolarAxes(Axes):
     ) -> None: ...
     def clear(self):  # -> None:
         ...
+
     def get_xaxis_transform(self, which=...): ...
     def get_xaxis_text1_transform(
         self, pad
     ):  # -> tuple[Unknown, Literal['center'], Literal['center']]:
         ...
+
     def get_xaxis_text2_transform(
         self, pad
     ):  # -> tuple[Unknown, Literal['center'], Literal['center']]:
         ...
+
     def get_yaxis_transform(self, which=...):  # -> TransformWrapper | None:
         ...
+
     def get_yaxis_text1_transform(
         self, pad
     ):  # -> tuple[TransformWrapper, Literal['bottom'], Literal['left']] | tuple[Transform | TransformWrapper | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType, Literal['center'], Literal['left', 'right']]:
         ...
+
     def get_yaxis_text2_transform(
         self, pad
     ):  # -> tuple[Transform | TransformWrapper | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType, Literal['center'], Literal['right', 'left']]:
         ...
+
     def draw(self, renderer):  # -> None:
         ...
+
     def set_thetamax(self, thetamax):  # -> None:
         """Set the maximum theta limit in degrees."""
         ...
+
     def get_thetamax(self):  # -> Any:
         """Return the maximum theta limit in degrees."""
         ...
+
     def set_thetamin(self, thetamin):  # -> None:
         """Set the minimum theta limit in degrees."""
         ...
+
     def get_thetamin(self):  # -> Any:
         """Get the minimum theta limit in degrees."""
         ...
+
     def set_thetalim(self, *args, **kwargs):  # -> tuple[Any, ...]:
         r"""
         Set the minimum and maximum theta values.
@@ -340,16 +366,19 @@ class PolarAxes(Axes):
         angle difference is larger than a full circle.
         """
         ...
+
     def set_theta_offset(self, offset):  # -> None:
         """
         Set the offset for the location of 0 in radians.
         """
         ...
+
     def get_theta_offset(self):  # -> Any:
         """
         Get the offset for the location of 0 in radians.
         """
         ...
+
     def set_theta_zero_location(self, loc, offset=...):  # -> None:
         """
         Set the location of theta's zero.
@@ -366,6 +395,7 @@ class PolarAxes(Axes):
             the direction setting.
         """
         ...
+
     def set_theta_direction(self, direction):  # -> None:
         """
         Set the direction in which theta increases.
@@ -377,6 +407,7 @@ class PolarAxes(Axes):
            Theta increases in the counterclockwise direction
         """
         ...
+
     def get_theta_direction(self):  # -> Any:
         """
         Get the direction in which theta increases.
@@ -388,6 +419,7 @@ class PolarAxes(Axes):
            Theta increases in the counterclockwise direction
         """
         ...
+
     def set_rmax(self, rmax):  # -> None:
         """
         Set the outer radial limit.
@@ -397,6 +429,7 @@ class PolarAxes(Axes):
         rmax : float
         """
         ...
+
     def get_rmax(self):
         """
         Returns
@@ -405,6 +438,7 @@ class PolarAxes(Axes):
             Outer radial limit.
         """
         ...
+
     def set_rmin(self, rmin):  # -> None:
         """
         Set the inner radial limit.
@@ -414,6 +448,7 @@ class PolarAxes(Axes):
         rmin : float
         """
         ...
+
     def get_rmin(self):
         """
         Returns
@@ -422,6 +457,7 @@ class PolarAxes(Axes):
             The inner radial limit.
         """
         ...
+
     def set_rorigin(self, rorigin):  # -> None:
         """
         Update the radial origin.
@@ -431,6 +467,7 @@ class PolarAxes(Axes):
         rorigin : float
         """
         ...
+
     def get_rorigin(self):
         """
         Returns
@@ -438,8 +475,10 @@ class PolarAxes(Axes):
         float
         """
         ...
+
     def get_rsign(self):  # -> Any:
         ...
+
     @_api.make_keyword_only("3.6", "emit")
     def set_rlim(
         self, bottom=..., top=..., emit=..., auto=..., **kwargs
@@ -455,6 +494,7 @@ class PolarAxes(Axes):
         .Axes.set_ylim
         """
         ...
+
     def get_rlabel_position(self):  # -> Any:
         """
         Returns
@@ -463,6 +503,7 @@ class PolarAxes(Axes):
             The theta position of the radius labels in degrees.
         """
         ...
+
     def set_rlabel_position(self, value):  # -> None:
         """
         Update the theta position of the radius labels.
@@ -473,8 +514,10 @@ class PolarAxes(Axes):
             The angular position of the radius labels in degrees.
         """
         ...
+
     def set_yscale(self, *args, **kwargs):  # -> None:
         ...
+
     def set_rscale(self, *args, **kwargs): ...
     def set_rticks(self, *args, **kwargs): ...
     def set_thetagrids(
@@ -517,6 +560,7 @@ class PolarAxes(Axes):
         .Axis.get_ticklabels
         """
         ...
+
     def set_rgrids(
         self, radii, labels=..., angle=..., fmt=..., **kwargs
     ):  # -> tuple[silent_list, list[Unknown]]:
@@ -559,14 +603,17 @@ class PolarAxes(Axes):
         .Axis.get_ticklabels
         """
         ...
+
     def format_coord(self, theta, r):  # -> str:
         ...
+
     def get_data_ratio(self):  # -> float:
         """
         Return the aspect ratio of the data itself.  For a polar plot,
         this should always be 1.0
         """
         ...
+
     def can_zoom(self):  # -> Literal[False]:
         """
         Return whether this Axes supports the zoom box button functionality.
@@ -574,6 +621,7 @@ class PolarAxes(Axes):
         A polar Axes does not support zoom boxes.
         """
         ...
+
     def can_pan(self):  # -> Literal[True]:
         """
         Return whether this Axes supports the pan/zoom button functionality.
@@ -583,9 +631,12 @@ class PolarAxes(Axes):
         in azimuth while zooming is done along the radial.
         """
         ...
+
     def start_pan(self, x, y, button):  # -> None:
         ...
+
     def end_pan(self):  # -> None:
         ...
+
     def drag_pan(self, button, key, x, y):  # -> None:
         ...

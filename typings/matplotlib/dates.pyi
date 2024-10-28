@@ -443,8 +443,10 @@ class DateFormatter(ticker.Formatter):
             results of the formatter.
         """
         ...
+
     def __call__(self, x, pos=...):  # -> str | Any:
         ...
+
     def set_tzinfo(self, tz):  # -> None:
         ...
 
@@ -535,12 +537,16 @@ class ConciseDateFormatter(ticker.Formatter):
         initial string, and then redundant elements are removed.
         """
         ...
+
     def __call__(self, x, pos=...):  # -> str | Any:
         ...
+
     def format_ticks(self, values):  # -> list[str]:
         ...
+
     def get_offset(self):  # -> str | Any:
         ...
+
     def format_data_short(self, value):  # -> Any:
         ...
 
@@ -612,6 +618,7 @@ class AutoDateFormatter(ticker.Formatter):
             disable TeX's math mode itself.
         """
         ...
+
     def __call__(self, x, pos=...):  # -> str | Any:
         ...
 
@@ -634,13 +641,16 @@ class rrulewrapper:
             Additional keyword arguments are passed to the `dateutil.rrule`.
         """
         ...
+
     def set(self, **kwargs):  # -> None:
         """Set parameters for an existing wrapper."""
         ...
+
     def __getattr__(
         self, name
     ):  # -> Any | _Wrapped[(...), Unknown, (*args: Unknown, **kwargs: Unknown), list[Unknown]]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
 
@@ -661,6 +671,7 @@ class DateLocator(ticker.Locator):
             Ticks timezone. If a string, *tz* is passed to `dateutil.tz`.
         """
         ...
+
     def set_tzinfo(self, tz):  # -> None:
         """
         Set timezone info.
@@ -671,12 +682,15 @@ class DateLocator(ticker.Locator):
             Ticks timezone. If a string, *tz* is passed to `dateutil.tz`.
         """
         ...
+
     def datalim_to_dt(self):  # -> tuple[Any, Any]:
         """Convert axis data interval to datetime objects."""
         ...
+
     def viewlim_to_dt(self):  # -> tuple[Any, Any]:
         """Convert the view interval to datetime objects."""
         ...
+
     def nonsingular(
         self, vmin, vmax
     ):  # -> tuple[NDArray[Any] | Unknown | NDArray[floating[Any]] | Any, NDArray[Any] | Unknown | NDArray[floating[Any]] | Any] | tuple[Unknown, Unknown]:
@@ -692,10 +706,12 @@ class RRuleLocator(DateLocator):
         self,
     ):  # -> list[Unknown] | NDArray[Any] | NDArray[floating[Any]] | Any:
         ...
+
     def tick_values(
         self, vmin, vmax
     ):  # -> NDArray[Any] | NDArray[floating[Any]] | Any:
         ...
+
     @staticmethod
     def get_unit_generic(freq):  # -> float | Literal[-1]:
         ...
@@ -767,18 +783,22 @@ class AutoDateLocator(DateLocator):
             at 6 hour intervals.
         """
         ...
+
     def __call__(
         self,
     ):  # -> list[Unknown] | NDArray[Any] | NDArray[floating[Any]] | Any:
         ...
+
     def tick_values(
         self, vmin, vmax
     ):  # -> NDArray[Any] | NDArray[floating[Any]] | Any:
         ...
+
     def nonsingular(
         self, vmin, vmax
     ):  # -> tuple[NDArray[Any] | Unknown | NDArray[floating[Any]] | Any, NDArray[Any] | Unknown | NDArray[floating[Any]] | Any] | tuple[Unknown, Unknown]:
         ...
+
     def get_locator(
         self, dmin, dmax
     ):  # -> YearLocator | RRuleLocator | MicrosecondLocator:
@@ -975,10 +995,13 @@ class MicrosecondLocator(DateLocator):
             Ticks timezone. If a string, *tz* is passed to `dateutil.tz`.
         """
         ...
+
     def set_axis(self, axis):  # -> None:
         ...
+
     def __call__(self):  # -> list[Unknown]:
         ...
+
     def tick_values(self, vmin, vmax): ...
 
 @_api.deprecated(
@@ -1010,6 +1033,7 @@ class DateConverter(units.ConversionInterface):
         The *axis* argument is required but not used.
         """
         ...
+
     @staticmethod
     def convert(value, unit, axis):  # -> NDArray[Any] | NDArray[floating[Any]] | Any:
         """
@@ -1019,6 +1043,7 @@ class DateConverter(units.ConversionInterface):
         The *unit* and *axis* arguments are not used.
         """
         ...
+
     @staticmethod
     def default_units(x, axis):  # -> None:
         """
@@ -1049,8 +1074,10 @@ class _SwitchableDateConverter:
 
     def axisinfo(self, *args, **kwargs):  # -> AxisInfo:
         ...
+
     def default_units(self, *args, **kwargs):  # -> None:
         ...
+
     def convert(
         self, *args, **kwargs
     ):  # -> NDArray[Any] | NDArray[floating[Any]] | Any:

@@ -69,9 +69,11 @@ class ProjectionRegistry:
     def register(self, *projections):  # -> None:
         """Register a new set of projections."""
         ...
+
     def get_projection_class(self, name):
         """Get a projection class from its *name*."""
         ...
+
     def get_projection_names(self):  # -> list[Unknown]:
         """Return the names of all projections currently registered."""
         ...

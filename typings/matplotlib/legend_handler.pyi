@@ -67,12 +67,15 @@ class HandlerBase:
             legend handler, used by `~HandlerBase.update_prop`.
         """
         ...
+
     def update_prop(self, legend_handle, orig_handle, legend):  # -> None:
         ...
+
     def adjust_drawing_area(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize
     ):  # -> tuple[Unknown, Unknown, Unknown, Unknown]:
         ...
+
     def legend_artist(self, legend, orig_handle, fontsize, handlebox):
         """
         Return the artist that this HandlerBase generates for the given
@@ -94,6 +97,7 @@ class HandlerBase:
 
         """
         ...
+
     def create_artists(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans
     ):
@@ -136,6 +140,7 @@ class HandlerNpoints(HandlerBase):
             Keyword arguments forwarded to `.HandlerBase`.
         """
         ...
+
     def get_numpoints(self, legend): ...
     def get_xdata(
         self, legend, xdescent, ydescent, width, height, fontsize
@@ -161,6 +166,7 @@ class HandlerNpointsYoffsets(HandlerNpoints):
             Keyword arguments forwarded to `.HandlerNpoints`.
         """
         ...
+
     def get_ydata(self, legend, xdescent, ydescent, width, height, fontsize): ...
 
 class HandlerLine2DCompound(HandlerNpoints):
@@ -213,6 +219,7 @@ class HandlerPatch(HandlerBase):
             Keyword arguments forwarded to `.HandlerBase`.
         """
         ...
+
     def create_artists(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans
     ):  # -> list[Rectangle | Unknown]:
@@ -241,19 +248,23 @@ class HandlerLineCollection(HandlerLine2D):
 
 class HandlerRegularPolyCollection(HandlerNpointsYoffsets):
     r"""Handler for `.RegularPolyCollection`\s."""
+
     def __init__(self, yoffsets=..., sizes=..., **kwargs) -> None: ...
     def get_numpoints(self, legend): ...
     def get_sizes(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize
     ):  # -> list[Unknown]:
         ...
+
     def update_prop(self, legend_handle, orig_handle, legend):  # -> None:
         ...
+
     @_api.rename_parameter("3.6", "transOffset", "offset_transform")
     def create_collection(
         self, orig_handle, sizes, offsets, offset_transform
     ):  # -> Any:
         ...
+
     def create_artists(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans
     ):  # -> list[Any]:
@@ -261,6 +272,7 @@ class HandlerRegularPolyCollection(HandlerNpointsYoffsets):
 
 class HandlerPathCollection(HandlerRegularPolyCollection):
     r"""Handler for `.PathCollection`\s, which are used by `~.Axes.scatter`."""
+
     @_api.rename_parameter("3.6", "transOffset", "offset_transform")
     def create_collection(
         self, orig_handle, sizes, offsets, offset_transform
@@ -269,6 +281,7 @@ class HandlerPathCollection(HandlerRegularPolyCollection):
 
 class HandlerCircleCollection(HandlerRegularPolyCollection):
     r"""Handler for `.CircleCollection`\s."""
+
     @_api.rename_parameter("3.6", "transOffset", "offset_transform")
     def create_collection(
         self, orig_handle, sizes, offsets, offset_transform
@@ -285,6 +298,7 @@ class HandlerErrorbar(HandlerLine2D):
         self, legend, xdescent, ydescent, width, height, fontsize
     ):  # -> tuple[Unknown, Unknown]:
         ...
+
     def create_artists(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans
     ):  # -> list[Unknown | Line2D]:
@@ -314,6 +328,7 @@ class HandlerStem(HandlerNpointsYoffsets):
             Keyword arguments forwarded to `.HandlerNpointsYoffsets`.
         """
         ...
+
     def get_ydata(self, legend, xdescent, ydescent, width, height, fontsize): ...
     def create_artists(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans
@@ -338,6 +353,7 @@ class HandlerTuple(HandlerBase):
             Keyword arguments forwarded to `.HandlerBase`.
         """
         ...
+
     def create_artists(
         self, legend, orig_handle, xdescent, ydescent, width, height, fontsize, trans
     ):  # -> list[Unknown]:

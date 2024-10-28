@@ -156,6 +156,7 @@ class CubicTriInterpolator(TriInterpolator):
     .. [2] C.T. Kelley, "Iterative Methods for Optimization".
 
     """
+
     def __init__(self, triangulation, z, kind=..., trifinder=..., dz=...) -> None: ...
     def __call__(self, x, y): ...
     def gradient(self, x, y):  # -> list[Unknown]:
@@ -283,6 +284,7 @@ class _ReducedHCT_Element:
         Returns the N-array of interpolated function values.
         """
         ...
+
     def get_function_derivatives(self, alpha, J, ecc, dofs):
         """
         Parameters
@@ -303,6 +305,7 @@ class _ReducedHCT_Element:
         shape (N x 2 x 1).
         """
         ...
+
     def get_function_hessians(self, alpha, J, ecc, dofs):  # -> NDArray[Unknown]:
         """
         Parameters
@@ -323,6 +326,7 @@ class _ReducedHCT_Element:
         as a column-matrices of shape (N x 3 x 1).
         """
         ...
+
     def get_d2Sidksij2(self, alpha, ecc):
         """
         Parameters
@@ -338,6 +342,7 @@ class _ReducedHCT_Element:
         expressed in covariant coordinates in first apex basis.
         """
         ...
+
     def get_bending_matrices(self, J, ecc):  # -> Any:
         """
         Parameters
@@ -355,6 +360,7 @@ class _ReducedHCT_Element:
         tri_J is needed to rotate dofs from local basis to global basis
         """
         ...
+
     def get_Hrot_from_J(
         self, J, return_area=...
     ):  # -> NDArray[Unknown] | tuple[NDArray[Unknown], Unknown]:
@@ -371,6 +377,7 @@ class _ReducedHCT_Element:
         if *return_area* is True, returns also the triangle area (0.5*det(J))
         """
         ...
+
     def get_Kff_and_Ff(
         self, J, ecc, triangles, Uc
     ):  # -> tuple[NDArray[Unknown], NDArray[signedinteger[Any]], Unknown, NDArray[intp]]:
@@ -417,6 +424,7 @@ class _DOF_estimator:
         Compute reduced-HCT elements degrees of freedom, from the gradient.
         """
         ...
+
     @staticmethod
     def get_dof_vec(tri_z, tri_dz, J):  # -> NDArray[float64]:
         """
@@ -463,12 +471,14 @@ class _DOF_estimator_geom(_DOF_estimator):
         triangle itri at apex ipt
         """
         ...
+
     def compute_geom_weights(self):  # -> NDArray[float64]:
         """
         Build the (nelems, 3) weights coeffs of _triangles angles,
         renormalized so that np.sum(weights, axis=1) == np.ones(nelems)
         """
         ...
+
     def compute_geom_grads(self):  # -> NDArray[Unknown]:
         """
         Compute the (global) gradient component of f assumed linear (~f).
@@ -502,27 +512,32 @@ class _Sparse_Matrix_coo:
         *shape*: 2-tuple (n, m) of matrix shape
         """
         ...
+
     def dot(self, V):  # -> NDArray[intp]:
         """
         Dot product of self by a vector *V* in sparse-dense to dense format
         *V* dense vector of shape (self.m,).
         """
         ...
+
     def compress_csc(self):  # -> None:
         """
         Compress rows, cols, vals / summing duplicates. Sort for csc format.
         """
         ...
+
     def compress_csr(self):  # -> None:
         """
         Compress rows, cols, vals / summing duplicates. Sort for csr format.
         """
         ...
+
     def to_dense(self):  # -> NDArray[float64]:
         """
         Return a dense matrix representing self, mainly for debugging purposes.
         """
         ...
+
     def __str__(self) -> str: ...
     @property
     def diag(self):  # -> NDArray[float64]:

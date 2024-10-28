@@ -44,25 +44,30 @@ class TexManager:
     @functools.lru_cache()
     def __new__(cls):  # -> Self@TexManager:
         ...
+
     @_api.deprecated("3.6")
     def get_font_config(self):  # -> str:
         ...
+
     @classmethod
     def get_basefile(cls, tex, fontsize, dpi=...):  # -> str:
         """
         Return a filename based on a hash of the string, fontsize, and dpi.
         """
         ...
+
     @classmethod
     def get_font_preamble(cls):  # -> LiteralString:
         """
         Return a string containing font configuration for the tex preamble.
         """
         ...
+
     @classmethod
     def get_custom_preamble(cls):  # -> None:
         """Return a string containing user additions to the tex preamble."""
         ...
+
     @classmethod
     def make_tex(cls, tex, fontsize):  # -> str:
         """
@@ -71,6 +76,7 @@ class TexManager:
         Return the file name.
         """
         ...
+
     @classmethod
     def make_dvi(cls, tex, fontsize):  # -> str:
         """
@@ -79,6 +85,7 @@ class TexManager:
         Return the file name.
         """
         ...
+
     @classmethod
     def make_png(cls, tex, fontsize, dpi):  # -> str:
         """
@@ -87,10 +94,12 @@ class TexManager:
         Return the file name.
         """
         ...
+
     @classmethod
     def get_grey(cls, tex, fontsize=..., dpi=...):
         """Return the alpha channel."""
         ...
+
     @classmethod
     def get_rgba(cls, tex, fontsize=..., dpi=..., rgb=...):  # -> NDArray[float64]:
         r"""
@@ -103,6 +112,7 @@ class TexManager:
         >>> Z = texmanager.get_rgba(s, fontsize=12, dpi=80, rgb=(1, 0, 0))
         """
         ...
+
     @classmethod
     def get_text_width_height_descent(
         cls, tex, fontsize, renderer=...

@@ -47,6 +47,7 @@ class Triangulation:
         ``z = array[tri, 0] * x  + array[tri, 1] * y + array[tri, 2]``.
         """
         ...
+
     @property
     def edges(self):
         """
@@ -58,17 +59,20 @@ class Triangulation:
         *i*  and *j*, there will only be either *(i, j)* or *(j, i)*.
         """
         ...
+
     def get_cpp_triangulation(self):
         """
         Return the underlying C++ Triangulation object, creating it
         if necessary.
         """
         ...
+
     def get_masked_triangles(self):  # -> ndarray[Any, dtype[int32]]:
         """
         Return an array of triangles taking the mask into account.
         """
         ...
+
     @staticmethod
     def get_from_args_and_kwargs(
         *args, **kwargs
@@ -84,6 +88,7 @@ class Triangulation:
         the possible args and kwargs.
         """
         ...
+
     def get_trifinder(self):  # -> TrapezoidMapTriFinder:
         """
         Return the default `matplotlib.tri.TriFinder` of this
@@ -91,6 +96,7 @@ class Triangulation:
         TriFinder object to be easily shared.
         """
         ...
+
     @property
     def neighbors(self):
         """
@@ -103,6 +109,7 @@ class Triangulation:
         ``triangles[i, (j+1)%3]``.
         """
         ...
+
     def set_mask(self, mask):  # -> None:
         """
         Set or clear the mask array.

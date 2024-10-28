@@ -53,20 +53,26 @@ class _AxesStack:
     def as_list(self):  # -> list[Unknown]:
         """List the axes that have been added to the figure."""
         ...
+
     def remove(self, a):  # -> None:
         """Remove the axes from the stack."""
         ...
+
     def bubble(self, a):  # -> None:
         """Move an axes, which must already exist in the stack, to the top."""
         ...
+
     def add(self, a):  # -> None:
         """Add an axes to the stack, ignoring it if already present."""
         ...
+
     def current(self):  # -> None:
         """Return the active axes, or None if the stack is empty."""
         ...
+
     def __getstate__(self):  # -> dict[str, Any | Unknown | int]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
 
@@ -103,6 +109,7 @@ class SubplotParams:
             as a fraction of the average Axes height.
         """
         ...
+
     def update(
         self, left=..., bottom=..., right=..., top=..., wspace=..., hspace=...
     ):  # -> None:
@@ -139,9 +146,11 @@ class FigureBase(Artist):
             Selects which ticklabels to rotate.
         """
         ...
+
     def get_children(self):  # -> list[Unknown]:
         """Get a list of artists contained in the figure."""
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown, dict[Unknown, Unknown]]:
@@ -153,6 +162,7 @@ class FigureBase(Artist):
             bool, {}
         """
         ...
+
     @_api.delete_parameter("3.6", "args")
     @_api.delete_parameter("3.6", "kwargs")
     def get_window_extent(self, renderer=..., *args, **kwargs): ...
@@ -162,24 +172,29 @@ class FigureBase(Artist):
     @_docstring.copy(_suplabels)
     def suptitle(self, t, **kwargs):  # -> Any | Text:
         ...
+
     @_docstring.Substitution(
         x0=0.5, y0=0.01, name="supxlabel", ha="center", va="bottom", rc="label"
     )
     @_docstring.copy(_suplabels)
     def supxlabel(self, t, **kwargs):  # -> Any | Text:
         ...
+
     @_docstring.Substitution(
         x0=0.02, y0=0.5, name="supylabel", ha="left", va="center", rc="label"
     )
     @_docstring.copy(_suplabels)
     def supylabel(self, t, **kwargs):  # -> Any | Text:
         ...
+
     def get_edgecolor(self):
         """Get the edge color of the Figure rectangle."""
         ...
+
     def get_facecolor(self):
         """Get the face color of the Figure rectangle."""
         ...
+
     def get_frameon(self):
         """
         Return the figure's background patch visibility, i.e.
@@ -187,6 +202,7 @@ class FigureBase(Artist):
         ``Figure.patch.get_visible()``.
         """
         ...
+
     def set_linewidth(self, linewidth):  # -> None:
         """
         Set the line width of the Figure rectangle.
@@ -196,11 +212,13 @@ class FigureBase(Artist):
         linewidth : number
         """
         ...
+
     def get_linewidth(self):
         """
         Get the line width of the Figure rectangle.
         """
         ...
+
     def set_edgecolor(self, color):  # -> None:
         """
         Set the edge color of the Figure rectangle.
@@ -210,6 +228,7 @@ class FigureBase(Artist):
         color : color
         """
         ...
+
     def set_facecolor(self, color):  # -> None:
         """
         Set the face color of the Figure rectangle.
@@ -219,6 +238,7 @@ class FigureBase(Artist):
         color : color
         """
         ...
+
     def set_frameon(self, b):  # -> None:
         """
         Set the figure's background patch visibility, i.e.
@@ -254,6 +274,7 @@ class FigureBase(Artist):
             The added artist.
         """
         ...
+
     @_docstring.dedent_interpd
     def add_axes(self, *args, **kwargs):  # -> Axes:
         """
@@ -340,6 +361,7 @@ class FigureBase(Artist):
             fig.add_axes(ax)
         """
         ...
+
     @_docstring.dedent_interpd
     def add_subplot(self, *args, **kwargs):
         """
@@ -442,6 +464,7 @@ class FigureBase(Artist):
             fig.add_subplot(ax1)  # add ax1 back to the figure
         """
         ...
+
     def subplots(
         self,
         nrows=...,
@@ -572,11 +595,13 @@ class FigureBase(Artist):
             fig.subplots(2, 2, sharex=True, sharey=True)
         """
         ...
+
     def delaxes(self, ax):  # -> None:
         """
         Remove the `~.axes.Axes` *ax* from the figure; update the current Axes.
         """
         ...
+
     def clear(self, keep_observers=...):  # -> None:
         """
         Clear the figure.
@@ -588,6 +613,7 @@ class FigureBase(Artist):
             a gui widget is tracking the Axes in the figure.
         """
         ...
+
     def clf(self, keep_observers=...):  # -> None:
         """
         [*Discouraged*] Alias for the `clear()` method.
@@ -603,6 +629,7 @@ class FigureBase(Artist):
             a gui widget is tracking the Axes in the figure.
         """
         ...
+
     @_docstring.dedent_interpd
     def legend(self, *args, **kwargs):  # -> Legend:
         """
@@ -714,6 +741,7 @@ class FigureBase(Artist):
         :doc:`/tutorials/intermediate/legend_guide` for details.
         """
         ...
+
     @_docstring.dedent_interpd
     def text(self, x, y, s, fontdict=..., **kwargs):  # -> Text:
         """
@@ -751,6 +779,7 @@ class FigureBase(Artist):
         .pyplot.text
         """
         ...
+
     @_docstring.dedent_interpd
     def colorbar(
         self, mappable, cax=..., ax=..., use_gridspec=..., **kwargs
@@ -827,6 +856,7 @@ class FigureBase(Artist):
 
         """
         ...
+
     def subplots_adjust(
         self, left=..., bottom=..., right=..., top=..., wspace=..., hspace=...
     ):  # -> None:
@@ -858,6 +888,7 @@ class FigureBase(Artist):
             as a fraction of the average Axes height.
         """
         ...
+
     def align_xlabels(self, axs=...):  # -> None:
         """
         Align the xlabels of subplots in the same subplot column if label
@@ -900,6 +931,7 @@ class FigureBase(Artist):
             fig.align_xlabels()
         """
         ...
+
     def align_ylabels(self, axs=...):  # -> None:
         """
         Align the ylabels of subplots in the same subplot column if label
@@ -941,6 +973,7 @@ class FigureBase(Artist):
             fig.align_ylabels()
         """
         ...
+
     def align_labels(self, axs=...):  # -> None:
         """
         Align the xlabels and ylabels of subplots with the same subplots
@@ -963,6 +996,7 @@ class FigureBase(Artist):
         matplotlib.figure.Figure.align_ylabels
         """
         ...
+
     def add_gridspec(self, nrows=..., ncols=..., **kwargs):  # -> GridSpec:
         """
         Return a `.GridSpec` that has this figure as a parent.  This allows
@@ -1002,6 +1036,7 @@ class FigureBase(Artist):
 
         """
         ...
+
     def subfigures(
         self,
         nrows=...,
@@ -1050,6 +1085,7 @@ class FigureBase(Artist):
             If not given, all rows will have the same height.
         """
         ...
+
     def add_subfigure(self, subplotspec, **kwargs):  # -> SubFigure:
         """
         Add a `.SubFigure` to the figure as part of a subplot arrangement.
@@ -1074,9 +1110,11 @@ class FigureBase(Artist):
         .Figure.subfigures
         """
         ...
+
     def sca(self, a):
         """Set the current Axes to be *a* and return *a*."""
         ...
+
     def gca(self):
         """
         Get the current Axes.
@@ -1088,8 +1126,10 @@ class FigureBase(Artist):
         whether `.pyplot.get_fignums()` is empty.)
         """
         ...
+
     def get_default_bbox_extra_artists(self):  # -> list[Unknown]:
         ...
+
     def get_tightbbox(
         self, renderer=..., bbox_extra_artists=...
     ):  # -> TransformedBbox | Bbox:
@@ -1119,6 +1159,7 @@ class FigureBase(Artist):
             containing the bounding box (in figure inches).
         """
         ...
+
     def subplot_mosaic(
         self,
         mosaic,
@@ -1305,16 +1346,19 @@ class SubFigure(FigureBase):
             %(SubFigure:kwdoc)s
         """
         ...
+
     @property
     def dpi(self): ...
     @dpi.setter
     def dpi(self, value):  # -> None:
         ...
+
     def get_dpi(self):
         """
         Return the resolution of the parent figure in dots-per-inch as a float.
         """
         ...
+
     def set_dpi(self, val):  # -> None:
         """
         Set the resolution of parent figure in dots-per-inch.
@@ -1324,6 +1368,7 @@ class SubFigure(FigureBase):
         val : float
         """
         ...
+
     def get_constrained_layout(self):
         """
         Return whether constrained layout is being used.
@@ -1331,6 +1376,7 @@ class SubFigure(FigureBase):
         See :doc:`/tutorials/intermediate/constrainedlayout_guide`.
         """
         ...
+
     def get_constrained_layout_pads(self, relative=...):
         """
         Get padding for ``constrained_layout``.
@@ -1346,6 +1392,7 @@ class SubFigure(FigureBase):
             If `True`, then convert from inches to figure relative.
         """
         ...
+
     def get_layout_engine(self): ...
     @property
     def axes(self):  # -> list[Unknown]:
@@ -1385,6 +1432,7 @@ class Figure(FigureBase):
     def __str__(self) -> str: ...
     def __repr__(self):  # -> str:
         ...
+
     @_api.make_keyword_only("3.6", "facecolor")
     def __init__(
         self,
@@ -1484,8 +1532,10 @@ None}, default: None
             %(Figure:kwdoc)s
         """
         ...
+
     def pick(self, mouseevent):  # -> None:
         ...
+
     def set_layout_engine(self, layout=..., **kwargs):  # -> None:
         """
         Set the layout engine for this figure.
@@ -1517,10 +1567,12 @@ None}, default: None
 
         """
         ...
+
     def get_layout_engine(
         self,
     ):  # -> TightLayoutEngine | ConstrainedLayoutEngine | PlaceHolderLayoutEngine | LayoutEngine | None:
         ...
+
     def show(self, warn=...):  # -> None:
         """
         If using a GUI backend with pyplot, display the figure window.
@@ -1556,6 +1608,7 @@ None}, default: None
 
         """
         ...
+
     @property
     def axes(self):  # -> list[Unknown]:
         """
@@ -1574,6 +1627,7 @@ None}, default: None
     def get_tight_layout(self):  # -> bool:
         """Return whether `.tight_layout` is called when drawing."""
         ...
+
     @_api.deprecated("3.6", alternative="set_layout_engine", pending=True)
     def set_tight_layout(self, tight):  # -> None:
         """
@@ -1593,6 +1647,7 @@ None}, default: None
             default paddings.
         """
         ...
+
     def get_constrained_layout(self):  # -> bool:
         """
         Return whether constrained layout is being used.
@@ -1600,6 +1655,7 @@ None}, default: None
         See :doc:`/tutorials/intermediate/constrainedlayout_guide`.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="set_layout_engine('constrained')", pending=True
     )
@@ -1624,6 +1680,7 @@ None}, default: None
         constrained : bool or dict or None
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="figure.get_layout_engine().set()", pending=True
     )
@@ -1656,6 +1713,7 @@ None}, default: None
 
         """
         ...
+
     @_api.deprecated("3.6", alternative="fig.get_layout_engine().get()", pending=True)
     def get_constrained_layout_pads(
         self, relative=...
@@ -1675,6 +1733,7 @@ None}, default: None
             If `True`, then convert from inches to figure relative.
         """
         ...
+
     def set_canvas(self, canvas):  # -> None:
         """
         Set the canvas that contains the figure
@@ -1684,6 +1743,7 @@ None}, default: None
         canvas : FigureCanvas
         """
         ...
+
     @_docstring.interpd
     def figimage(
         self,
@@ -1769,6 +1829,7 @@ None}, default: None
             plt.show()
         """
         ...
+
     def set_size_inches(self, w, h=..., forward=...):  # -> None:
         """
         Set the figure size in inches.
@@ -1800,6 +1861,7 @@ None}, default: None
         To transform from pixels to inches divide by `Figure.dpi`.
         """
         ...
+
     def get_size_inches(self):  # -> NDArray[Unknown]:
         """
         Return the current size of the figure in inches.
@@ -1820,15 +1882,19 @@ None}, default: None
         The size in pixels can be obtained by multiplying with `Figure.dpi`.
         """
         ...
+
     def get_figwidth(self):
         """Return the figure width in inches."""
         ...
+
     def get_figheight(self):
         """Return the figure height in inches."""
         ...
+
     def get_dpi(self):  # -> Any:
         """Return the resolution in dots per inch as a float."""
         ...
+
     def set_dpi(self, val):  # -> None:
         """
         Set the resolution of the figure in dots-per-inch.
@@ -1838,6 +1904,7 @@ None}, default: None
         val : float
         """
         ...
+
     def set_figwidth(self, val, forward=...):  # -> None:
         """
         Set the width of the figure in inches.
@@ -1854,6 +1921,7 @@ None}, default: None
         matplotlib.figure.Figure.set_size_inches
         """
         ...
+
     def set_figheight(self, val, forward=...):  # -> None:
         """
         Set the height of the figure in inches.
@@ -1870,30 +1938,38 @@ None}, default: None
         matplotlib.figure.Figure.set_size_inches
         """
         ...
+
     def clear(self, keep_observers=...):  # -> None:
         ...
+
     @_finalize_rasterization
     @allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def draw_without_rendering(self):  # -> None:
         """
         Draw the figure with no output.  Useful to get the final size of
         artists that require a draw before their size is known (e.g. text).
         """
         ...
+
     def draw_artist(self, a):  # -> None:
         """
         Draw `.Artist` *a* only.
         """
         ...
+
     def __getstate__(self):  # -> dict[str, Any]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
+
     def add_axobserver(self, func):  # -> None:
         """Whenever the Axes state change, ``func(self)`` will be called."""
         ...
+
     def savefig(self, fname, *, transparent=..., **kwargs):  # -> None:
         """
         Save the current figure.
@@ -2005,6 +2081,7 @@ None}, default: None
 
         """
         ...
+
     def ginput(
         self,
         n=...,
@@ -2060,6 +2137,7 @@ None}, default: None
         manager) selects a point.
         """
         ...
+
     def waitforbuttonpress(self, timeout=...):  # -> None:
         """
         Blocking call to interact with the figure.
@@ -2069,6 +2147,7 @@ None}, default: None
         *timeout* seconds.  Negative values deactivate *timeout*.
         """
         ...
+
     @_api.deprecated("3.6", alternative="figure.get_layout_engine().execute()")
     def execute_constrained_layout(
         self, renderer=...
@@ -2083,6 +2162,7 @@ None}, default: None
         layoutgrid : private debugging object
         """
         ...
+
     def tight_layout(self, *, pad=..., h_pad=..., w_pad=..., rect=...):  # -> None:
         """
         Adjust the padding between and around subplots.

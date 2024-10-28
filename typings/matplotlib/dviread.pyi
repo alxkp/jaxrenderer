@@ -44,10 +44,12 @@ class Text(namedtuple("Text", "x y font glyph width")):
     def font_path(self):  # -> Path:
         """The `~pathlib.Path` to the font for this glyph."""
         ...
+
     @property
     def font_size(self):
         """The font size."""
         ...
+
     @property
     def font_effects(self):
         """
@@ -57,6 +59,7 @@ class Text(namedtuple("Text", "x y font glyph width")):
         ExtendFont (if any), read off :file:`pdftex.map`.
         """
         ...
+
     @property
     def glyph_name_or_index(self):  # -> Any:
         """
@@ -102,14 +105,17 @@ class Dvi:
         Use None to return TeX's internal units.
         """
         ...
+
     def __enter__(self):  # -> Self@Dvi:
         """Context manager enter method, does nothing."""
         ...
+
     def __exit__(self, etype, evalue, etrace):  # -> None:
         """
         Context manager exit method, closes the underlying file if it is open.
         """
         ...
+
     def __iter__(self):  # -> Generator[Page, Any, None]:
         """
         Iterate through the pages of the file.
@@ -127,6 +133,7 @@ class Dvi:
             integers.
         """
         ...
+
     def close(self):  # -> None:
         """Close the underlying file if it is open."""
         ...
@@ -197,6 +204,7 @@ class Vf(Dvi):
         glyph = vf[code]
         glyph.text, glyph.boxes, glyph.width
     """
+
     def __init__(self, filename) -> None: ...
     def __getitem__(self, code): ...
 
@@ -276,12 +284,14 @@ class PsfontsMap:
     @lru_cache()
     def __new__(cls, filename):  # -> Self@PsfontsMap:
         ...
+
     def __getitem__(self, texname): ...
 
 class _LuatexKpsewhich:
     @lru_cache()
     def __new__(cls):  # -> Self@_LuatexKpsewhich:
         ...
+
     def search(self, filename):  # -> str | None:
         ...
 

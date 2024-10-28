@@ -41,6 +41,7 @@ class LayoutGrid:
     ) -> None: ...
     def __repr__(self):  # -> str:
         ...
+
     def reset_margins(self):  # -> None:
         """
         Reset all the margins to zero.  Must do this after changing
@@ -48,20 +49,26 @@ class LayoutGrid:
         axes labels etc changes.
         """
         ...
+
     def add_constraints(self, parent):  # -> None:
         ...
+
     def hard_constraints(self):  # -> None:
         """
         These are the redundant constraints, plus ones that make the
         rest of the code easier.
         """
         ...
+
     def add_child(self, child, i=..., j=...):  # -> None:
         ...
+
     def parent_constraints(self, parent):  # -> None:
         ...
+
     def grid_constraints(self):  # -> None:
         ...
+
     def edit_margin(self, todo, size, cell):  # -> None:
         """
         Change the size of the margin for one cell.
@@ -79,6 +86,7 @@ class LayoutGrid:
             Cell column or row to edit.
         """
         ...
+
     def edit_margin_min(self, todo, size, cell=...):  # -> None:
         """
         Change the minimum size of the margin for one cell.
@@ -97,6 +105,7 @@ class LayoutGrid:
             Cell column or row to edit.
         """
         ...
+
     def edit_margins(self, todo, size):  # -> None:
         """
         Change the size of all the margin of all the cells in the layout grid.
@@ -110,6 +119,7 @@ class LayoutGrid:
             Size to set the margins.  Fraction of figure size.
         """
         ...
+
     def edit_all_margins_min(self, todo, size):  # -> None:
         """
         Change the minimum size of all the margin of all
@@ -126,6 +136,7 @@ class LayoutGrid:
             figure size.
         """
         ...
+
     def edit_outer_margin_mins(self, margin, ss):  # -> None:
         """
         Edit all four margin minimums in one statement.
@@ -140,51 +151,60 @@ class LayoutGrid:
             defines the subplotspec these margins should be applied to
         """
         ...
+
     def get_margins(self, todo, col):
         """Return the margin at this position"""
         ...
+
     def get_outer_bbox(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the outer bounding box of the subplot specs
         given by rows and cols.  rows and cols can be spans.
         """
         ...
+
     def get_inner_bbox(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the inner bounding box of the subplot specs
         given by rows and cols.  rows and cols can be spans.
         """
         ...
+
     def get_bbox_for_cb(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the bounding box that includes the
         decorations but, *not* the colorbar...
         """
         ...
+
     def get_left_margin_bbox(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the left margin bounding box of the subplot specs
         given by rows and cols.  rows and cols can be spans.
         """
         ...
+
     def get_bottom_margin_bbox(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the left margin bounding box of the subplot specs
         given by rows and cols.  rows and cols can be spans.
         """
         ...
+
     def get_right_margin_bbox(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the left margin bounding box of the subplot specs
         given by rows and cols.  rows and cols can be spans.
         """
         ...
+
     def get_top_margin_bbox(self, rows=..., cols=...):  # -> Bbox:
         """
         Return the left margin bounding box of the subplot specs
         given by rows and cols.  rows and cols can be spans.
         """
         ...
+
     def update_variables(self):  # -> None:
         """
         Update the variables for the solver attached to this layoutgrid.

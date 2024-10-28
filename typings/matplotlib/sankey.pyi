@@ -123,6 +123,7 @@ class Sankey:
         .. plot:: gallery/specialty_plots/sankey_basics.py
         """
         ...
+
     @_docstring.dedent_interpd
     def add(
         self,
@@ -220,6 +221,7 @@ class Sankey:
         Sankey.finish
         """
         ...
+
     def finish(self):  # -> list[Unknown]:
         """
         Adjust the axes and return a list of information about the Sankey

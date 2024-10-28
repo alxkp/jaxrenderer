@@ -17,6 +17,7 @@ class TextToPath:
         self, s, prop, ismath
     ):  # -> tuple[Literal[0], Literal[0], Literal[0]] | tuple[Unknown, Unknown, Unknown]:
         ...
+
     def get_text_path(
         self, prop, s, ismath=...
     ):  # -> tuple[NDArray[float64] | list[Unknown], list[Unknown]]:
@@ -60,6 +61,7 @@ class TextToPath:
         Also see `TextPath` for a more direct way to create a path from a text.
         """
         ...
+
     def get_glyphs_with_font(
         self, font, s, glyph_map=..., return_new_glyphs_only=...
     ):  # -> tuple[list[tuple[Unknown, Unknown, int, float]], OrderedDict[Unknown, Unknown] | Unknown, list[Unknown]]:
@@ -67,6 +69,7 @@ class TextToPath:
         Convert string *s* to vertices and codes using the provided ttf font.
         """
         ...
+
     def get_glyphs_mathtext(
         self, prop, s, glyph_map=..., return_new_glyphs_only=...
     ):  # -> tuple[list[tuple[Unknown, Unknown, Unknown, Unknown]], OrderedDict[Unknown, Unknown] | Unknown, list[Unknown]]:
@@ -74,10 +77,12 @@ class TextToPath:
         Parse mathtext string *s* and convert it to a (vertices, codes) pair.
         """
         ...
+
     @_api.deprecated("3.6", alternative="TexManager()")
     def get_texmanager(self):  # -> TexManager:
         """Return the cached `~.texmanager.TexManager` instance."""
         ...
+
     def get_glyphs_tex(
         self, prop, s, glyph_map=..., return_new_glyphs_only=...
     ):  # -> tuple[list[tuple[Unknown, Unknown, Unknown, Unknown]], OrderedDict[Unknown, Unknown] | Unknown, list[Unknown]]:
@@ -137,18 +142,22 @@ class TextPath(Path):
         Also see :doc:`/gallery/text_labels_and_annotations/demo_text_path`.
         """
         ...
+
     def set_size(self, size):  # -> None:
         """Set the text size."""
         ...
+
     def get_size(self):
         """Get the text size."""
         ...
+
     @property
     def vertices(self):  # -> None:
         """
         Return the cached path after updating it if necessary.
         """
         ...
+
     @property
     def codes(self):  # -> NDArray[code_type] | None:
         """

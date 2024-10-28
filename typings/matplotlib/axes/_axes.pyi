@@ -60,6 +60,7 @@ class Axes(_AxesBase):
 
         """
         ...
+
     def set_title(
         self, label, fontdict=..., loc=..., pad=..., *, y=..., **kwargs
     ):  # -> Text:
@@ -108,6 +109,7 @@ class Axes(_AxesBase):
             of valid text properties.
         """
         ...
+
     def get_legend_handles_labels(
         self, legend_handler_map=...
     ):  # -> tuple[list[Unknown], list[Unknown]]:
@@ -120,6 +122,7 @@ class Axes(_AxesBase):
           ax.legend(h, l)
         """
         ...
+
     @_docstring.dedent_interpd
     def legend(self, *args, **kwargs):  # -> Legend:
         """
@@ -236,6 +239,7 @@ class Axes(_AxesBase):
         .. plot:: gallery/text_labels_and_annotations/legend.py
         """
         ...
+
     def inset_axes(self, bounds, *, transform=..., zorder=..., **kwargs):
         """
         Add a child inset Axes to this existing Axes.
@@ -293,6 +297,7 @@ class Axes(_AxesBase):
 
         """
         ...
+
     @_docstring.dedent_interpd
     def indicate_inset(
         self,
@@ -362,6 +367,7 @@ class Axes(_AxesBase):
 
         """
         ...
+
     def indicate_inset_zoom(
         self, inset_ax, **kwargs
     ):  # -> tuple[Rectangle, tuple[Unknown, ...] | None]:
@@ -398,6 +404,7 @@ class Axes(_AxesBase):
             correct.
         """
         ...
+
     @_docstring.dedent_interpd
     def secondary_xaxis(
         self, location, *, functions=..., **kwargs
@@ -434,6 +441,7 @@ class Axes(_AxesBase):
             plt.show()
         """
         ...
+
     @_docstring.dedent_interpd
     def secondary_yaxis(
         self, location, *, functions=..., **kwargs
@@ -460,6 +468,7 @@ class Axes(_AxesBase):
             secax.set_ylabel('radians')
         """
         ...
+
     @_docstring.dedent_interpd
     def text(self, x, y, s, fontdict=..., **kwargs):  # -> Text:
         """
@@ -516,6 +525,7 @@ class Axes(_AxesBase):
             >>> text(x, y, s, bbox=dict(facecolor='red', alpha=0.5))
         """
         ...
+
     @_docstring.dedent_interpd
     def annotate(
         self,
@@ -529,6 +539,7 @@ class Axes(_AxesBase):
         **kwargs
     ):  # -> Annotation:
         ...
+
     @_docstring.dedent_interpd
     def axhline(self, y=..., xmin=..., xmax=..., **kwargs):  # -> Line2D:
         """
@@ -581,6 +592,7 @@ class Axes(_AxesBase):
             >>> axhline(y=.5, xmin=0.25, xmax=0.75)
         """
         ...
+
     @_docstring.dedent_interpd
     def axvline(self, x=..., ymin=..., ymax=..., **kwargs):  # -> Line2D:
         """
@@ -633,6 +645,7 @@ class Axes(_AxesBase):
             >>> axvline(x=.5, ymin=0.25, ymax=0.75)
         """
         ...
+
     @_docstring.dedent_interpd
     def axline(self, xy1, xy2=..., *, slope=..., **kwargs):  # -> _AxLine:
         """
@@ -684,6 +697,7 @@ class Axes(_AxesBase):
             >>> axline((0, 0), (1, 1), linewidth=4, color='r')
         """
         ...
+
     @_docstring.dedent_interpd
     def axhspan(self, ymin, ymax, xmin=..., xmax=..., **kwargs):  # -> Polygon:
         """
@@ -722,6 +736,7 @@ class Axes(_AxesBase):
         axvspan : Add a vertical span across the Axes.
         """
         ...
+
     @_docstring.dedent_interpd
     def axvspan(self, xmin, xmax, ymin=..., ymax=..., **kwargs):  # -> Polygon:
         """
@@ -768,6 +783,7 @@ class Axes(_AxesBase):
 
         """
         ...
+
     @_preprocess_data(replace_names=["y", "xmin", "xmax", "colors"], label_namer="y")
     def hlines(
         self, y, xmin, xmax, colors=..., linestyles=..., label=..., **kwargs
@@ -806,6 +822,7 @@ class Axes(_AxesBase):
         axhline : horizontal line across the Axes
         """
         ...
+
     @_preprocess_data(replace_names=["x", "ymin", "ymax", "colors"], label_namer="x")
     def vlines(
         self, x, ymin, ymax, colors=..., linestyles=..., label=..., **kwargs
@@ -844,6 +861,7 @@ class Axes(_AxesBase):
         axvline : vertical line across the Axes
         """
         ...
+
     @_preprocess_data(
         replace_names=[
             "positions",
@@ -971,6 +989,7 @@ class Axes(_AxesBase):
         .. plot:: gallery/lines_bars_and_markers/eventplot_demo.py
         """
         ...
+
     @_docstring.dedent_interpd
     def plot(
         self, *args, scalex=..., scaley=..., data=..., **kwargs
@@ -1218,6 +1237,7 @@ class Axes(_AxesBase):
         (``'green'``) or hex strings (``'#008000'``).
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y"], label_namer="y")
     @_docstring.dedent_interpd
     def plot_date(
@@ -1295,6 +1315,7 @@ class Axes(_AxesBase):
         `.DateFormatter` instance).
         """
         ...
+
     @_docstring.dedent_interpd
     def loglog(
         self, *args, **kwargs
@@ -1340,6 +1361,7 @@ class Axes(_AxesBase):
             Objects representing the plotted data.
         """
         ...
+
     @_docstring.dedent_interpd
     def semilogx(
         self, *args, **kwargs
@@ -1382,6 +1404,7 @@ class Axes(_AxesBase):
             Objects representing the plotted data.
         """
         ...
+
     @_docstring.dedent_interpd
     def semilogy(
         self, *args, **kwargs
@@ -1424,6 +1447,7 @@ class Axes(_AxesBase):
             Objects representing the plotted data.
         """
         ...
+
     @_preprocess_data(replace_names=["x"], label_namer="x")
     def acorr(
         self, x, **kwargs
@@ -1497,6 +1521,7 @@ class Axes(_AxesBase):
         ``mode = "full"``.
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y"], label_namer="y")
     def xcorr(
         self, x, y, normed=..., detrend=..., usevlines=..., maxlags=..., **kwargs
@@ -1574,6 +1599,7 @@ class Axes(_AxesBase):
         ``mode = "full"``.
         """
         ...
+
     def step(
         self, x, y, *args, where=..., data=..., **kwargs
     ):  # -> list[Unknown | tuple[Line2D, dict[Unknown | str, Unknown]] | tuple[Polygon, dict[str, Unknown]] | Line2D | Polygon]:
@@ -1641,6 +1667,7 @@ class Axes(_AxesBase):
             Objects representing the plotted data.
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def bar(self, x, height, width=..., bottom=..., *, align=..., **kwargs):
@@ -1751,6 +1778,7 @@ class Axes(_AxesBase):
         bar. See :doc:`/gallery/lines_bars_and_markers/bar_stacked`.
         """
         ...
+
     @_docstring.dedent_interpd
     def barh(self, y, width, height=..., left=..., *, align=..., data=..., **kwargs):
         r"""
@@ -1863,6 +1891,7 @@ class Axes(_AxesBase):
         :doc:`/gallery/lines_bars_and_markers/horizontal_barchart_distribution`.
         """
         ...
+
     def bar_label(
         self, container, labels=..., *, fmt=..., label_type=..., padding=..., **kwargs
     ):
@@ -1917,6 +1946,7 @@ class Axes(_AxesBase):
             A list of `.Text` instances for the labels.
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def broken_barh(self, xranges, yrange, **kwargs):  # -> PolyCollection:
@@ -1961,6 +1991,7 @@ class Axes(_AxesBase):
             %(PolyCollection:kwdoc)s
         """
         ...
+
     @_preprocess_data()
     @_api.delete_parameter("3.6", "use_line_collection")
     def stem(
@@ -2063,6 +2094,7 @@ class Axes(_AxesBase):
             which inspired this method.
         """
         ...
+
     @_preprocess_data(replace_names=["x", "explode", "labels", "colors"])
     def pie(
         self,
@@ -2196,6 +2228,7 @@ class Axes(_AxesBase):
         The Axes aspect ratio can be controlled with `.Axes.set_aspect`.
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y", "xerr", "yerr"], label_namer="y")
     @_docstring.dedent_interpd
     def errorbar(
@@ -2350,6 +2383,7 @@ class Axes(_AxesBase):
             %(Line2D:kwdoc)s
         """
         ...
+
     @_preprocess_data()
     def boxplot(
         self,
@@ -2567,6 +2601,7 @@ class Axes(_AxesBase):
         violinplot : Draw an estimate of the probability density function.
         """
         ...
+
     def bxp(
         self,
         bxpstats,
@@ -2682,6 +2717,7 @@ class Axes(_AxesBase):
         .. plot:: gallery/statistics/bxp.py
         """
         ...
+
     @_preprocess_data(
         replace_names=[
             "x",
@@ -2825,6 +2861,7 @@ default: :rc:`scatter.edgecolors`
 
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y", "C"], label_namer="y")
     @_docstring.dedent_interpd
     def hexbin(
@@ -2999,6 +3036,7 @@ default: :rc:`scatter.edgecolors`
         hist2d : 2D histogram rectangular bins
         """
         ...
+
     @_docstring.dedent_interpd
     def arrow(self, x, y, dx, dy, **kwargs):  # -> FancyArrow:
         """
@@ -3027,19 +3065,23 @@ default: :rc:`scatter.edgecolors`
 
         """
         ...
+
     @_docstring.copy(mquiver.QuiverKey.__init__)
     def quiverkey(self, Q, X, Y, U, label, **kwargs):  # -> QuiverKey:
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def quiver(self, *args, **kwargs):  # -> Quiver:
         """%(quiver_doc)s"""
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def barbs(self, *args, **kwargs):  # -> Barbs:
         """%(barbs_doc)s"""
         ...
+
     def fill(
         self, *args, data=..., **kwargs
     ):  # -> list[Unknown | tuple[Line2D, dict[Unknown | str, Unknown]] | tuple[Polygon, dict[str, Unknown]] | Line2D | Polygon]:
@@ -3086,17 +3128,20 @@ default: :rc:`scatter.edgecolors`
         two curves.
         """
         ...
+
     def fill_between(
         self, x, y1, y2=..., where=..., interpolate=..., step=..., **kwargs
     ):  # -> PolyCollection:
         ...
-    if _fill_between_x_or_y.__doc__: ...
+    if _fill_between_x_or_y.__doc__:
+        ...
     fill_between = ...
     def fill_betweenx(
         self, y, x1, x2=..., where=..., step=..., interpolate=..., **kwargs
     ):  # -> PolyCollection:
         ...
-    if _fill_between_x_or_y.__doc__: ...
+    if _fill_between_x_or_y.__doc__:
+        ...
     fill_betweenx = ...
     @_preprocess_data()
     @_docstring.interpd
@@ -3314,6 +3359,7 @@ default: :rc:`scatter.edgecolors`
         (unassociated) alpha representation.
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def pcolor(
@@ -3470,6 +3516,7 @@ default: :rc:`scatter.edgecolors`
         *X* and the row number as *Y*.
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def pcolormesh(
@@ -3666,6 +3713,7 @@ default: :rc:`scatter.edgecolors`
 
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def pcolorfast(
@@ -3779,6 +3827,7 @@ default: :rc:`scatter.edgecolors`
             See return types of *image* for further description.
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def contour(self, *args, **kwargs):  # -> QuadContourSet:
@@ -3791,6 +3840,7 @@ default: :rc:`scatter.edgecolors`
         %(contour_doc)s
         """
         ...
+
     @_preprocess_data()
     @_docstring.dedent_interpd
     def contourf(self, *args, **kwargs):  # -> QuadContourSet:
@@ -3803,6 +3853,7 @@ default: :rc:`scatter.edgecolors`
         %(contour_doc)s
         """
         ...
+
     def clabel(self, CS, levels=..., **kwargs):
         """
         Label a contour plot.
@@ -3822,6 +3873,7 @@ default: :rc:`scatter.edgecolors`
             All other parameters are documented in `~.ContourLabeler.clabel`.
         """
         ...
+
     @_preprocess_data(replace_names=["x", "weights"], label_namer="x")
     def hist(
         self,
@@ -4031,6 +4083,7 @@ such objects
         'step' or 'stepfilled' rather than 'bar' or 'barstacked'.
         """
         ...
+
     @_preprocess_data()
     def stairs(
         self, values, edges=..., *, orientation=..., baseline=..., fill=..., **kwargs
@@ -4075,6 +4128,7 @@ such objects
 
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y", "weights"])
     @_docstring.dedent_interpd
     def hist2d(
@@ -4178,6 +4232,7 @@ such objects
           `.colors.PowerNorm`.
         """
         ...
+
     @_preprocess_data(replace_names=["x"])
     @_docstring.dedent_interpd
     def psd(
@@ -4274,6 +4329,7 @@ such objects
         John Wiley & Sons (1986)
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y"], label_namer="y")
     @_docstring.dedent_interpd
     def csd(
@@ -4366,6 +4422,7 @@ such objects
         John Wiley & Sons (1986)
         """
         ...
+
     @_preprocess_data(replace_names=["x"])
     @_docstring.dedent_interpd
     def magnitude_spectrum(
@@ -4431,6 +4488,7 @@ such objects
             colormap.
         """
         ...
+
     @_preprocess_data(replace_names=["x"])
     @_docstring.dedent_interpd
     def angle_spectrum(
@@ -4489,6 +4547,7 @@ such objects
             colormap.
         """
         ...
+
     @_preprocess_data(replace_names=["x"])
     @_docstring.dedent_interpd
     def phase_spectrum(
@@ -4547,6 +4606,7 @@ such objects
             colormap.
         """
         ...
+
     @_preprocess_data(replace_names=["x", "y"])
     @_docstring.dedent_interpd
     def cohere(
@@ -4611,6 +4671,7 @@ such objects
         John Wiley & Sons (1986)
         """
         ...
+
     @_preprocess_data(replace_names=["x"])
     @_docstring.dedent_interpd
     def specgram(
@@ -4727,6 +4788,7 @@ such objects
         is set to 'psd'.
         """
         ...
+
     @_docstring.dedent_interpd
     def spy(
         self,
@@ -4815,6 +4877,7 @@ such objects
             %(Line2D:kwdoc)s
         """
         ...
+
     def matshow(self, Z, **kwargs):  # -> AxesImage:
         """
         Plot the values of a 2D matrix or array as color-coded image.
@@ -4852,6 +4915,7 @@ such objects
 
         """
         ...
+
     @_preprocess_data(replace_names=["dataset"])
     def violinplot(
         self,
@@ -4952,6 +5016,7 @@ such objects
 
         """
         ...
+
     def violin(
         self,
         vpstats,

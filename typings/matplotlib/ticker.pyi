@@ -170,11 +170,14 @@ class _DummyAxis:
     def get_view_interval(self): ...
     def set_view_interval(self, vmin, vmax):  # -> None:
         ...
+
     def get_minpos(self):  # -> int:
         ...
+
     def get_data_interval(self): ...
     def set_data_interval(self, vmin, vmax):  # -> None:
         ...
+
     def get_tick_space(self):  # -> Literal[9]:
         ...
 
@@ -182,6 +185,7 @@ class TickHelper:
     axis = ...
     def set_axis(self, axis):  # -> None:
         ...
+
     def create_dummy_axis(self, **kwargs):  # -> None:
         ...
 
@@ -197,15 +201,18 @@ class Formatter(TickHelper):
         ``pos=None`` indicates an unspecified location.
         """
         ...
+
     def format_ticks(self, values):  # -> list[Unknown]:
         """Return the tick labels for all the ticks at once."""
         ...
+
     def format_data(self, value):
         """
         Return the full string representation of the value with the
         position unspecified.
         """
         ...
+
     def format_data_short(self, value):
         """
         Return a short string version of the tick value.
@@ -213,8 +220,10 @@ class Formatter(TickHelper):
         Defaults to the position-independent long value.
         """
         ...
+
     def get_offset(self):  # -> Literal['']:
         ...
+
     def set_locs(self, locs):  # -> None:
         """
         Set the locations of the ticks.
@@ -223,6 +232,7 @@ class Formatter(TickHelper):
         formatters need to know all tick locations to do so.
         """
         ...
+
     @staticmethod
     def fix_minus(s):
         """
@@ -251,6 +261,7 @@ class FixedFormatter(Formatter):
     def __init__(self, seq) -> None:
         """Set the sequence *seq* of strings that will be used for labels."""
         ...
+
     def __call__(self, x, pos=...):  # -> Literal['']:
         """
         Return the label that matches the position, regardless of the value.
@@ -260,8 +271,10 @@ class FixedFormatter(Formatter):
         strings that this object was initialized with.
         """
         ...
+
     def get_offset(self):  # -> str:
         ...
+
     def set_offset_string(self, ofs):  # -> None:
         ...
 
@@ -282,8 +295,10 @@ class FuncFormatter(Formatter):
         *x* and *pos* are passed through as-is.
         """
         ...
+
     def get_offset(self):  # -> str:
         ...
+
     def set_offset_string(self, ofs):  # -> None:
         ...
 
@@ -389,6 +404,7 @@ class ScalarFormatter(Formatter):
         ScalarFormatter.set_useOffset
         """
         ...
+
     def set_useOffset(self, val):  # -> None:
         """
         Set whether to use offset notation.
@@ -427,6 +443,7 @@ class ScalarFormatter(Formatter):
         ScalarFormatter.set_useLocale
         """
         ...
+
     def set_useLocale(self, val):  # -> None:
         """
         Set whether to use locale settings for decimal sign and positive sign.
@@ -447,6 +464,7 @@ class ScalarFormatter(Formatter):
         ScalarFormatter.set_useMathText
         """
         ...
+
     def set_useMathText(self, val):  # -> None:
         r"""
         Set whether to use fancy math formatting.
@@ -465,6 +483,7 @@ class ScalarFormatter(Formatter):
         Return the format for tick value *x* at position *pos*.
         """
         ...
+
     def set_scientific(self, b):  # -> None:
         """
         Turn scientific notation on or off.
@@ -474,6 +493,7 @@ class ScalarFormatter(Formatter):
         ScalarFormatter.set_powerlimits
         """
         ...
+
     def set_powerlimits(self, lims):  # -> None:
         r"""
         Set size thresholds for scientific notation.
@@ -505,15 +525,19 @@ class ScalarFormatter(Formatter):
         ScalarFormatter.set_scientific
         """
         ...
+
     def format_data_short(self, value):  # -> str:
         ...
+
     def format_data(self, value):  # -> str:
         ...
+
     def get_offset(self):  # -> str:
         """
         Return scientific notation, plus offset.
         """
         ...
+
     def set_locs(self, locs):  # -> None:
         ...
 
@@ -587,6 +611,7 @@ class LogFormatter(Formatter):
            Should always match the base used for :class:`LogLocator`
         """
         ...
+
     def set_base(self, base):  # -> None:
         """
         Change the *base* for labeling.
@@ -595,6 +620,7 @@ class LogFormatter(Formatter):
            Should always match the base used for :class:`LogLocator`
         """
         ...
+
     @_api.deprecated("3.6", alternative="set_label_minor()")
     def label_minor(self, labelOnlyBase):  # -> None:
         """
@@ -606,6 +632,7 @@ class LogFormatter(Formatter):
             If True, label ticks only at integer powers of base.
         """
         ...
+
     def set_label_minor(self, labelOnlyBase):  # -> None:
         """
         Switch minor tick labeling on or off.
@@ -616,6 +643,7 @@ class LogFormatter(Formatter):
             If True, label ticks only at integer powers of base.
         """
         ...
+
     def set_locs(self, locs=...):  # -> None:
         """
         Use axis view limits to control which ticks are labeled.
@@ -623,10 +651,13 @@ class LogFormatter(Formatter):
         The *locs* parameter is ignored in the present algorithm.
         """
         ...
+
     def __call__(self, x, pos=...):  # -> str:
         ...
+
     def format_data(self, value):  # -> str:
         ...
+
     def format_data_short(self, value): ...
 
 class LogFormatterExponent(LogFormatter):
@@ -690,6 +721,7 @@ class LogitFormatter(Formatter):
             below the threshold.
         """
         ...
+
     def use_overline(self, use_overline):  # -> None:
         r"""
         Switch display mode with overline for labelling p>1/2.
@@ -701,6 +733,7 @@ class LogitFormatter(Formatter):
             $\overline{v}$. The default is to display $1-v$.
         """
         ...
+
     def set_one_half(self, one_half):  # -> None:
         r"""
         Set the way one half is displayed.
@@ -709,6 +742,7 @@ class LogitFormatter(Formatter):
             The string used to represent 1/2.
         """
         ...
+
     def set_minor_threshold(self, minor_threshold):  # -> None:
         """
         Set the threshold for labelling minors ticks.
@@ -720,6 +754,7 @@ class LogitFormatter(Formatter):
             parameter have no effect if minor is False.
         """
         ...
+
     def set_minor_number(self, minor_number):  # -> None:
         """
         Set the number of minor ticks to label when some minor ticks are
@@ -732,10 +767,13 @@ class LogitFormatter(Formatter):
             below the threshold.
         """
         ...
+
     def set_locs(self, locs):  # -> None:
         ...
+
     def __call__(self, x, pos=...):  # -> str:
         ...
+
     def format_data_short(self, value):  # -> str:
         ...
 
@@ -784,18 +822,22 @@ class EngFormatter(Formatter):
             the formatter.
         """
         ...
+
     def get_usetex(self):  # -> None:
         ...
+
     def set_usetex(self, val):  # -> None:
         ...
     usetex = ...
     def get_useMathText(self):  # -> None:
         ...
+
     def set_useMathText(self, val):  # -> None:
         ...
     useMathText = ...
     def __call__(self, x, pos=...):  # -> str:
         ...
+
     def format_eng(self, num):  # -> str:
         """
         Format a number in engineering notation, appending a letter
@@ -844,6 +886,7 @@ class PercentFormatter(Formatter):
     def __call__(self, x, pos=...):  # -> str:
         """Format the tick as a percentage with the appropriate scaling."""
         ...
+
     def format_pct(self, x, display_range):  # -> str:
         """
         Format the number as a percentage number with the correct
@@ -867,6 +910,7 @@ class PercentFormatter(Formatter):
         are percentages displayed on a reasonable scale.
         """
         ...
+
     def convert_to_pct(self, x): ...
     @property
     def symbol(self):  # -> str:
@@ -878,6 +922,7 @@ class PercentFormatter(Formatter):
         automatically escaped in the string.
         """
         ...
+
     @symbol.setter
     def symbol(self, symbol):  # -> None:
         ...
@@ -908,15 +953,18 @@ class Locator(TickHelper):
 
         """
         ...
+
     def set_params(self, **kwargs):  # -> None:
         """
         Do nothing, and raise a warning. Any locator class not supporting the
         set_params() function will call this.
         """
         ...
+
     def __call__(self):
         """Return the locations of the ticks."""
         ...
+
     def raise_if_exceeds(self, locs):
         """
         Log at WARNING level if *locs* is longer than `Locator.MAXTICKS`.
@@ -929,6 +977,7 @@ class Locator(TickHelper):
         exception instead of emitting a log.
         """
         ...
+
     def nonsingular(self, v0, v1):  # -> tuple[float, float]:
         """
         Adjust a range as needed to avoid singularities.
@@ -944,6 +993,7 @@ class Locator(TickHelper):
         - Otherwise, ``(v0, v1)`` is returned without modification.
         """
         ...
+
     def view_limits(self, vmin, vmax):  # -> tuple[float, float]:
         """
         Select a scale for the range from vmin to vmax.
@@ -963,12 +1013,15 @@ class IndexLocator(Locator):
     def __init__(self, base, offset) -> None:
         """Place ticks every *base* data point, starting at *offset*."""
         ...
+
     def set_params(self, base=..., offset=...):  # -> None:
         """Set parameters within this locator"""
         ...
+
     def __call__(self):
         """Return the locations of the ticks"""
         ...
+
     def tick_values(self, vmin, vmax): ...
 
 class FixedLocator(Locator):
@@ -986,8 +1039,10 @@ class FixedLocator(Locator):
     def set_params(self, nbins=...):  # -> None:
         """Set parameters within this locator."""
         ...
+
     def __call__(self):  # -> NDArray[Unknown]:
         ...
+
     def tick_values(self, vmin, vmax):  # -> NDArray[Unknown]:
         """
         Return the locations of the ticks.
@@ -1007,6 +1062,7 @@ class NullLocator(Locator):
 
     def __call__(self):  # -> list[Unknown]:
         ...
+
     def tick_values(self, vmin, vmax):  # -> list[Unknown]:
         """
         Return the locations of the ticks.
@@ -1041,20 +1097,26 @@ class LinearLocator(Locator):
             ``(vmin, vmax)``.
         """
         ...
+
     @property
     def numticks(self):  # -> Literal[11]:
         ...
+
     @numticks.setter
     def numticks(self, numticks):  # -> None:
         ...
+
     def set_params(self, numticks=..., presets=...):  # -> None:
         """Set parameters within this locator."""
         ...
+
     def __call__(self):  # -> list[Unknown] | NDArray[floating[Any]]:
         """Return the locations of the ticks."""
         ...
+
     def tick_values(self, vmin, vmax):  # -> list[Unknown] | NDArray[floating[Any]]:
         ...
+
     def view_limits(self, vmin, vmax):  # -> tuple[float, float]:
         """Try to choose the view limits intelligently."""
         ...
@@ -1069,9 +1131,11 @@ class MultipleLocator(Locator):
     def set_params(self, base):  # -> None:
         """Set parameters within this locator."""
         ...
+
     def __call__(self):
         """Return the locations of the ticks."""
         ...
+
     def tick_values(self, vmin, vmax): ...
     def view_limits(self, dmin, dmax):  # -> tuple[float, float]:
         """
@@ -1104,10 +1168,12 @@ class _Edge_integer:
             locations.
         """
         ...
+
     def closeto(self, ms, edge): ...
     def le(self, x):
         """Return the largest n: n*step <= x."""
         ...
+
     def ge(self, x):
         """Return the smallest n: n*step >= x."""
         ...
@@ -1157,6 +1223,7 @@ class MaxNLocator(Locator):
             this minimum number of ticks.
         """
         ...
+
     def set_params(self, **kwargs):  # -> None:
         """
         Set parameters for this locator.
@@ -1177,10 +1244,13 @@ class MaxNLocator(Locator):
             see `.MaxNLocator`
         """
         ...
+
     def __call__(self):  # -> float | int:
         ...
+
     def tick_values(self, vmin, vmax):  # -> float | int:
         ...
+
     def view_limits(self, dmin, dmax):  # -> tuple[float, float]:
         ...
 
@@ -1225,33 +1295,40 @@ class LogLocator(Locator):
     def __init__(self, base=..., subs=..., numdecs=..., numticks=...) -> None:
         """Place ticks on the locations : subs[j] * base**i."""
         ...
+
     def set_params(self, base=..., subs=..., numdecs=..., numticks=...):  # -> None:
         """Set parameters within this locator."""
         ...
+
     @_api.deprecated("3.6", alternative="set_params(base=...)")
     def base(self, base):  # -> None:
         """Set the log base (major tick every ``base**i``, i integer)."""
         ...
+
     @_api.deprecated("3.6", alternative="set_params(subs=...)")
     def subs(self, subs):  # -> None:
         """
         Set the minor ticks for the log scaling every ``base**i*subs[j]``.
         """
         ...
+
     def __call__(
         self,
     ):  # -> NDArray[Unknown] | float | int | NDArray[Any] | NDArray[floating[Any]]:
         """Return the locations of the ticks."""
         ...
+
     def tick_values(
         self, vmin, vmax
     ):  # -> NDArray[Unknown] | float | int | NDArray[Any] | NDArray[floating[Any]]:
         ...
+
     def view_limits(
         self, vmin, vmax
     ):  # -> tuple[Unknown | float | Any | int, Unknown | Any | Literal[10]]:
         """Try to choose the view limits intelligently."""
         ...
+
     def nonsingular(
         self, vmin, vmax
     ):  # -> tuple[Unknown | float | int, Unknown | Literal[10]]:
@@ -1282,16 +1359,20 @@ class SymmetricalLogLocator(Locator):
         Either *transform*, or both *base* and *linthresh*, must be given.
         """
         ...
+
     def set_params(self, subs=..., numticks=...):  # -> None:
         """Set parameters within this locator."""
         ...
+
     def __call__(self):  # -> list[Unknown] | ndarray[Any, dtype[Unknown]]:
         """Return the locations of the ticks."""
         ...
+
     def tick_values(
         self, vmin, vmax
     ):  # -> list[Unknown] | ndarray[Any, dtype[Unknown]]:
         ...
+
     def view_limits(self, vmin, vmax):  # -> tuple[float, float]:
         """Try to choose the view limits intelligently."""
         ...
@@ -1335,11 +1416,14 @@ class AsinhLocator(Locator):
             for the minor ticks, e.g. (2, 5) when base=10.
         """
         ...
+
     def set_params(self, numticks=..., symthresh=..., base=..., subs=...):  # -> None:
         """Set parameters within this locator."""
         ...
+
     def __call__(self):  # -> NDArray[Any]:
         ...
+
     def tick_values(self, vmin, vmax):  # -> NDArray[Any]:
         ...
 
@@ -1360,19 +1444,24 @@ class LogitLocator(MaxNLocator):
             Indicate if this locator is for minor ticks or not.
         """
         ...
+
     def set_params(self, minor=..., **kwargs):  # -> None:
         """Set parameters within this locator."""
         ...
+
     @property
     def minor(self):  # -> bool:
         ...
+
     @minor.setter
     def minor(self, value):  # -> None:
         ...
+
     def tick_values(
         self, vmin, vmax
     ):  # -> NDArray[Any] | ndarray[Any, dtype[Unknown]] | list[Unknown] | float | int:
         ...
+
     def nonsingular(
         self, vmin, vmax
     ):  # -> tuple[float | Unknown | int, float | Unknown | int]:
@@ -1407,7 +1496,9 @@ class AutoMinorLocator(Locator):
         If *n* is omitted or None, it will be set to 5 or 4.
         """
         ...
+
     def __call__(self):  # -> list[Unknown]:
         """Return the locations of the ticks."""
         ...
+
     def tick_values(self, vmin, vmax): ...

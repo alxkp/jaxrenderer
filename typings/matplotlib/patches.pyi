@@ -49,6 +49,7 @@ class Patch(artist.Artist):
         %(Patch:kwdoc)s
         """
         ...
+
     def get_verts(self):  # -> list[Unknown]:
         """
         Return a copy of the vertices used in this patch.
@@ -57,6 +58,7 @@ class Patch(artist.Artist):
         line segments.  To access the curves as curves, use `get_path`.
         """
         ...
+
     def contains(
         self, mouseevent, radius=...
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[bool, dict[Unknown, Unknown]]:
@@ -68,6 +70,7 @@ class Patch(artist.Artist):
         (bool, empty dict)
         """
         ...
+
     def contains_point(self, point, radius=...):
         """
         Return whether the given point is inside the patch.
@@ -114,6 +117,7 @@ class Patch(artist.Artist):
 
         """
         ...
+
     def contains_points(self, points, radius=...):
         """
         Return whether the given points are inside the patch.
@@ -139,24 +143,29 @@ class Patch(artist.Artist):
         See the notes on `.Patch.contains_point`.
         """
         ...
+
     def update_from(self, other):  # -> None:
         ...
+
     def get_extents(self):
         """
         Return the `Patch`'s axis-aligned extents as a `~.transforms.Bbox`.
         """
         ...
+
     def get_transform(
         self,
     ):  # -> Transform | IdentityTransform | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType:
         """Return the `~.transforms.Transform` applied to the `Patch`."""
         ...
+
     def get_data_transform(self):  # -> IdentityTransform:
         """
         Return the `~.transforms.Transform` mapping data coordinates to
         physical coordinates.
         """
         ...
+
     def get_patch_transform(self):  # -> IdentityTransform:
         """
         Return the `~.transforms.Transform` instance mapping patch coordinates
@@ -167,21 +176,27 @@ class Patch(artist.Artist):
         transform which scales the coordinates (the patch coordinate) by 5.
         """
         ...
+
     def get_antialiased(self):  # -> None:
         """Return whether antialiasing is used for drawing."""
         ...
+
     def get_edgecolor(self):
         """Return the edge color."""
         ...
+
     def get_facecolor(self):
         """Return the face color."""
         ...
+
     def get_linewidth(self):  # -> int | float:
         """Return the line width in points."""
         ...
+
     def get_linestyle(self):  # -> str:
         """Return the linestyle."""
         ...
+
     def set_antialiased(self, aa):  # -> None:
         """
         Set whether to use antialiased rendering.
@@ -191,6 +206,7 @@ class Patch(artist.Artist):
         aa : bool or None
         """
         ...
+
     def set_edgecolor(self, color):  # -> None:
         """
         Set the patch edge color.
@@ -200,6 +216,7 @@ class Patch(artist.Artist):
         color : color or None
         """
         ...
+
     def set_facecolor(self, color):  # -> None:
         """
         Set the patch face color.
@@ -209,6 +226,7 @@ class Patch(artist.Artist):
         color : color or None
         """
         ...
+
     def set_color(self, c):  # -> None:
         """
         Set both the edgecolor and the facecolor.
@@ -223,8 +241,10 @@ class Patch(artist.Artist):
             For setting the edge or face color individually.
         """
         ...
+
     def set_alpha(self, alpha):  # -> None:
         ...
+
     def set_linewidth(self, w):  # -> None:
         """
         Set the patch linewidth in points.
@@ -234,6 +254,7 @@ class Patch(artist.Artist):
         w : float or None
         """
         ...
+
     def set_linestyle(self, ls):  # -> None:
         """
         Set the patch linestyle.
@@ -260,6 +281,7 @@ class Patch(artist.Artist):
             The line style.
         """
         ...
+
     def set_fill(self, b):  # -> None:
         """
         Set whether to fill the patch.
@@ -269,6 +291,7 @@ class Patch(artist.Artist):
         b : bool
         """
         ...
+
     def get_fill(self):  # -> bool:
         """Return whether the patch is filled."""
         ...
@@ -286,9 +309,11 @@ class Patch(artist.Artist):
         s : `.CapStyle` or %(CapStyle)s
         """
         ...
+
     def get_capstyle(self):  # -> Literal['butt', 'projecting', 'round']:
         """Return the capstyle."""
         ...
+
     @_docstring.interpd
     def set_joinstyle(self, s):  # -> None:
         """
@@ -302,9 +327,11 @@ class Patch(artist.Artist):
         s : `.JoinStyle` or %(JoinStyle)s
         """
         ...
+
     def get_joinstyle(self):  # -> Literal['miter', 'round', 'bevel']:
         """Return the joinstyle."""
         ...
+
     def set_hatch(self, hatch):  # -> None:
         r"""
         Set the hatching pattern.
@@ -334,15 +361,19 @@ class Patch(artist.Artist):
         hatch : {'/', '\\', '|', '-', '+', 'x', 'o', 'O', '.', '*'}
         """
         ...
+
     def get_hatch(self):
         """Return the hatching pattern."""
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def get_path(self):
         """Return the path of this patch."""
         ...
+
     def get_window_extent(self, renderer=...): ...
 
 class Shadow(Patch):
@@ -368,6 +399,7 @@ class Shadow(Patch):
             %(Patch:kwdoc)s
         """
         ...
+
     def get_path(self): ...
     def get_patch_transform(self): ...
     def draw(self, renderer):  # -> None:
@@ -420,53 +452,68 @@ class Rectangle(Patch):
             %(Patch:kwdoc)s
         """
         ...
+
     def get_path(self):  # -> Path:
         """Return the vertices of the rectangle."""
         ...
+
     def get_patch_transform(
         self,
     ):  # -> Transform | BboxTransformTo | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType:
         ...
+
     @property
     def rotation_point(self):  # -> tuple[Unknown, ...]:
         """The rotation point of the patch."""
         ...
+
     @rotation_point.setter
     def rotation_point(self, value):  # -> None:
         ...
+
     def get_x(self):
         """Return the left coordinate of the rectangle."""
         ...
+
     def get_y(self):
         """Return the bottom coordinate of the rectangle."""
         ...
+
     def get_xy(self):  # -> tuple[Unknown, Unknown]:
         """Return the left and bottom coords of the rectangle as a tuple."""
         ...
+
     def get_corners(self):
         """
         Return the corners of the rectangle, moving anti-clockwise from
         (x0, y0).
         """
         ...
+
     def get_center(self):
         """Return the centre of the rectangle."""
         ...
+
     def get_width(self):  # -> Unknown:
         """Return the width of the rectangle."""
         ...
+
     def get_height(self):  # -> Unknown:
         """Return the height of the rectangle."""
         ...
+
     def get_angle(self):  # -> float:
         """Get the rotation angle in degrees."""
         ...
+
     def set_x(self, x):  # -> None:
         """Set the left coordinate of the rectangle."""
         ...
+
     def set_y(self, y):  # -> None:
         """Set the bottom coordinate of the rectangle."""
         ...
+
     def set_angle(self, angle):  # -> None:
         """
         Set the rotation angle in degrees.
@@ -474,6 +521,7 @@ class Rectangle(Patch):
         The rotation is performed anti-clockwise around *xy*.
         """
         ...
+
     def set_xy(self, xy):  # -> None:
         """
         Set the left and bottom coordinates of the rectangle.
@@ -483,12 +531,15 @@ class Rectangle(Patch):
         xy : (float, float)
         """
         ...
+
     def set_width(self, w):  # -> None:
         """Set the width of the rectangle."""
         ...
+
     def set_height(self, h):  # -> None:
         """Set the height of the rectangle."""
         ...
+
     def set_bounds(self, *args):  # -> None:
         """
         Set the bounds of the rectangle as *left*, *bottom*, *width*, *height*.
@@ -501,6 +552,7 @@ class Rectangle(Patch):
         .. ACCEPTS: (left, bottom, width, height)
         """
         ...
+
     def get_bbox(self):  # -> Bbox:
         """Return the `.Bbox`."""
         ...
@@ -534,6 +586,7 @@ class RegularPolygon(Patch):
             %(Patch:kwdoc)s
         """
         ...
+
     def get_path(self): ...
     def get_patch_transform(self):  # -> Affine2D:
         ...
@@ -553,8 +606,10 @@ class PathPatch(Patch):
         %(Patch:kwdoc)s
         """
         ...
+
     def get_path(self):  # -> Unknown:
         ...
+
     def set_path(self, path):  # -> None:
         ...
 
@@ -596,9 +651,11 @@ class StepPatch(PathPatch):
         %(Patch:kwdoc)s
         """
         ...
+
     def get_data(self):  # -> StairData:
         """Get `.StepPatch` values, edges and baseline as namedtuple."""
         ...
+
     def set_data(self, values=..., edges=..., baseline=...):  # -> None:
         """
         Set `.StepPatch` values, edges and baseline.
@@ -630,12 +687,15 @@ class Polygon(Patch):
         %(Patch:kwdoc)s
         """
         ...
+
     def get_path(self):  # -> Path:
         """Get the `.Path` of the polygon."""
         ...
+
     def get_closed(self):  # -> bool:
         """Return whether the polygon is closed."""
         ...
+
     def set_closed(self, closed):  # -> None:
         """
         Set whether the polygon is closed.
@@ -646,6 +706,7 @@ class Polygon(Patch):
            True if the polygon is closed
         """
         ...
+
     def get_xy(self):  # -> NDArray[Any]:
         """
         Get the vertices of the path.
@@ -656,6 +717,7 @@ class Polygon(Patch):
             The coordinates of the vertices.
         """
         ...
+
     def set_xy(self, xy):  # -> None:
         """
         Set the vertices of the polygon.
@@ -693,16 +755,22 @@ class Wedge(Patch):
         %(Patch:kwdoc)s
         """
         ...
+
     def set_center(self, center):  # -> None:
         ...
+
     def set_radius(self, radius):  # -> None:
         ...
+
     def set_theta1(self, theta1):  # -> None:
         ...
+
     def set_theta2(self, theta2):  # -> None:
         ...
+
     def set_width(self, width):  # -> None:
         ...
+
     def get_path(self):  # -> Path | None:
         ...
 
@@ -744,8 +812,10 @@ class Arrow(Patch):
             properties.
         """
         ...
+
     def get_path(self):  # -> Path:
         ...
+
     def get_patch_transform(self):  # -> Affine2D:
         ...
 
@@ -811,6 +881,7 @@ class FancyArrow(Polygon):
             %(Patch:kwdoc)s
         """
         ...
+
     def set_data(
         self,
         *,
@@ -890,11 +961,14 @@ class Ellipse(Patch):
         %(Patch:kwdoc)s
         """
         ...
+
     def get_path(self):  # -> Path:
         """Return the path of the ellipse."""
         ...
+
     def get_patch_transform(self):  # -> IdentityTransform | Affine2D:
         ...
+
     def set_center(self, xy):  # -> None:
         """
         Set the center of the ellipse.
@@ -904,6 +978,7 @@ class Ellipse(Patch):
         xy : (float, float)
         """
         ...
+
     def get_center(self):  # -> Unknown:
         """Return the center of the ellipse."""
         ...
@@ -917,6 +992,7 @@ class Ellipse(Patch):
         width : float
         """
         ...
+
     def get_width(self):  # -> Unknown:
         """
         Return the width of the ellipse.
@@ -932,6 +1008,7 @@ class Ellipse(Patch):
         height : float
         """
         ...
+
     def get_height(self):  # -> Unknown:
         """Return the height of the ellipse."""
         ...
@@ -945,6 +1022,7 @@ class Ellipse(Patch):
         angle : float
         """
         ...
+
     def get_angle(self):  # -> int:
         """Return the angle of the ellipse."""
         ...
@@ -989,6 +1067,7 @@ class Annulus(Patch):
             %(Patch:kwdoc)s
         """
         ...
+
     def __str__(self) -> str: ...
     def set_center(self, xy):  # -> None:
         """
@@ -999,6 +1078,7 @@ class Annulus(Patch):
         xy : (float, float)
         """
         ...
+
     def get_center(self):
         """Return the center of the annulus."""
         ...
@@ -1014,6 +1094,7 @@ class Annulus(Patch):
         width : float
         """
         ...
+
     def get_width(self):
         """Return the width (thickness) of the annulus ring."""
         ...
@@ -1027,6 +1108,7 @@ class Annulus(Patch):
         angle : float
         """
         ...
+
     def get_angle(self):
         """Return the angle of the annulus."""
         ...
@@ -1040,6 +1122,7 @@ class Annulus(Patch):
         a : float
         """
         ...
+
     def set_semiminor(self, b):  # -> None:
         """
         Set the semi-minor axis *b* of the annulus.
@@ -1049,6 +1132,7 @@ class Annulus(Patch):
         b : float
         """
         ...
+
     def set_radii(self, r):  # -> None:
         """
         Set the semi-major (*a*) and semi-minor radii (*b*) of the annulus.
@@ -1062,6 +1146,7 @@ class Annulus(Patch):
             - If two floats: semi-major and -minor axes of outer ellipse.
         """
         ...
+
     def get_radii(self):  # -> tuple[float | Unknown, float | Unknown]:
         """Return the semi-major and semi-minor radii of the annulus."""
         ...
@@ -1088,6 +1173,7 @@ class Circle(Ellipse):
         %(Patch:kwdoc)s
         """
         ...
+
     def set_radius(self, radius):  # -> None:
         """
         Set the radius of the circle.
@@ -1097,6 +1183,7 @@ class Circle(Ellipse):
         radius : float
         """
         ...
+
     def get_radius(self):
         """Return the radius of the circle."""
         ...
@@ -1149,6 +1236,7 @@ class Arc(Ellipse):
         %(Patch:kwdoc)s
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         """
@@ -1225,17 +1313,21 @@ class _Style:
 
     def __init_subclass__(cls):  # -> None:
         ...
+
     def __new__(cls, stylename, **kwargs):
         """Return the instance of the subclass with the given style name."""
         ...
+
     @classmethod
     def get_styles(cls):
         """Return a dictionary of available styles."""
         ...
+
     @classmethod
     def pprint_styles(cls):  # -> str:
         """Return the available styles as pretty-printed string."""
         ...
+
     @classmethod
     def register(cls, name, style):  # -> None:
         """Register a new style."""
@@ -1284,8 +1376,10 @@ class BoxStyle(_Style):
                 The amount of padding around the original box.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Circle:
         """A circular box."""
@@ -1298,8 +1392,10 @@ class BoxStyle(_Style):
                 The amount of padding around the original box.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Ellipse:
         """
@@ -1316,8 +1412,10 @@ class BoxStyle(_Style):
                 The amount of padding around the original box.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class LArrow:
         """A box in the shape of a left-pointing arrow."""
@@ -1330,14 +1428,17 @@ class BoxStyle(_Style):
                 The amount of padding around the original box.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class RArrow(LArrow):
         """A box in the shape of a right-pointing arrow."""
 
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class DArrow:
         """A box in the shape of a two-way arrow."""
@@ -1350,8 +1451,10 @@ class BoxStyle(_Style):
                 The amount of padding around the original box.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Round:
         """A box with round corners."""
@@ -1366,8 +1469,10 @@ class BoxStyle(_Style):
                 Radius of the corners.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Round4:
         """A box with rounded edges."""
@@ -1382,8 +1487,10 @@ class BoxStyle(_Style):
                 Rounding of edges.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Sawtooth:
         """A box with a sawtooth outline."""
@@ -1398,8 +1505,10 @@ class BoxStyle(_Style):
                 Size of the sawtooth.
             """
             ...
+
         def __call__(self, x0, y0, width, height, mutation_size):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Roundtooth(Sawtooth):
         """A box with a rounded sawtooth outline."""
@@ -1472,6 +1581,7 @@ class ConnectionStyle(_Style):
             *posB*; then clip and shrink the path.
             """
             ...
+
     @_register_style(_style_list)
     class Arc3(_Base):
         """
@@ -1490,8 +1600,10 @@ class ConnectionStyle(_Style):
               Curvature of the curve.
             """
             ...
+
         def connect(self, posA, posB):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Angle3(_Base):
         """
@@ -1512,8 +1624,10 @@ class ConnectionStyle(_Style):
               Ending angle of the path.
             """
             ...
+
         def connect(self, posA, posB):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Angle(_Base):
         """
@@ -1538,8 +1652,10 @@ class ConnectionStyle(_Style):
               Rounding radius of the edge.
             """
             ...
+
         def connect(self, posA, posB):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Arc(_Base):
         """
@@ -1570,8 +1686,10 @@ class ConnectionStyle(_Style):
               Rounding radius of the edges.
             """
             ...
+
         def connect(self, posA, posB):  # -> Path:
             ...
+
     @_register_style(_style_list)
     class Bar(_Base):
         """
@@ -1599,6 +1717,7 @@ class ConnectionStyle(_Style):
                 Angle of the connecting line (if None, parallel to A and B).
             """
             ...
+
         def connect(self, posA, posB):  # -> Path:
             ...
 
@@ -1674,6 +1793,7 @@ class ArrowStyle(_Style):
             control points if true.
             """
             ...
+
         def transmute(self, path, mutation_size, linewidth):
             """
             The transmute method is the very core of the ArrowStyle class and
@@ -1687,6 +1807,7 @@ class ArrowStyle(_Style):
             paths and list of booleans of the same length.
             """
             ...
+
         def __call__(
             self, path, mutation_size, linewidth, aspect_ratio=...
         ):  # -> tuple[list[Path], Iterable[Any]] | tuple[Unknown, Unknown]:
@@ -1738,10 +1859,12 @@ class ArrowStyle(_Style):
                 The scale of the brackets.
             """
             ...
+
         def transmute(
             self, path, mutation_size, linewidth
         ):  # -> tuple[list[Path], list[bool]]:
             ...
+
     @_register_style(_style_list, name="-")
     class Curve(_Curve):
         """A simple curve without any arrow head."""
@@ -1753,31 +1876,37 @@ class ArrowStyle(_Style):
         """An arrow with a head at its start point."""
 
         arrow = ...
+
     @_register_style(_style_list, name="->")
     class CurveB(_Curve):
         """An arrow with a head at its end point."""
 
         arrow = ...
+
     @_register_style(_style_list, name="<->")
     class CurveAB(_Curve):
         """An arrow with heads both at the start and the end point."""
 
         arrow = ...
+
     @_register_style(_style_list, name="<|-")
     class CurveFilledA(_Curve):
         """An arrow with filled triangle head at the start."""
 
         arrow = ...
+
     @_register_style(_style_list, name="-|>")
     class CurveFilledB(_Curve):
         """An arrow with filled triangle head at the end."""
 
         arrow = ...
+
     @_register_style(_style_list, name="<|-|>")
     class CurveFilledAB(_Curve):
         """An arrow with filled triangle heads at both ends."""
 
         arrow = ...
+
     @_register_style(_style_list, name="]-")
     class BracketA(_Curve):
         """An arrow with an outward square bracket at its start."""
@@ -1796,6 +1925,7 @@ class ArrowStyle(_Style):
                 0 degrees means perpendicular to the line.
             """
             ...
+
     @_register_style(_style_list, name="-[")
     class BracketB(_Curve):
         """An arrow with an outward square bracket at its end."""
@@ -1814,6 +1944,7 @@ class ArrowStyle(_Style):
                 0 degrees means perpendicular to the line.
             """
             ...
+
     @_register_style(_style_list, name="]-[")
     class BracketAB(_Curve):
         """An arrow with outward square brackets at both ends."""
@@ -1840,6 +1971,7 @@ class ArrowStyle(_Style):
                 0 degrees means perpendicular to the line.
             """
             ...
+
     @_register_style(_style_list, name="|-|")
     class BarAB(_Curve):
         """An arrow with vertical bars ``|`` at both ends."""
@@ -1856,6 +1988,7 @@ class ArrowStyle(_Style):
                 0 degrees means perpendicular to the line.
             """
             ...
+
     @_register_style(_style_list, name="]->")
     class BracketCurve(_Curve):
         """
@@ -1877,6 +2010,7 @@ class ArrowStyle(_Style):
                 0 degrees means perpendicular to the line.
             """
             ...
+
     @_register_style(_style_list, name="<-[")
     class CurveBracket(_Curve):
         """
@@ -1898,6 +2032,7 @@ class ArrowStyle(_Style):
                 0 degrees means perpendicular to the line.
             """
             ...
+
     @_register_style(_style_list)
     class Simple(_Base):
         """A simple arrow. Only works with a quadratic Bézier curve."""
@@ -1916,10 +2051,12 @@ class ArrowStyle(_Style):
                 Width of the arrow tail.
             """
             ...
+
         def transmute(
             self, path, mutation_size, linewidth
         ):  # -> tuple[Path, Literal[True]]:
             ...
+
     @_register_style(_style_list)
     class Fancy(_Base):
         """A fancy arrow. Only works with a quadratic Bézier curve."""
@@ -1938,10 +2075,12 @@ class ArrowStyle(_Style):
                 Width of the arrow tail.
             """
             ...
+
         def transmute(
             self, path, mutation_size, linewidth
         ):  # -> tuple[Path, Literal[True]]:
             ...
+
     @_register_style(_style_list)
     class Wedge(_Base):
         """
@@ -1961,6 +2100,7 @@ class ArrowStyle(_Style):
                 Fraction of the arrow width at the middle point.
             """
             ...
+
         def transmute(
             self, path, mutation_size, linewidth
         ):  # -> tuple[Path, Literal[True]]:
@@ -2030,6 +2170,7 @@ class FancyBboxPatch(Patch):
         %(Patch:kwdoc)s
         """
         ...
+
     @_docstring.dedent_interpd
     def set_boxstyle(self, boxstyle=..., **kwargs):  # -> str | None:
         """
@@ -2064,9 +2205,11 @@ class FancyBboxPatch(Patch):
             set_boxstyle("round", pad=0.2)
         """
         ...
+
     def get_boxstyle(self):  # -> BoxStyle:
         """Return the boxstyle object."""
         ...
+
     def set_mutation_scale(self, scale):  # -> None:
         """
         Set the mutation scale.
@@ -2076,9 +2219,11 @@ class FancyBboxPatch(Patch):
         scale : float
         """
         ...
+
     def get_mutation_scale(self):  # -> int:
         """Return the mutation scale."""
         ...
+
     def set_mutation_aspect(self, aspect):  # -> None:
         """
         Set the aspect ratio of the bbox mutation.
@@ -2088,24 +2233,31 @@ class FancyBboxPatch(Patch):
         aspect : float
         """
         ...
+
     def get_mutation_aspect(self):  # -> int:
         """Return the aspect ratio of the bbox mutation."""
         ...
+
     def get_path(self):  # -> Path:
         """Return the mutated path of the rectangle."""
         ...
+
     def get_x(self):
         """Return the left coord of the rectangle."""
         ...
+
     def get_y(self):
         """Return the bottom coord of the rectangle."""
         ...
+
     def get_width(self):  # -> Unknown:
         """Return the width of the rectangle."""
         ...
+
     def get_height(self):  # -> Unknown:
         """Return the height of the rectangle."""
         ...
+
     def set_x(self, x):  # -> None:
         """
         Set the left coord of the rectangle.
@@ -2115,6 +2267,7 @@ class FancyBboxPatch(Patch):
         x : float
         """
         ...
+
     def set_y(self, y):  # -> None:
         """
         Set the bottom coord of the rectangle.
@@ -2124,6 +2277,7 @@ class FancyBboxPatch(Patch):
         y : float
         """
         ...
+
     def set_width(self, w):  # -> None:
         """
         Set the rectangle width.
@@ -2133,6 +2287,7 @@ class FancyBboxPatch(Patch):
         w : float
         """
         ...
+
     def set_height(self, h):  # -> None:
         """
         Set the rectangle height.
@@ -2142,6 +2297,7 @@ class FancyBboxPatch(Patch):
         h : float
         """
         ...
+
     def set_bounds(self, *args):  # -> None:
         """
         Set the bounds of the rectangle.
@@ -2159,6 +2315,7 @@ class FancyBboxPatch(Patch):
             The width/height of the rectangle.
         """
         ...
+
     def get_bbox(self):  # -> Bbox:
         """Return the `.Bbox`."""
         ...
@@ -2256,6 +2413,7 @@ default: 'arc3'
             ``joinstyle`` for `FancyArrowPatch` are set to ``"round"``.
         """
         ...
+
     def set_positions(self, posA, posB):  # -> None:
         """
         Set the start and end positions of the connecting path.
@@ -2267,6 +2425,7 @@ default: 'arc3'
             `None` use current value.
         """
         ...
+
     def set_patchA(self, patchA):  # -> None:
         """
         Set the tail patch.
@@ -2276,6 +2435,7 @@ default: 'arc3'
         patchA : `.patches.Patch`
         """
         ...
+
     def set_patchB(self, patchB):  # -> None:
         """
         Set the head patch.
@@ -2285,6 +2445,7 @@ default: 'arc3'
         patchB : `.patches.Patch`
         """
         ...
+
     @_docstring.dedent_interpd
     def set_connectionstyle(self, connectionstyle=..., **kwargs):  # -> str | None:
         """
@@ -2319,9 +2480,11 @@ default: 'arc3'
             set_connectionstyle("arc", armA=30, rad=10)
         """
         ...
+
     def get_connectionstyle(self):  # -> ConnectionStyle:
         """Return the `ConnectionStyle` used."""
         ...
+
     def set_arrowstyle(self, arrowstyle=..., **kwargs):  # -> str | None:
         """
         Set the arrow style, possibly with further attributes.
@@ -2355,9 +2518,11 @@ default: 'arc3'
             set_arrowstyle("fancy", head_length=0.2)
         """
         ...
+
     def get_arrowstyle(self):  # -> ArrowStyle:
         """Return the arrowstyle object."""
         ...
+
     def set_mutation_scale(self, scale):  # -> None:
         """
         Set the mutation scale.
@@ -2367,6 +2532,7 @@ default: 'arc3'
         scale : float
         """
         ...
+
     def get_mutation_scale(self):  # -> int:
         """
         Return the mutation scale.
@@ -2376,6 +2542,7 @@ default: 'arc3'
         scalar
         """
         ...
+
     def set_mutation_aspect(self, aspect):  # -> None:
         """
         Set the aspect ratio of the bbox mutation.
@@ -2385,12 +2552,15 @@ default: 'arc3'
         aspect : float
         """
         ...
+
     def get_mutation_aspect(self):  # -> int:
         """Return the aspect ratio of the bbox mutation."""
         ...
+
     def get_path(self):  # -> Path:
         """Return the path of the arrow in the data coordinates."""
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -2488,6 +2658,7 @@ class ConnectionPatch(FancyArrowPatch):
 
         """
         ...
+
     def set_annotation_clip(self, b):  # -> None:
         """
         Set the annotation's clipping behavior.
@@ -2502,6 +2673,7 @@ class ConnectionPatch(FancyArrowPatch):
               outside the axes and ``self.xycoords == "data"``.
         """
         ...
+
     def get_annotation_clip(self):  # -> None:
         """
         Return the clipping behavior.
@@ -2509,5 +2681,6 @@ class ConnectionPatch(FancyArrowPatch):
         See `.set_annotation_clip` for the meaning of the return value.
         """
         ...
+
     def draw(self, renderer):  # -> None:
         ...

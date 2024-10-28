@@ -35,7 +35,8 @@ from ..types import (
     Vec4f,
 )
 
-jax.config.update("jax_array", True)  # pyright: ignore[reportUnknownMemberType]
+if hasattr(jax.config, "jax_array"):
+    jax.config.update("jax_array", True)  # pyright: ignore[reportUnknownMemberType]
 
 Triangle3f: TypeAlias = Float[Array, "3 3"]
 Triangle2f: TypeAlias = Float[Array, "3 2"]
@@ -191,14 +192,16 @@ class PhongTextureDarbouxShader(
         uv = cast(Vec2f, smooth_interpolation(values.uv))
         assert isinstance(uv, Vec2f)
 
-        varying: PhongTextureDarbouxExtraFragmentData = PhongTextureDarbouxExtraFragmentData(
-            normal=normal,
-            uv=uv,
-            # pick first of the 3, as they are the same
-            # noticed that `values` are batches, so here values.triangle is
-            # actually in the shape of (3, 3, 3)
-            triangle=values.triangle[0],
-            triangle_uv=values.triangle_uv[0],
+        varying: PhongTextureDarbouxExtraFragmentData = (
+            PhongTextureDarbouxExtraFragmentData(
+                normal=normal,
+                uv=uv,
+                # pick first of the 3, as they are the same
+                # noticed that `values` are batches, so here values.triangle is
+                # actually in the shape of (3, 3, 3)
+                triangle=values.triangle[0],
+                triangle_uv=values.triangle_uv[0],
+            )
         )
         assert isinstance(varying.triangle, Triangle3f)
         assert isinstance(varying.triangle_uv, Triangle2f)

@@ -44,23 +44,27 @@ class MathtextBackend:
     def set_canvas_size(self, w, h, d):  # -> None:
         """Set the dimension of the drawing canvas."""
         ...
+
     def render_glyph(self, ox, oy, info):
         """
         Draw a glyph described by *info* to the reference point (*ox*,
         *oy*).
         """
         ...
+
     def render_rect_filled(self, x1, y1, x2, y2):
         """
         Draw a filled black rectangle from (*x1*, *y1*) to (*x2*, *y2*).
         """
         ...
+
     def get_results(self, box):
         """
         Return a backend-specific tuple to return to the backend after
         all processing is done.
         """
         ...
+
     def get_hinting_type(self):
         """
         Get the FreeType hinting type to use with this particular
@@ -78,12 +82,16 @@ class MathtextBackendAgg(MathtextBackend):
     def __init__(self) -> None: ...
     def set_canvas_size(self, w, h, d):  # -> None:
         ...
+
     def render_glyph(self, ox, oy, info):  # -> None:
         ...
+
     def render_rect_filled(self, x1, y1, x2, y2):  # -> None:
         ...
+
     def get_results(self, box):  # -> RasterParse:
         ...
+
     def get_hinting_type(self): ...
 
 @_api.deprecated("3.6")
@@ -97,8 +105,10 @@ class MathtextBackendPath(MathtextBackend):
     def __init__(self) -> None: ...
     def render_glyph(self, ox, oy, info):  # -> None:
         ...
+
     def render_rect_filled(self, x1, y1, x2, y2):  # -> None:
         ...
+
     def get_results(self, box):  # -> VectorParse:
         ...
 
@@ -119,6 +129,7 @@ class MathTextParser:
             `RasterParse` ("agg", or its synonym "macosx").
         """
         ...
+
     def parse(self, s, dpi=..., prop=...):  # -> VectorParse | RasterParse | None:
         """
         Parse the given math expression *s* at the given *dpi*.  If *prop* is

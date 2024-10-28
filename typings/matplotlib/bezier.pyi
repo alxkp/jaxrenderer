@@ -101,23 +101,28 @@ class BezierSegment:
             Value of the curve for each point in *t*.
         """
         ...
+
     def point_at_t(self, t):  # -> tuple[Any, ...]:
         """
         Evaluate the curve at a single point, returning a tuple of *d* floats.
         """
         ...
+
     @property
     def control_points(self):  # -> NDArray[Unknown]:
         """The control points of the curve."""
         ...
+
     @property
     def dimension(self):  # -> int:
         """The dimension of the curve."""
         ...
+
     @property
     def degree(self):  # -> int:
         """Degree of the polynomial. One less the number of control points."""
         ...
+
     @property
     def polynomial_coefficients(self):  # -> Any:
         r"""
@@ -144,6 +149,7 @@ class BezierSegment:
         where :math:`P_i` are the control points of the curve.
         """
         ...
+
     def axis_aligned_extrema(self):  # -> tuple[NDArray[Unknown], NDArray[Unknown]]:
         """
         Return the dimension and location of the curve's interior extrema.

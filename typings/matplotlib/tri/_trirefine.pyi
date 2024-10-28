@@ -82,6 +82,7 @@ class UniformTriRefiner(TriRefiner):
             Returned only if *return_tri_index* is set to True.
         """
         ...
+
     def refine_field(
         self, z, triinterpolator=..., subdiv=...
     ):  # -> tuple[Unknown | Triangulation, Unknown]:

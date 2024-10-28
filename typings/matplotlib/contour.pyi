@@ -120,10 +120,12 @@ class ContourLabeler:
             A list of `.Text` instances for the labels.
         """
         ...
+
     @_api.deprecated("3.7", alternative="cs.labelTexts[0].get_font()")
     @property
     def labelFontProps(self):  # -> FontProperties:
         ...
+
     @_api.deprecated(
         "3.7",
         alternative="[cs.labelTexts[0].get_font().get_size()] * len(cs.labelLevelList)",
@@ -131,23 +133,29 @@ class ContourLabeler:
     @property
     def labelFontSizeList(self):  # -> list[float | Unknown]:
         ...
+
     @_api.deprecated("3.7", alternative="cs.labelTexts")
     @property
     def labelTextsList(self):  # -> silent_list:
         ...
+
     def print_label(self, linecontour, labelwidth):
         """Return whether a contour is long enough to hold a label."""
         ...
+
     def too_close(self, x, y, lw):  # -> bool:
         """Return whether a label is already near this location."""
         ...
+
     @_api.deprecated("3.7", alternative="Artist.set")
     def set_label_props(self, label, text, color):  # -> None:
         """Set the label properties - color, fontsize, text."""
         ...
+
     def get_text(self, lev, fmt):  # -> str:
         """Get the text of the label."""
         ...
+
     def locate_label(
         self, linecontour, labelwidth
     ):  # -> tuple[Any | Unbound, Any | Unbound, Any | int]:
@@ -155,6 +163,7 @@ class ContourLabeler:
         Find good place to draw a label (relatively flat part of the contour).
         """
         ...
+
     def calc_label_rot_and_inline(
         self, slc, ind, lw, lc=..., spacing=...
     ):  # -> tuple[Any, list[Unknown]]:
@@ -177,12 +186,15 @@ class ContourLabeler:
         break contour if desired.
         """
         ...
+
     def add_label(self, x, y, rotation, lev, cvalue):  # -> None:
         """Add contour label without `.Text.set_transform_rotates_text`."""
         ...
+
     def add_label_clabeltext(self, x, y, rotation, lev, cvalue):  # -> None:
         """Add contour label with `.Text.set_transform_rotates_text`."""
         ...
+
     def add_label_near(
         self, x, y, inline=..., inline_spacing=..., transform=...
     ):  # -> None:
@@ -206,11 +218,14 @@ class ContourLabeler:
             interpreted as display coordinates.
         """
         ...
+
     def pop_label(self, index=...):  # -> None:
         """Defaults to removing last label, but any index can be supplied"""
         ...
+
     def labels(self, inline, inline_spacing):  # -> None:
         ...
+
     def remove(self):  # -> None:
         ...
 
@@ -328,11 +343,14 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
             `~.Axes.contour`.
         """
         ...
+
     def get_transform(self):  # -> Transform:
         """Return the `.Transform` instance used by this ContourSet."""
         ...
+
     def __getstate__(self):  # -> dict[str, Any]:
         ...
+
     def legend_elements(
         self, variable_name=..., str_format=...
     ):  # -> tuple[list[Unknown], list[Unknown]]:
@@ -358,17 +376,21 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
             A list of the labels.
         """
         ...
+
     def changed(self):  # -> None:
         ...
+
     def get_alpha(self):  # -> None:
         """Return alpha to be applied to all ContourSet artists."""
         ...
+
     def set_alpha(self, alpha):  # -> None:
         """
         Set the alpha blending value for all ContourSet artists.
         *alpha* must be between 0 (transparent) and 1 (opaque).
         """
         ...
+
     def find_nearest_contour(
         self, x, y, indices=..., pixel=...
     ):  # -> tuple[int | Unknown | None, int | None, signedinteger[_NBitIntP] | Literal[0] | None, Unknown | None, Unknown | None, float | Unknown]:
@@ -405,6 +427,7 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
             The squared distance from ``(xmin, ymin)`` to ``(x, y)``.
         """
         ...
+
     def remove(self):  # -> None:
         ...
 

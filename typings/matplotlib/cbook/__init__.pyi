@@ -45,6 +45,7 @@ class _StrongRef:
     def __init__(self, obj) -> None: ...
     def __call__(self):  # -> Unknown:
         ...
+
     def __eq__(self, other) -> bool: ...
     def __hash__(self) -> int: ...
 
@@ -110,11 +111,14 @@ class CallbackRegistry:
         self,
     ):  # -> dict[str, Any | dict[Unknown, dict[Unknown, Unknown | None]] | int | None]:
         ...
+
     def __setstate__(self, state):  # -> None:
         ...
+
     def connect(self, signal, func):  # -> int:
         """Register *func* to be called when signal *signal* is generated."""
         ...
+
     def disconnect(self, cid):  # -> None:
         """
         Disconnect the callback registered with callback id *cid*.
@@ -122,6 +126,7 @@ class CallbackRegistry:
         No error is raised if such a callback does not exist.
         """
         ...
+
     def process(self, s, *args, **kwargs):  # -> None:
         """
         Process signal *s*.
@@ -130,6 +135,7 @@ class CallbackRegistry:
         called with ``*args`` and ``**kwargs``.
         """
         ...
+
     @contextlib.contextmanager
     def blocked(self, *, signal=...):  # -> Generator[None, Any, None]:
         """
@@ -293,15 +299,19 @@ class Stack:
     def __call__(self):  # -> None:
         """Return the current element, or None."""
         ...
+
     def __len__(self):  # -> int:
         ...
+
     def __getitem__(self, ind): ...
     def forward(self):  # -> None:
         """Move the position forward and return the current element."""
         ...
+
     def back(self):  # -> None:
         """Move the position back and return the current element."""
         ...
+
     def push(self, o):  # -> None:
         """
         Push *o* to the stack at current position.  Discard all later elements.
@@ -309,6 +319,7 @@ class Stack:
         *o* is returned.
         """
         ...
+
     def home(self):  # -> None:
         """
         Push the first element onto the top of the stack.
@@ -316,12 +327,15 @@ class Stack:
         The first element is returned.
         """
         ...
+
     def empty(self):  # -> bool:
         """Return whether the stack is empty."""
         ...
+
     def clear(self):  # -> None:
         """Empty the stack."""
         ...
+
     def bubble(self, o):
         """
         Raise all references of *o* to the top of the stack, and return it.
@@ -332,6 +346,7 @@ class Stack:
             If *o* is not in the stack.
         """
         ...
+
     def remove(self, o):  # -> None:
         """
         Remove *o* from the stack.
@@ -399,19 +414,24 @@ class Grouper:
     def __init__(self, init=...) -> None: ...
     def __contains__(self, item):  # -> bool:
         ...
+
     def clean(self):  # -> None:
         """Clean dead weak references from the dictionary."""
         ...
+
     def join(self, a, *args):  # -> None:
         """
         Join given arguments into the same set.  Accepts one or more arguments.
         """
         ...
+
     def joined(self, a, b):  # -> bool:
         """Return whether *a* and *b* are members of the same set."""
         ...
+
     def remove(self, a):  # -> None:
         ...
+
     def __iter__(self):  # -> Generator[list[Unknown | None], Any, None]:
         """
         Iterate over each of the disjoint sets as a list.
@@ -419,6 +439,7 @@ class Grouper:
         The iterator is invalid if interleaved with calls to join().
         """
         ...
+
     def get_siblings(self, a):  # -> list[Unknown | None]:
         """Return all of the items joined with *a*, including itself."""
         ...
@@ -432,6 +453,7 @@ class GrouperView:
         def __init__(self, deprecated_kw=...) -> None: ...
         def __set_name__(self, owner, name):  # -> None:
             ...
+
     __contains__ = ...
     __iter__ = ...
     joined = ...
@@ -812,11 +834,15 @@ class _OrderedSet(collections.abc.MutableSet):
     def __init__(self) -> None: ...
     def __contains__(self, key):  # -> bool:
         ...
+
     def __iter__(self):  # -> Iterator[Unknown]:
         ...
+
     def __len__(self):  # -> int:
         ...
+
     def add(self, key):  # -> None:
         ...
+
     def discard(self, key):  # -> None:
         ...

@@ -113,15 +113,18 @@ class Path:
             and codes as read-only arrays.
         """
         ...
+
     @property
     def vertices(self):  # -> NDArray[Any]:
         """
         The list of vertices in the `Path` as an Nx2 numpy array.
         """
         ...
+
     @vertices.setter
     def vertices(self, vertices):  # -> None:
         ...
+
     @property
     def codes(self):  # -> NDArray[code_type] | None:
         """
@@ -133,9 +136,11 @@ class Path:
         the same.
         """
         ...
+
     @codes.setter
     def codes(self, codes):  # -> None:
         ...
+
     @property
     def simplify_threshold(self):  # -> None:
         """
@@ -143,30 +148,36 @@ class Path:
         be simplified out.
         """
         ...
+
     @simplify_threshold.setter
     def simplify_threshold(self, threshold):  # -> None:
         ...
+
     @property
     def should_simplify(self):  # -> bool_ | bool | None:
         """
         `True` if the vertices array should be simplified.
         """
         ...
+
     @should_simplify.setter
     def should_simplify(self, should_simplify):  # -> None:
         ...
+
     @property
     def readonly(self):  # -> bool:
         """
         `True` if the `Path` is read-only.
         """
         ...
+
     def copy(self):  # -> Self@Path:
         """
         Return a shallow copy of the `Path`, which will share the
         vertices and codes with the source `Path`.
         """
         ...
+
     def __deepcopy__(self, memo=...):  # -> object:
         """
         Return a deepcopy of the `Path`.  The `Path` will not be
@@ -187,6 +198,7 @@ class Path:
         XY : (numpolys, numsides, 2) array
         """
         ...
+
     @classmethod
     def make_compound_path(cls, *args):  # -> Path | Self@Path:
         """
@@ -194,10 +206,13 @@ class Path:
         all `Path.STOP` control points.
         """
         ...
+
     def __repr__(self):  # -> str:
         ...
+
     def __len__(self):  # -> int:
         ...
+
     def iter_segments(
         self,
         transform=...,
@@ -248,6 +263,7 @@ class Path:
             (scale, length, randomness), representing the sketch parameters.
         """
         ...
+
     def iter_bezier(
         self, **kwargs
     ):  # -> Generator[tuple[BezierSegment, Unknown], Any, None]:
@@ -273,6 +289,7 @@ class Path:
             chosen based on the start/end points of the current stroke.
         """
         ...
+
     def cleaned(
         self,
         transform=...,
@@ -294,6 +311,7 @@ class Path:
         Path.iter_segments : for details of the keyword arguments.
         """
         ...
+
     def transformed(self, transform):  # -> Path:
         """
         Return a transformed copy of the path.
@@ -305,6 +323,7 @@ class Path:
             automatically update when the transform changes.
         """
         ...
+
     def contains_point(self, point, transform=..., radius=...):
         """
         Return whether the area enclosed by the path contains the given point.
@@ -345,6 +364,7 @@ class Path:
           the result is not guaranteed to be correct.
         """
         ...
+
     def contains_points(self, points, transform=..., radius=...):
         """
         Return whether the area enclosed by the path contains the given points.
@@ -385,6 +405,7 @@ class Path:
           the result is not guaranteed to be correct.
         """
         ...
+
     def contains_path(self, path, transform=...):
         """
         Return whether this (closed) path completely contains the given path.
@@ -393,6 +414,7 @@ class Path:
         checking for containment.
         """
         ...
+
     def get_extents(self, transform=..., **kwargs):  # -> Bbox:
         """
         Get Bbox of the path.
@@ -410,6 +432,7 @@ class Path:
             The extents of the path Bbox([[xmin, ymin], [xmax, ymax]])
         """
         ...
+
     def intersects_path(self, other, filled=...):
         """
         Return whether if this path intersects another given path.
@@ -418,6 +441,7 @@ class Path:
         encloses the other (i.e., the paths are treated as filled).
         """
         ...
+
     def intersects_bbox(self, bbox, filled=...):
         """
         Return whether this path intersects a given `~.transforms.Bbox`.
@@ -428,6 +452,7 @@ class Path:
         The bounding box is always considered filled.
         """
         ...
+
     def interpolated(self, steps):  # -> Self@Path | Path:
         """
         Return a new path resampled to length N x steps.
@@ -435,6 +460,7 @@ class Path:
         Codes other than LINETO are not handled correctly.
         """
         ...
+
     def to_polygons(
         self, transform=..., width=..., height=..., closed_only=...
     ):  # -> list[Unknown] | list[list[Unknown | Any] | Unknown | NDArray[Any]]:
@@ -482,6 +508,7 @@ class Path:
         numVertices and radius of 1.0, centered at (0, 0).
         """
         ...
+
     @classmethod
     def unit_regular_asterisk(cls, numVertices):  # -> Self@Path:
         """
@@ -498,6 +525,7 @@ class Path:
         For most cases, :func:`Path.circle` will be what you want.
         """
         ...
+
     @classmethod
     def circle(cls, center=..., radius=..., readonly=...):  # -> Path:
         """
@@ -530,6 +558,7 @@ class Path:
         See `Path.circle` for the reference on the approximation used.
         """
         ...
+
     @classmethod
     def arc(cls, theta1, theta2, n=..., is_wedge=...):  # -> Self@Path:
         """
@@ -549,6 +578,7 @@ class Path:
            <https://web.archive.org/web/20190318044212/http://www.spaceroots.org/documents/ellipse/index.html>`_.
         """
         ...
+
     @classmethod
     def wedge(cls, theta1, theta2, n=...):  # -> Self@Path:
         """
@@ -566,6 +596,7 @@ class Path:
         See `Path.arc` for the reference on the approximation used.
         """
         ...
+
     @staticmethod
     @lru_cache(8)
     def hatch(hatchpattern, density=...):  # -> Path | None:
@@ -575,6 +606,7 @@ class Path:
         number of lines per unit square.
         """
         ...
+
     def clip_to_bbox(self, bbox, inside=...):  # -> Path | Self@Path:
         """
         Clip the path to the given bounding box.

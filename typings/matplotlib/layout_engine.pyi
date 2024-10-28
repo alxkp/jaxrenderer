@@ -59,6 +59,7 @@ class LayoutEngine:
         Set the parameters for the layout engine.
         """
         ...
+
     @property
     def colorbar_gridspec(self):
         """
@@ -66,6 +67,7 @@ class LayoutEngine:
         gridspec.
         """
         ...
+
     @property
     def adjust_compatible(self):
         """
@@ -73,11 +75,13 @@ class LayoutEngine:
         `~.Figure.subplots_adjust`.
         """
         ...
+
     def get(self):  # -> dict[Unknown, Unknown]:
         """
         Return copy of the parameters for the layout engine.
         """
         ...
+
     def execute(self, fig):
         """
         Execute the layout on the figure given by *fig*.
@@ -132,6 +136,7 @@ class TightLayoutEngine(LayoutEngine):
             (including labels) will fit into.
         """
         ...
+
     def execute(self, fig):  # -> None:
         """
         Execute tight_layout.
@@ -150,6 +155,7 @@ class TightLayoutEngine(LayoutEngine):
         .pyplot.tight_layout
         """
         ...
+
     def set(self, *, pad=..., w_pad=..., h_pad=..., rect=...):  # -> None:
         """
         Set the pads for tight_layout.
@@ -213,6 +219,7 @@ class ConstrainedLayoutEngine(LayoutEngine):
             a grid of images).  See :ref:`compressed_layout`.
         """
         ...
+
     def execute(self, fig):  # -> dict[Unknown, Unknown] | None:
         """
         Perform constrained_layout and move and resize axes accordingly.
@@ -222,6 +229,7 @@ class ConstrainedLayoutEngine(LayoutEngine):
         fig : `.Figure` to perform layout on.
         """
         ...
+
     def set(
         self, *, h_pad=..., w_pad=..., hspace=..., wspace=..., rect=...
     ):  # -> None:

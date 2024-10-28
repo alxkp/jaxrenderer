@@ -28,6 +28,7 @@ class AbstractPathEffect:
             The (x, y) offset to apply to the path, measured in points.
         """
         ...
+
     def draw_path(self, renderer, gc, tpath, affine, rgbFace=...):
         """
         Derived should override this method. The arguments are the same
@@ -59,18 +60,23 @@ class PathEffectRenderer(RendererBase):
 
         """
         ...
+
     def copy_with_path_effect(self, path_effects):  # -> PathEffectRenderer:
         ...
+
     def draw_path(self, gc, tpath, affine, rgbFace=...):  # -> None:
         ...
+
     def draw_markers(
         self, gc, marker_path, marker_trans, path, *args, **kwargs
     ):  # -> None:
         ...
+
     def draw_path_collection(
         self, gc, master_transform, paths, *args, **kwargs
     ):  # -> None:
         ...
+
     def __getattribute__(self, name):  # -> Any:
         ...
 
@@ -94,6 +100,7 @@ class Stroke(AbstractPathEffect):
         gc parameter values.
         """
         ...
+
     def draw_path(self, renderer, gc, tpath, affine, rgbFace):  # -> None:
         """Draw the path with updated gc."""
         ...
@@ -124,6 +131,7 @@ class SimplePatchShadow(AbstractPathEffect):
 
         """
         ...
+
     def draw_path(self, renderer, gc, tpath, affine, rgbFace):  # -> None:
         """
         Overrides the standard draw_path to add the shadow offset and
@@ -158,6 +166,7 @@ class SimpleLineShadow(AbstractPathEffect):
             :meth:`AbstractPathEffect._update_gc`.
         """
         ...
+
     def draw_path(self, renderer, gc, tpath, affine, rgbFace):  # -> None:
         """
         Overrides the standard draw_path to add the shadow offset and
@@ -184,6 +193,7 @@ class PathPatchEffect(AbstractPathEffect):
             "transform" and "clip_path".
         """
         ...
+
     def draw_path(self, renderer, gc, tpath, affine, rgbFace):  # -> None:
         ...
 
@@ -232,6 +242,7 @@ class TickedStroke(AbstractPathEffect):
         See :doc:`/gallery/misc/tickedstroke_demo`.
         """
         ...
+
     def draw_path(self, renderer, gc, tpath, affine, rgbFace):  # -> None:
         """Draw the path with updated gc."""
         ...

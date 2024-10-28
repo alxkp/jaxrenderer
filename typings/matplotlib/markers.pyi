@@ -189,18 +189,25 @@ class MarkerStyle:
             Join style that will override the default join style of the marker.
         """
         ...
+
     def __bool__(self):  # -> bool:
         ...
+
     def is_filled(self):  # -> bool:
         ...
+
     def get_fillstyle(self):  # -> None:
         ...
+
     def get_joinstyle(self):  # -> Literal['miter', 'round', 'bevel']:
         ...
+
     def get_capstyle(self):  # -> Literal['butt', 'projecting', 'round']:
         ...
+
     def get_marker(self):  # -> ndarray[Unknown, Unknown] | str | Path:
         ...
+
     def get_path(self):  # -> Path | TextPath:
         """
         Return a `.Path` for the primary part of the marker.
@@ -209,12 +216,14 @@ class MarkerStyle:
         this is the area to be drawn with *markerfacecolor*.
         """
         ...
+
     def get_transform(self):  # -> IdentityTransform | Affine2D:
         """
         Return the transform to be applied to the `.Path` from
         `MarkerStyle.get_path()`.
         """
         ...
+
     def get_alt_path(self):  # -> Path | None:
         """
         Return a `.Path` for the alternate part of the marker.
@@ -223,17 +232,21 @@ class MarkerStyle:
         area to be drawn with *markerfacecoloralt*.
         """
         ...
+
     def get_alt_transform(self):  # -> Affine2D:
         """
         Return the transform to be applied to the `.Path` from
         `MarkerStyle.get_alt_path()`.
         """
         ...
+
     def get_snap_threshold(self):  # -> float | None:
         ...
+
     def get_user_transform(self):  # -> None:
         """Return user supplied part of marker transform."""
         ...
+
     def transformed(self, transform: Affine2D):  # -> MarkerStyle:
         """
         Return a new version of this marker with the transform applied.
@@ -244,6 +257,7 @@ class MarkerStyle:
             Transform will be combined with current user supplied transform.
         """
         ...
+
     def rotated(self, *, deg=..., rad=...):  # -> MarkerStyle:
         """
         Return a new version of this marker rotated by specified angle.
@@ -259,6 +273,7 @@ class MarkerStyle:
         .. note:: You must specify exactly one of deg or rad.
         """
         ...
+
     def scaled(self, sx, sy=...):  # -> MarkerStyle:
         """
         Return new marker scaled by specified scale factors.

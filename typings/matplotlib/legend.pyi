@@ -46,6 +46,7 @@ class DraggableLegend(DraggableOffsetBox):
             If "bbox", update the *bbox_to_anchor* parameter.
         """
         ...
+
     def finalize_offset(self):  # -> None:
         ...
 
@@ -149,19 +150,23 @@ class Legend(Artist):
     ):  # -> dict[type[StemContainer] | type[ErrorbarContainer] | type[Line2D] | type[Patch] | type[StepPatch] | type[LineCollection] | type[RegularPolyCollection] | type[CircleCollection] | type[BarContainer] | type[tuple[Unknown, ...]] | type[PathCollection] | type[PolyCollection], HandlerStem | HandlerErrorbar | HandlerLine2D | HandlerPatch | HandlerStepPatch | HandlerLineCollection | HandlerRegularPolyCollection | HandlerCircleCollection | HandlerTuple | HandlerPathCollection | HandlerPolyCollection]:
         """Return the global default handler map, shared by all legends."""
         ...
+
     @classmethod
     def set_default_handler_map(cls, handler_map):  # -> None:
         """Set the global default handler map, shared by all legends."""
         ...
+
     @classmethod
     def update_default_handler_map(cls, handler_map):  # -> None:
         """Update the global default handler map, shared by all legends."""
         ...
+
     def get_legend_handler_map(
         self,
     ):  # -> dict[type[StemContainer] | type[ErrorbarContainer] | type[Line2D] | type[Patch] | type[StepPatch] | type[LineCollection] | type[RegularPolyCollection] | type[CircleCollection] | type[BarContainer] | type[tuple[Unknown, ...]] | type[PathCollection] | type[PolyCollection], HandlerStem | HandlerErrorbar | HandlerLine2D | HandlerPatch | HandlerStepPatch | HandlerLineCollection | HandlerRegularPolyCollection | HandlerCircleCollection | HandlerTuple | HandlerPathCollection | HandlerPolyCollection]:
         """Return this legend instance's handler map."""
         ...
+
     @staticmethod
     def get_legend_handler(legend_handler_map, orig_handle):  # -> None:
         """
@@ -178,20 +183,26 @@ class Legend(Artist):
         returns ``None``.
         """
         ...
+
     def get_children(self):  # -> list[VPacker | FancyBboxPatch | None]:
         ...
+
     def get_frame(self):  # -> FancyBboxPatch:
         """Return the `~.patches.Rectangle` used to frame the legend."""
         ...
+
     def get_lines(self):  # -> list[Line2D]:
         r"""Return the list of `~.lines.Line2D`\s in the legend."""
         ...
+
     def get_patches(self):  # -> silent_list:
         r"""Return the list of `~.patches.Patch`\s in the legend."""
         ...
+
     def get_texts(self):  # -> silent_list:
         r"""Return the list of `~.text.Text`\s in the legend."""
         ...
+
     def set_alignment(self, alignment):  # -> None:
         """
         Set the alignment of the legend title and the box of entries.
@@ -205,9 +216,11 @@ class Legend(Artist):
 
         """
         ...
+
     def get_alignment(self):  # -> str:
         """Get the alignment value of the legend box"""
         ...
+
     def set_title(self, title, prop=...):  # -> None:
         """
         Set legend title and title style.
@@ -225,14 +238,17 @@ class Legend(Artist):
 
         """
         ...
+
     def get_title(self):  # -> Text:
         """Return the `.Text` instance for the legend title."""
         ...
+
     def get_window_extent(self, renderer=...): ...
     def get_tightbbox(self, renderer=...): ...
     def get_frame_on(self):  # -> bool:
         """Get whether the legend box patch is drawn."""
         ...
+
     def set_frame_on(self, b):  # -> None:
         """
         Set whether the legend box patch is drawn.
@@ -246,6 +262,7 @@ class Legend(Artist):
     def get_bbox_to_anchor(self):  # -> TransformedBbox | BboxBase | Bbox:
         """Return the bbox that the legend will be anchored to."""
         ...
+
     def set_bbox_to_anchor(self, bbox, transform=...):  # -> None:
         """
         Set the bbox that the legend will be anchored to.
@@ -267,10 +284,12 @@ class Legend(Artist):
             will use a transform to the bounding box of the parent.
         """
         ...
+
     def contains(
         self, event
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[bool, dict[Unknown, Unknown]]:
         ...
+
     def set_draggable(
         self, state, use_blit=..., update=...
     ):  # -> DraggableLegend | None:
@@ -297,6 +316,7 @@ class Legend(Artist):
             instance. Otherwise this returns *None*.
         """
         ...
+
     def get_draggable(self):  # -> bool:
         """Return ``True`` if the legend is draggable, ``False`` otherwise."""
         ...

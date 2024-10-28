@@ -192,21 +192,25 @@ class FontProperties:
         the order of preference.
         """
         ...
+
     def get_name(self):
         """
         Return the name of the font that best matches the font properties.
         """
         ...
+
     def get_style(self):  # -> None:
         """
         Return the font style.  Values are: 'normal', 'italic' or 'oblique'.
         """
         ...
+
     def get_variant(self):  # -> None:
         """
         Return the font variant.  Values are: 'normal' or 'small-caps'.
         """
         ...
+
     def get_weight(self):  # -> int | None:
         """
         Set the font weight.  Options are: A numeric value in the
@@ -215,6 +219,7 @@ class FontProperties:
         'heavy', 'extra bold', 'black'
         """
         ...
+
     def get_stretch(self):  # -> int | None:
         """
         Return the font stretch or width.  Options are: 'ultra-condensed',
@@ -222,16 +227,19 @@ class FontProperties:
         'semi-expanded', 'expanded', 'extra-expanded', 'ultra-expanded'.
         """
         ...
+
     def get_size(self):  # -> float:
         """
         Return the font size.
         """
         ...
+
     def get_file(self):  # -> None:
         """
         Return the filename of the associated font.
         """
         ...
+
     def get_fontconfig_pattern(self):  # -> str:
         """
         Get a fontconfig_ pattern_ suitable for looking up the font as
@@ -241,6 +249,7 @@ class FontProperties:
         pattern syntax for use here.
         """
         ...
+
     def set_family(self, family):  # -> None:
         """
         Change the font family.  Can be either an alias (generic name
@@ -250,6 +259,7 @@ class FontProperties:
         :rc:`text.usetex` is `True`. Default: :rc:`font.family`
         """
         ...
+
     def set_style(self, style):  # -> None:
         """
         Set the font style.
@@ -259,6 +269,7 @@ class FontProperties:
         style : {'normal', 'italic', 'oblique'}, default: :rc:`font.style`
         """
         ...
+
     def set_variant(self, variant):  # -> None:
         """
         Set the font variant.
@@ -268,6 +279,7 @@ class FontProperties:
         variant : {'normal', 'small-caps'}, default: :rc:`font.variant`
         """
         ...
+
     def set_weight(self, weight):  # -> None:
         """
         Set the font weight.
@@ -280,6 +292,7 @@ class FontProperties:
             If int, must be in the range  0-1000.
         """
         ...
+
     def set_stretch(self, stretch):  # -> None:
         """
         Set the font stretch or width.
@@ -292,6 +305,7 @@ class FontProperties:
             If int, must be in the range  0-1000.
         """
         ...
+
     def set_size(self, size):  # -> None:
         """
         Set the font size.
@@ -304,12 +318,14 @@ class FontProperties:
             sizes relative to the default font size.
         """
         ...
+
     def set_file(self, file):  # -> None:
         """
         Set the filename of the fontfile to use.  In this case, all
         other properties will be ignored.
         """
         ...
+
     def set_fontconfig_pattern(self, pattern):  # -> None:
         """
         Set the properties by parsing a fontconfig_ *pattern*.
@@ -318,6 +334,7 @@ class FontProperties:
         pattern syntax for use here.
         """
         ...
+
     def get_math_fontfamily(self):  # -> None:
         """
         Return the name of the font family used for math text.
@@ -325,6 +342,7 @@ class FontProperties:
         The default font is :rc:`mathtext.fontset`.
         """
         ...
+
     def set_math_fontfamily(self, fontfamily):  # -> None:
         """
         Set the font family for text in math mode.
@@ -344,6 +362,7 @@ class FontProperties:
         .text.Text.get_math_fontfamily
         """
         ...
+
     def copy(self):  # -> Self@FontProperties:
         """Return a copy of self."""
         ...
@@ -406,25 +425,30 @@ class FontManager:
         path : str or path-like
         """
         ...
+
     @property
     def defaultFont(self):  # -> dict[str, Unknown]:
         ...
+
     def get_default_weight(self):  # -> str:
         """
         Return the default font weight.
         """
         ...
+
     @staticmethod
     def get_default_size():  # -> None:
         """
         Return the default font size.
         """
         ...
+
     def set_default_weight(self, weight):  # -> None:
         """
         Set the default font weight.  The initial value is 'normal'.
         """
         ...
+
     def score_family(self, families, family2):  # -> float:
         """
         Return a match score between the list of font families in
@@ -437,6 +461,7 @@ class FontManager:
         No match will return 1.0.
         """
         ...
+
     def score_style(self, style1, style2):  # -> float:
         """
         Return a match score between *style1* and *style2*.
@@ -448,6 +473,7 @@ class FontManager:
         No match returns 1.0.
         """
         ...
+
     def score_variant(self, variant1, variant2):  # -> float:
         """
         Return a match score between *variant1* and *variant2*.
@@ -455,6 +481,7 @@ class FontManager:
         An exact match returns 0.0, otherwise 1.0.
         """
         ...
+
     def score_stretch(self, stretch1, stretch2):  # -> float:
         """
         Return a match score between *stretch1* and *stretch2*.
@@ -464,6 +491,7 @@ class FontManager:
         between 0.0 and 1.0.
         """
         ...
+
     def score_weight(self, weight1, weight2):  # -> float:
         """
         Return a match score between *weight1* and *weight2*.
@@ -476,6 +504,7 @@ class FontManager:
         0.05 and 1.0.
         """
         ...
+
     def score_size(self, size1, size2):  # -> float:
         """
         Return a match score between *size1* and *size2*.
@@ -488,6 +517,7 @@ class FontManager:
         72pt) will lie between 0.0 and 1.0.
         """
         ...
+
     def findfont(
         self,
         prop,
@@ -548,6 +578,7 @@ class FontManager:
            https://www.freedesktop.org/software/fontconfig/fontconfig-user.html
         """
         ...
+
     def get_font_names(self):  # -> list[Unknown]:
         """Return the list of available fonts."""
         ...
@@ -561,7 +592,8 @@ def is_opentype_cff_font(filename):  # -> bool:
     """
     ...
 
-if hasattr(os, "register_at_fork"): ...
+if hasattr(os, "register_at_fork"):
+    ...
 
 @_api.rename_parameter("3.6", "filepath", "font_filepaths")
 def get_font(font_filepaths, hinting_factor=...):

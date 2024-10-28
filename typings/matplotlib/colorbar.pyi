@@ -24,6 +24,7 @@ class _ColorbarSpine(mspines.Spine):
     def get_window_extent(self, renderer=...): ...
     def set_xy(self, xy):  # -> None:
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -120,6 +121,7 @@ class Colorbar:
 
         .. versionadded:: 3.7
     """
+
     n_rasterize = ...
     @_api.delete_parameter("3.6", "filled")
     def __init__(
@@ -149,27 +151,34 @@ class Colorbar:
     def locator(self):
         """Major tick `.Locator` for the colorbar."""
         ...
+
     @locator.setter
     def locator(self, loc):  # -> None:
         ...
+
     @property
     def minorlocator(self):
         """Minor tick `.Locator` for the colorbar."""
         ...
+
     @minorlocator.setter
     def minorlocator(self, loc):  # -> None:
         ...
+
     @property
     def formatter(self):
         """Major tick label `.Formatter` for the colorbar."""
         ...
+
     @formatter.setter
     def formatter(self, fmt):  # -> None:
         ...
+
     @property
     def minorformatter(self):
         """Minor tick `.Formatter` for the colorbar."""
         ...
+
     @minorformatter.setter
     def minorformatter(self, fmt):  # -> None:
         ...
@@ -188,6 +197,7 @@ class Colorbar:
         and locator will be preserved.
         """
         ...
+
     @_api.deprecated("3.6", alternative="fig.draw_without_rendering()")
     def draw_all(self):  # -> None:
         """
@@ -195,6 +205,7 @@ class Colorbar:
         and do all the drawing.
         """
         ...
+
     def add_lines(self, *args, **kwargs):  # -> None:
         """
         Draw lines on the colorbar.
@@ -221,11 +232,13 @@ class Colorbar:
         *levels*, *colors*, and *linewidths* are taken from *contour_set*.
         """
         ...
+
     def update_ticks(self):  # -> None:
         """
         Set up the ticks and ticklabels. This should not be needed by users.
         """
         ...
+
     def set_ticks(self, ticks, *, labels=..., minor=..., **kwargs):  # -> None:
         """
         Set tick locations.
@@ -243,6 +256,7 @@ class Colorbar:
             pass *labels*. In other cases, please use `~.Axes.tick_params`.
         """
         ...
+
     def get_ticks(self, minor=...):
         """
         Return the ticks as a list of locations.
@@ -253,6 +267,7 @@ class Colorbar:
             if True return the minor ticks.
         """
         ...
+
     def set_ticklabels(self, ticklabels, *, minor=..., **kwargs):  # -> None:
         """
         [*Discouraged*] Set tick labels.
@@ -287,14 +302,17 @@ class Colorbar:
             `.Text` properties for the labels.
         """
         ...
+
     def minorticks_on(self):  # -> None:
         """
         Turn on colorbar minor ticks.
         """
         ...
+
     def minorticks_off(self):  # -> None:
         """Turn the minor ticks of the colorbar off."""
         ...
+
     def set_label(self, label, *, loc=..., **kwargs):  # -> None:
         """
         Add a label to the long axis of the colorbar.
@@ -317,6 +335,7 @@ class Colorbar:
             Supported keywords are *labelpad* and `.Text` properties.
         """
         ...
+
     def set_alpha(self, alpha):  # -> None:
         """
         Set the transparency between 0 (transparent) and 1 (opaque).
@@ -325,6 +344,7 @@ class Colorbar:
         transparency values associated with the colormap.
         """
         ...
+
     def remove(self):  # -> None:
         """
         Remove this colorbar from the figure.
@@ -333,6 +353,7 @@ class Colorbar:
         gridspec is restored.
         """
         ...
+
     def drag_pan(self, button, key, x, y):  # -> None:
         ...
 

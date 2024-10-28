@@ -37,6 +37,7 @@ class TriAnalyzer:
             fits exactly inside a unit square.
         """
         ...
+
     def circle_ratios(self, rescale=...):  # -> NDArray[floating[Any]]:
         """
         Return a measure of the triangulation triangles flatness.
@@ -66,6 +67,7 @@ class TriAnalyzer:
 
         """
         ...
+
     def get_flat_tri_mask(self, min_circle_ratio=..., rescale=...):
         """
         Eliminate excessively flat border triangles from the triangulation.

@@ -88,6 +88,7 @@ class RendererBase:
         Only used by the SVG renderer.
         """
         ...
+
     def close_group(self, s):  # -> None:
         """
         Close a grouping element with label *s*.
@@ -95,9 +96,11 @@ class RendererBase:
         Only used by the SVG renderer.
         """
         ...
+
     def draw_path(self, gc, path, transform, rgbFace=...):
         """Draw a `~.path.Path` instance using the given affine transform."""
         ...
+
     def draw_markers(
         self, gc, marker_path, marker_trans, path, trans, rgbFace=...
     ):  # -> None:
@@ -118,6 +121,7 @@ class RendererBase:
             An affine transform applied to the path.
         """
         ...
+
     def draw_path_collection(
         self,
         gc,
@@ -158,6 +162,7 @@ class RendererBase:
         behavior of `draw_path_collection` can be made globally.
         """
         ...
+
     def draw_quad_mesh(
         self,
         gc,
@@ -178,6 +183,7 @@ class RendererBase:
         then calls `draw_path_collection`.
         """
         ...
+
     @_api.deprecated("3.7", alternative="draw_gouraud_triangles")
     def draw_gouraud_triangle(self, gc, points, colors, transform):
         """
@@ -195,6 +201,7 @@ class RendererBase:
             An affine transform to apply to the points.
         """
         ...
+
     def draw_gouraud_triangles(self, gc, triangles_array, colors_array, transform):
         """
         Draw a series of Gouraud triangles.
@@ -211,6 +218,7 @@ class RendererBase:
             An affine transform to apply to the points.
         """
         ...
+
     def get_image_magnification(self):  # -> float:
         """
         Get the factor by which to magnify images passed to `draw_image`.
@@ -218,6 +226,7 @@ class RendererBase:
         artists.
         """
         ...
+
     def draw_image(self, gc, x, y, im, transform=...):
         """
         Draw an RGBA image.
@@ -249,6 +258,7 @@ class RendererBase:
             and *y* to the translation vector defined by *transform*).
         """
         ...
+
     def option_image_nocomposite(self):  # -> Literal[False]:
         """
         Return whether image composition by Matplotlib should be skipped.
@@ -258,12 +268,14 @@ class RendererBase:
         usually return ``not rcParams["image.composite_image"]``.
         """
         ...
+
     def option_scale_image(self):  # -> Literal[False]:
         """
         Return whether arbitrary affine transformations in `draw_image` are
         supported (True for most vector backends).
         """
         ...
+
     def draw_tex(self, gc, x, y, s, prop, angle, *, mtext=...):  # -> None:
         """
         Draw a TeX instance.
@@ -286,6 +298,7 @@ class RendererBase:
             The original text object to be rendered.
         """
         ...
+
     def draw_text(self, gc, x, y, s, prop, angle, ismath=..., mtext=...):  # -> None:
         """
         Draw a text instance.
@@ -323,6 +336,7 @@ class RendererBase:
         your text.
         """
         ...
+
     def get_text_width_height_descent(
         self, s, prop, ismath
     ):  # -> tuple[Literal[0], Literal[0], Literal[0]] | tuple[Unknown, Unknown, Unknown]:
@@ -332,6 +346,7 @@ class RendererBase:
         `.FontProperties` *prop*.
         """
         ...
+
     def flipy(self):  # -> Literal[True]:
         """
         Return whether y values increase from top to bottom.
@@ -339,15 +354,19 @@ class RendererBase:
         Note that this only affects drawing of texts.
         """
         ...
+
     def get_canvas_width_height(self):  # -> tuple[Literal[1], Literal[1]]:
         """Return the canvas width and height in display coords."""
         ...
+
     def get_texmanager(self):  # -> TexManager:
         """Return the `.TexManager` instance."""
         ...
+
     def new_gc(self):  # -> GraphicsContextBase:
         """Return an instance of a `.GraphicsContextBase`."""
         ...
+
     def points_to_pixels(self, points):
         """
         Convert points to display units.
@@ -368,6 +387,7 @@ class RendererBase:
         Points converted to pixels
         """
         ...
+
     def start_rasterizing(self):  # -> None:
         """
         Switch to the raster renderer.
@@ -375,6 +395,7 @@ class RendererBase:
         Used by `.MixedModeRenderer`.
         """
         ...
+
     def stop_rasterizing(self):  # -> None:
         """
         Switch back to the vector renderer and draw the contents of the raster
@@ -383,6 +404,7 @@ class RendererBase:
         Used by `.MixedModeRenderer`.
         """
         ...
+
     def start_filter(self):  # -> None:
         """
         Switch to a temporary renderer for image filtering effects.
@@ -390,6 +412,7 @@ class RendererBase:
         Currently only supported by the agg renderer.
         """
         ...
+
     def stop_filter(self, filter_func):  # -> None:
         """
         Switch back to the original renderer.  The contents of the temporary
@@ -407,29 +430,35 @@ class GraphicsContextBase:
     def copy_properties(self, gc):  # -> None:
         """Copy properties from *gc* to self."""
         ...
+
     def restore(self):  # -> None:
         """
         Restore the graphics context from the stack - needed only
         for backends that save graphics contexts on a stack.
         """
         ...
+
     def get_alpha(self):  # -> float:
         """
         Return the alpha value used for blending - not supported on all
         backends.
         """
         ...
+
     def get_antialiased(self):  # -> int:
         """Return whether the object should try to do antialiased rendering."""
         ...
+
     def get_capstyle(self):  # -> Literal['butt', 'projecting', 'round']:
         """Return the `.CapStyle`."""
         ...
+
     def get_clip_rectangle(self):  # -> None:
         """
         Return the clip rectangle as a `~matplotlib.transforms.Bbox` instance.
         """
         ...
+
     def get_clip_path(self):  # -> tuple[Unknown, Unknown] | tuple[None, None]:
         """
         Return the clip path in the form (path, transform), where path
@@ -437,6 +466,7 @@ class GraphicsContextBase:
         an affine transform to apply to the path before clipping.
         """
         ...
+
     def get_dashes(self):  # -> tuple[Literal[0], None] | tuple[Unknown, Unknown]:
         """
         Return the dash style as an (offset, dash-list) pair.
@@ -446,27 +476,34 @@ class GraphicsContextBase:
         Default value is (None, None).
         """
         ...
+
     def get_forced_alpha(self):  # -> bool:
         """
         Return whether the value given by get_alpha() should be used to
         override any other alpha-channel values.
         """
         ...
+
     def get_joinstyle(self):  # -> Literal['miter', 'round', 'bevel']:
         """Return the `.JoinStyle`."""
         ...
+
     def get_linewidth(self):  # -> int | float:
         """Return the line width in points."""
         ...
+
     def get_rgb(self):  # -> tuple[float, float, float, float]:
         """Return a tuple of three or four floats from 0-1."""
         ...
+
     def get_url(self):  # -> None:
         """Return a url if one is set, None otherwise."""
         ...
+
     def get_gid(self):  # -> None:
         """Return the object identifier if one is set, None otherwise."""
         ...
+
     def get_snap(self):  # -> None:
         """
         Return the snap setting, which can be:
@@ -477,6 +514,7 @@ class GraphicsContextBase:
           round to the nearest pixel center
         """
         ...
+
     def set_alpha(self, alpha):  # -> None:
         """
         Set the alpha value used for blending - not supported on all backends.
@@ -487,9 +525,11 @@ class GraphicsContextBase:
         them.
         """
         ...
+
     def set_antialiased(self, b):  # -> None:
         """Set whether object should be drawn with antialiased rendering."""
         ...
+
     @_docstring.interpd
     def set_capstyle(self, cs):  # -> None:
         """
@@ -500,12 +540,15 @@ class GraphicsContextBase:
         cs : `.CapStyle` or %(CapStyle)s
         """
         ...
+
     def set_clip_rectangle(self, rectangle):  # -> None:
         """Set the clip rectangle to a `.Bbox` or None."""
         ...
+
     def set_clip_path(self, path):  # -> None:
         """Set the clip path to a `.TransformedPath` or None."""
         ...
+
     def set_dashes(self, dash_offset, dash_list):  # -> None:
         """
         Set the dash style for the gc.
@@ -527,6 +570,7 @@ class GraphicsContextBase:
         for more info.
         """
         ...
+
     def set_foreground(self, fg, isRGBA=...):  # -> None:
         """
         Set the foreground color.
@@ -539,6 +583,7 @@ class GraphicsContextBase:
             set to True to improve performance.
         """
         ...
+
     @_docstring.interpd
     def set_joinstyle(self, js):  # -> None:
         """
@@ -549,15 +594,19 @@ class GraphicsContextBase:
         js : `.JoinStyle` or %(JoinStyle)s
         """
         ...
+
     def set_linewidth(self, w):  # -> None:
         """Set the linewidth in points."""
         ...
+
     def set_url(self, url):  # -> None:
         """Set the url for links in compatible backends."""
         ...
+
     def set_gid(self, id):  # -> None:
         """Set the id."""
         ...
+
     def set_snap(self, snap):  # -> None:
         """
         Set the snap setting which may be:
@@ -568,24 +617,31 @@ class GraphicsContextBase:
           round to the nearest pixel center
         """
         ...
+
     def set_hatch(self, hatch):  # -> None:
         """Set the hatch style (for fills)."""
         ...
+
     def get_hatch(self):  # -> None:
         """Get the current hatch style."""
         ...
+
     def get_hatch_path(self, density=...):  # -> Path | None:
         """Return a `.Path` for the current hatch."""
         ...
+
     def get_hatch_color(self):
         """Get the hatch color."""
         ...
+
     def set_hatch_color(self, hatch_color):  # -> None:
         """Set the hatch color."""
         ...
+
     def get_hatch_linewidth(self):  # -> None:
         """Get the hatch linewidth."""
         ...
+
     def get_sketch_params(
         self,
     ):  # -> tuple[Unknown, Unknown | float, Unknown | float] | None:
@@ -607,6 +663,7 @@ class GraphicsContextBase:
             May return `None` if no sketch parameters were set.
         """
         ...
+
     def set_sketch_params(self, scale=..., length=..., randomness=...):  # -> None:
         """
         Set the sketch parameters.
@@ -664,9 +721,11 @@ class TimerBase:
             `remove_callback` can be used.
         """
         ...
+
     def __del__(self):  # -> None:
         """Need to stop timer and possibly disconnect timer."""
         ...
+
     def start(self, interval=...):  # -> None:
         """
         Start the timer object.
@@ -678,23 +737,29 @@ class TimerBase:
             if provided.
         """
         ...
+
     def stop(self):  # -> None:
         """Stop the timer."""
         ...
+
     @property
     def interval(self):  # -> int:
         """The time between timer events, in milliseconds."""
         ...
+
     @interval.setter
     def interval(self, interval):  # -> None:
         ...
+
     @property
     def single_shot(self):
         """Whether this timer should stop after a single run."""
         ...
+
     @single_shot.setter
     def single_shot(self, ss):  # -> None:
         ...
+
     def add_callback(self, func, *args, **kwargs):
         """
         Register *func* to be called by timer when the event fires. Any
@@ -704,6 +769,7 @@ class TimerBase:
         decorator.
         """
         ...
+
     def remove_callback(self, func, *args, **kwargs):  # -> None:
         """
         Remove *func* from list of callbacks.
@@ -976,6 +1042,7 @@ class FigureCanvasBase:
     def supports_blit(cls):  # -> bool:
         """If this Canvas sub-class supports blitting."""
         ...
+
     def __init__(self, figure=...) -> None: ...
 
     callbacks = ...
@@ -993,18 +1060,22 @@ class FigureCanvasBase:
         ``FigureManager.create_with_canvas``.
         """
         ...
+
     def is_saving(self):  # -> bool:
         """
         Return whether the renderer is in the process of saving
         to a file, rather than rendering for an on-screen buffer.
         """
         ...
+
     @_api.deprecated("3.6", alternative="canvas.figure.pick")
     def pick(self, mouseevent):  # -> None:
         ...
+
     def blit(self, bbox=...):  # -> None:
         """Blit the canvas in bbox (default entire canvas)."""
         ...
+
     def resize(self, w, h):  # -> None:
         """
         UNUSED: Set the canvas size in pixels.
@@ -1013,12 +1084,14 @@ class FigureCanvasBase:
         not a requirement of, nor is it used by, Matplotlib itself.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('draw_event', DrawEvent(...))"
     )
     def draw_event(self, renderer):  # -> None:
         """Pass a `DrawEvent` to all functions connected to ``draw_event``."""
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('resize_event', ResizeEvent(...))"
     )
@@ -1027,6 +1100,7 @@ class FigureCanvasBase:
         Pass a `ResizeEvent` to all functions connected to ``resize_event``.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('close_event', CloseEvent(...))"
     )
@@ -1035,6 +1109,7 @@ class FigureCanvasBase:
         Pass a `CloseEvent` to all functions connected to ``close_event``.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('key_press_event', KeyEvent(...))"
     )
@@ -1043,6 +1118,7 @@ class FigureCanvasBase:
         Pass a `KeyEvent` to all functions connected to ``key_press_event``.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('key_release_event', KeyEvent(...))"
     )
@@ -1051,6 +1127,7 @@ class FigureCanvasBase:
         Pass a `KeyEvent` to all functions connected to ``key_release_event``.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('pick_event', PickEvent(...))"
     )
@@ -1065,6 +1142,7 @@ class FigureCanvasBase:
         `.Artist.set_picker`).
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('scroll_event', MouseEvent(...))"
     )
@@ -1080,6 +1158,7 @@ class FigureCanvasBase:
         with a `MouseEvent` instance.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('button_press_event', MouseEvent(...))"
     )
@@ -1095,6 +1174,7 @@ class FigureCanvasBase:
         'button_press_event' with a `MouseEvent` instance.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('button_release_event', MouseEvent(...))"
     )
@@ -1118,6 +1198,7 @@ class FigureCanvasBase:
             The native UI event that generated the Matplotlib event.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('motion_notify_event', MouseEvent(...))"
     )
@@ -1141,6 +1222,7 @@ class FigureCanvasBase:
             The native UI event that generated the Matplotlib event.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('leave_notify_event', LocationEvent(...))"
     )
@@ -1157,6 +1239,7 @@ class FigureCanvasBase:
             The native UI event that generated the Matplotlib event.
         """
         ...
+
     @_api.deprecated(
         "3.6", alternative="callbacks.process('enter_notify_event', LocationEvent(...))"
     )
@@ -1175,6 +1258,7 @@ class FigureCanvasBase:
             The coordinate location of the pointer when the canvas is entered.
         """
         ...
+
     def inaxes(self, xy):  # -> Any | None:
         """
         Return the topmost visible `~.axes.Axes` containing the point *xy*.
@@ -1191,6 +1275,7 @@ class FigureCanvasBase:
             is no Axes at the point.
         """
         ...
+
     def grab_mouse(self, ax):  # -> None:
         """
         Set the child `~.axes.Axes` which is grabbing the mouse events.
@@ -1199,6 +1284,7 @@ class FigureCanvasBase:
         if the mouse is already grabbed by another Axes.
         """
         ...
+
     def release_mouse(self, ax):  # -> None:
         """
         Release the mouse grab held by the `~.axes.Axes` *ax*.
@@ -1207,6 +1293,7 @@ class FigureCanvasBase:
         doesn't have the mouse grab currently.
         """
         ...
+
     def set_cursor(self, cursor):  # -> None:
         """
         Set the current cursor.
@@ -1225,6 +1312,7 @@ class FigureCanvasBase:
             change the cursor for the entire window.
         """
         ...
+
     def draw(self, *args, **kwargs):  # -> None:
         """
         Render the `.Figure`.
@@ -1235,6 +1323,7 @@ class FigureCanvasBase:
         auto-limits, and tick values.
         """
         ...
+
     def draw_idle(self, *args, **kwargs):  # -> None:
         """
         Request a widget redraw once control returns to the GUI event loop.
@@ -1249,6 +1338,7 @@ class FigureCanvasBase:
 
         """
         ...
+
     @property
     def device_pixel_ratio(self):  # -> int:
         """
@@ -1261,6 +1351,7 @@ class FigureCanvasBase:
 
         """
         ...
+
     def get_width_height(self, *, physical=...):  # -> tuple[int, ...]:
         """
         Return the figure width and height in integral points or pixels.
@@ -1283,10 +1374,12 @@ class FigureCanvasBase:
             backend.
         """
         ...
+
     @classmethod
     def get_supported_filetypes(cls):  # -> dict[str, str]:
         """Return dict of savefig file formats supported by this backend."""
         ...
+
     @classmethod
     def get_supported_filetypes_grouped(cls):  # -> dict[Unknown, Unknown]:
         """
@@ -1296,6 +1389,7 @@ class FigureCanvasBase:
         for that filetype, such as ['jpg', 'jpeg'].
         """
         ...
+
     def print_figure(
         self,
         filename,
@@ -1361,6 +1455,7 @@ class FigureCanvasBase:
             file format.  Custom backends can be referenced as "module://...".
         """
         ...
+
     @classmethod
     def get_default_filetype(cls):  # -> None:
         """
@@ -1371,12 +1466,14 @@ class FigureCanvasBase:
         overridden in backends that only support a single file type.
         """
         ...
+
     def get_default_filename(self):
         """
         Return a string, which includes extension, suitable for use as
         a default filename.
         """
         ...
+
     def switch_backends(self, FigureCanvasClass):
         """
         Instantiate an instance of FigureCanvasClass
@@ -1387,6 +1484,7 @@ class FigureCanvasBase:
         figure size or line props), will be reflected in the other
         """
         ...
+
     def mpl_connect(self, s, func):  # -> Any:
         """
         Bind function *func* to event *s*.
@@ -1448,6 +1546,7 @@ class FigureCanvasBase:
             cid = canvas.mpl_connect('button_press_event', on_press)
         """
         ...
+
     def mpl_disconnect(self, cid):  # -> Any:
         """
         Disconnect the callback with id *cid*.
@@ -1486,6 +1585,7 @@ class FigureCanvasBase:
         >>> timer = fig.canvas.new_timer(callbacks=[(f1, (1,), {'a': 3})])
         """
         ...
+
     def flush_events(self):  # -> None:
         """
         Flush the GUI events for the figure.
@@ -1493,6 +1593,7 @@ class FigureCanvasBase:
         Interactive backends need to reimplement this method.
         """
         ...
+
     def start_event_loop(self, timeout=...):  # -> None:
         """
         Start a blocking event loop.
@@ -1512,6 +1613,7 @@ class FigureCanvasBase:
         Interactive backends should implement this in a more native way.
         """
         ...
+
     def stop_event_loop(self):  # -> None:
         """
         Stop the current blocking event loop.
@@ -1628,6 +1730,7 @@ class FigureManagerBase:
         setting up the canvas or the manager.
         """
         ...
+
     @classmethod
     def start_main_loop(cls):  # -> None:
         """
@@ -1640,6 +1743,7 @@ class FigureManagerBase:
         necessary, `~.FigureManagerBase.pyplot_show` can also be overridden.
         """
         ...
+
     @classmethod
     def pyplot_show(cls, *, block=...):  # -> None:
         """
@@ -1658,6 +1762,7 @@ class FigureManagerBase:
             nor in ``interactive`` mode.
         """
         ...
+
     def show(self):  # -> None:
         """
         For GUI backends, show the figure window and redraw.
@@ -1666,19 +1771,24 @@ class FigureManagerBase:
         warning in `.Figure.show`.
         """
         ...
+
     def destroy(self):  # -> None:
         ...
+
     def full_screen_toggle(self):  # -> None:
         ...
+
     def resize(self, w, h):  # -> None:
         """For GUI backends, resize the window (in physical pixels)."""
         ...
+
     def get_window_title(self):  # -> Literal['image']:
         """
         Return the title text of the window containing the figure, or None
         if there is no window (e.g., a PS backend).
         """
         ...
+
     def set_window_title(self, title):  # -> None:
         """
         Set the title text of the window containing the figure.
@@ -1732,6 +1842,7 @@ class NavigationToolbar2:
     def set_message(self, s):  # -> None:
         """Display a message on toolbar or in status bar."""
         ...
+
     def draw_rubberband(self, event, x0, y0, x1, y1):  # -> None:
         """
         Draw a rectangle rubberband to indicate zoom limits.
@@ -1739,9 +1850,11 @@ class NavigationToolbar2:
         Note that it is not guaranteed that ``x0 <= x1`` and ``y0 <= y1``.
         """
         ...
+
     def remove_rubberband(self):  # -> None:
         """Remove the rubberband."""
         ...
+
     def home(self, *args):  # -> None:
         """
         Restore the original view.
@@ -1751,6 +1864,7 @@ class NavigationToolbar2:
         parameters, but does not use them.
         """
         ...
+
     def back(self, *args):  # -> None:
         """
         Move back up the view lim stack.
@@ -1760,6 +1874,7 @@ class NavigationToolbar2:
         parameters, but does not use them.
         """
         ...
+
     def forward(self, *args):  # -> None:
         """
         Move forward in the view lim stack.
@@ -1769,8 +1884,10 @@ class NavigationToolbar2:
         parameters, but does not use them.
         """
         ...
+
     def mouse_move(self, event):  # -> None:
         ...
+
     def pan(self, *args):  # -> None:
         """
         Toggle the pan/zoom tool.
@@ -1782,35 +1899,45 @@ class NavigationToolbar2:
     def press_pan(self, event):  # -> None:
         """Callback for mouse button press in pan/zoom mode."""
         ...
+
     def drag_pan(self, event):  # -> None:
         """Callback for dragging in pan/zoom mode."""
         ...
+
     def release_pan(self, event):  # -> None:
         """Callback for mouse button release in pan/zoom mode."""
         ...
+
     def zoom(self, *args):  # -> None:
         ...
     _ZoomInfo = ...
     def press_zoom(self, event):  # -> None:
         """Callback for mouse button press in zoom to rect mode."""
         ...
+
     def drag_zoom(self, event):  # -> None:
         """Callback for dragging in zoom mode."""
         ...
+
     def release_zoom(self, event):  # -> None:
         """Callback for mouse button release in zoom to rect mode."""
         ...
+
     def push_current(self):  # -> None:
         """Push the current view limits and position onto the stack."""
         ...
+
     def configure_subplots(self, *args):  # -> SubplotTool | None:
         ...
+
     def save_figure(self, *args):
         """Save the current figure."""
         ...
+
     def update(self):  # -> None:
         """Reset the Axes stack."""
         ...
+
     def set_history_buttons(self):  # -> None:
         """Enable or disable the back/forward button."""
         ...
@@ -1841,6 +1968,7 @@ class ToolContainerBase:
             The position within the group to place this tool.
         """
         ...
+
     def trigger_tool(self, name):  # -> None:
         """
         Trigger the tool.
@@ -1851,6 +1979,7 @@ class ToolContainerBase:
             Name (id) of the tool triggered from within the container.
         """
         ...
+
     def add_toolitem(self, name, group, position, image, description, toggle):
         """
         Add a toolitem to the container.
@@ -1880,6 +2009,7 @@ class ToolContainerBase:
               state after release).
         """
         ...
+
     def toggle_toolitem(self, name, toggled):
         """
         Toggle the toolitem without firing event.
@@ -1892,6 +2022,7 @@ class ToolContainerBase:
             Whether to set this tool as toggled or not.
         """
         ...
+
     def remove_toolitem(self, name):
         """
         Remove a toolitem from the `ToolContainer`.
@@ -1906,6 +2037,7 @@ class ToolContainerBase:
             Name of the tool to remove.
         """
         ...
+
     def set_message(self, s):
         """
         Display a message on the toolbar.
@@ -1926,13 +2058,16 @@ class _Backend:
     def new_figure_manager(cls, num, *args, **kwargs):
         """Create a new figure manager instance."""
         ...
+
     @classmethod
     def new_figure_manager_given_figure(cls, num, figure):
         """Create a new figure manager instance for the given figure."""
         ...
+
     @classmethod
     def draw_if_interactive(cls):  # -> None:
         ...
+
     @classmethod
     def show(cls, *, block=...):  # -> None:
         """
@@ -1943,6 +2078,7 @@ class _Backend:
         `interactive` mode.
         """
         ...
+
     @staticmethod
     def export(cls):
         class Show(ShowBase): ...

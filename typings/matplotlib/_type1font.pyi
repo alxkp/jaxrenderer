@@ -49,18 +49,23 @@ class _Token:
     def endpos(self):
         """Position one past the end of the token"""
         ...
+
     def is_keyword(self, *names):  # -> Literal[False]:
         """Is this a name token with one of the names?"""
         ...
+
     def is_slash_name(self):  # -> Literal[False]:
         """Is this a name token that starts with a slash?"""
         ...
+
     def is_delim(self):  # -> Literal[False]:
         """Is this a delimiter token?"""
         ...
+
     def is_number(self):  # -> Literal[False]:
         """Is this a number token?"""
         ...
+
     def value(self):  # -> Unknown:
         ...
 
@@ -82,6 +87,7 @@ class _DelimiterToken(_Token):
     kind = ...
     def is_delim(self):  # -> Literal[True]:
         ...
+
     def opposite(self):  # -> str:
         ...
 
@@ -105,6 +111,7 @@ class _NumberToken(_Token):
     kind = ...
     def is_number(self):  # -> Literal[True]:
         ...
+
     def value(self):  # -> int | float:
         ...
 
@@ -147,6 +154,7 @@ class Type1Font:
             font `~.Type1Font.parts`.
         """
         ...
+
     def transform(self, effects):  # -> Type1Font:
         """
         Return a new font that is slanted and/or extended.

@@ -40,13 +40,16 @@ class ToolManager:
     def canvas(self):  # -> None:
         """Canvas managed by FigureManager."""
         ...
+
     @property
     def figure(self):  # -> None:
         """Figure that holds the canvas."""
         ...
+
     @figure.setter
     def figure(self, figure):  # -> None:
         ...
+
     def set_figure(self, figure, update_tools=...):  # -> None:
         """
         Bind the given figure to the tools.
@@ -58,6 +61,7 @@ class ToolManager:
             Force tools to update figure.
         """
         ...
+
     def toolmanager_connect(self, s, func):  # -> int:
         """
         Connect event with string *s* to *func*.
@@ -87,6 +91,7 @@ class ToolManager:
             `.toolmanager_disconnect`.
         """
         ...
+
     def toolmanager_disconnect(self, cid):  # -> None:
         """
         Disconnect callback id *cid*.
@@ -98,13 +103,16 @@ class ToolManager:
             toolmanager.toolmanager_disconnect(cid)
         """
         ...
+
     def message_event(self, message, sender=...):  # -> None:
         """Emit a `ToolManagerMessageEvent`."""
         ...
+
     @property
     def active_toggle(self):  # -> dict[Unknown, Unknown]:
         """Currently toggled tools."""
         ...
+
     def get_tool_keymap(self, name):  # -> list[Unknown]:
         """
         Return the keymap associated with the specified tool.
@@ -120,6 +128,7 @@ class ToolManager:
             List of keys associated with the tool.
         """
         ...
+
     def update_keymap(self, name, key):  # -> None:
         """
         Set the keymap to associate with the specified tool.
@@ -132,6 +141,7 @@ class ToolManager:
             Keys to associate with the tool.
         """
         ...
+
     def remove_tool(self, name):  # -> None:
         """
         Remove tool named *name*.
@@ -142,6 +152,7 @@ class ToolManager:
             Name of the tool.
         """
         ...
+
     def add_tool(self, name, tool, *args, **kwargs):  # -> ToolToggleBase:
         """
         Add *tool* to `ToolManager`.
@@ -165,6 +176,7 @@ class ToolManager:
         matplotlib.backend_tools.ToolBase : The base class for tools.
         """
         ...
+
     def trigger_tool(self, name, sender=..., canvasevent=..., data=...):  # -> None:
         """
         Trigger a tool and emit the ``tool_trigger_{name}`` event.
@@ -181,10 +193,12 @@ class ToolManager:
             Extra data to pass to the tool when triggering.
         """
         ...
+
     @property
     def tools(self):  # -> dict[Unknown, Unknown]:
         """A dict mapping tool name -> controlled tool."""
         ...
+
     def get_tool(self, name, warn=...):  # -> ToolBase | None:
         """
         Return the tool object with the given name.

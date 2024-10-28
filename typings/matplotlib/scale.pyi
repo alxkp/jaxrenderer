@@ -54,17 +54,20 @@ class ScaleBase:
         `~matplotlib.axis.Axis`\es at the same time.
         """
         ...
+
     def get_transform(self):
         """
         Return the `.Transform` object associated with this scale.
         """
         ...
+
     def set_default_locators_and_formatters(self, axis):
         """
         Set the locators and formatters of *axis* to instances suitable for
         this scale.
         """
         ...
+
     def limit_range_for_scale(self, vmin, vmax, minpos):  # -> tuple[Unknown, Unknown]:
         """
         Return the range *vmin*, *vmax*, restricted to the
@@ -84,8 +87,10 @@ class LinearScale(ScaleBase):
     def __init__(self, axis) -> None:
         """ """
         ...
+
     def set_default_locators_and_formatters(self, axis):  # -> None:
         ...
+
     def get_transform(self):  # -> IdentityTransform:
         """
         Return the transform for linear scaling, which is just the
@@ -115,6 +120,7 @@ class FuncTransform(Transform):
             The inverse of the forward function.  Signature as ``forward``.
         """
         ...
+
     def transform_non_affine(self, values): ...
     def inverted(self):  # -> FuncTransform:
         ...
@@ -140,9 +146,11 @@ class FuncScale(ScaleBase):
                def forward(values: array-like) -> array-like
         """
         ...
+
     def get_transform(self):  # -> FuncTransform:
         """Return the `.FuncTransform` associated with this scale."""
         ...
+
     def set_default_locators_and_formatters(self, axis):  # -> None:
         ...
 
@@ -152,6 +160,7 @@ class LogTransform(Transform):
     def __str__(self) -> str: ...
     def transform_non_affine(self, a):  # -> Any:
         ...
+
     def inverted(self):  # -> InvertedLogTransform:
         ...
 
@@ -161,6 +170,7 @@ class InvertedLogTransform(Transform):
     def __str__(self) -> str: ...
     def transform_non_affine(self, a):  # -> Any:
         ...
+
     def inverted(self):  # -> LogTransform:
         ...
 
@@ -190,9 +200,11 @@ class LogScale(ScaleBase):
     base = ...
     def set_default_locators_and_formatters(self, axis):  # -> None:
         ...
+
     def get_transform(self):  # -> LogTransform:
         """Return the `.LogTransform` associated with this scale."""
         ...
+
     def limit_range_for_scale(
         self, vmin, vmax, minpos
     ):  # -> tuple[float | Unknown, float | Unknown]:
@@ -224,6 +236,7 @@ class FuncScaleLog(LogScale):
             Logarithmic base of the scale.
         """
         ...
+
     @property
     def base(self): ...
     def get_transform(
@@ -244,6 +257,7 @@ class InvertedSymmetricalLogTransform(Transform):
     def __init__(self, base, linthresh, linscale) -> None: ...
     def transform_non_affine(self, a):  # -> Any:
         ...
+
     def inverted(self):  # -> SymmetricalLogTransform:
         ...
 
@@ -290,6 +304,7 @@ class SymmetricalLogScale(ScaleBase):
     linscale = ...
     def set_default_locators_and_formatters(self, axis):  # -> None:
         ...
+
     def get_transform(self):  # -> SymmetricalLogTransform:
         """Return the `.SymmetricalLogTransform` associated with this scale."""
         ...
@@ -301,6 +316,7 @@ class AsinhTransform(Transform):
     def __init__(self, linear_width) -> None: ...
     def transform_non_affine(self, a):  # -> Any:
         ...
+
     def inverted(self):  # -> InvertedAsinhTransform:
         ...
 
@@ -311,6 +327,7 @@ class InvertedAsinhTransform(Transform):
     def __init__(self, linear_width) -> None: ...
     def transform_non_affine(self, a):  # -> Any:
         ...
+
     def inverted(self):  # -> AsinhTransform:
         ...
 
@@ -364,6 +381,7 @@ class AsinhScale(ScaleBase):
     linear_width = ...
     def get_transform(self):  # -> AsinhTransform:
         ...
+
     def set_default_locators_and_formatters(self, axis):  # -> None:
         ...
 
@@ -373,8 +391,10 @@ class LogitTransform(Transform):
     def transform_non_affine(self, a):  # -> Any:
         """logit transform (base 10), masked or clipped"""
         ...
+
     def inverted(self):  # -> LogisticTransform:
         ...
+
     def __str__(self) -> str: ...
 
 class LogisticTransform(Transform):
@@ -383,8 +403,10 @@ class LogisticTransform(Transform):
     def transform_non_affine(self, a):
         """logistic transform (base 10)"""
         ...
+
     def inverted(self):  # -> LogitTransform:
         ...
+
     def __str__(self) -> str: ...
 
 class LogitScale(ScaleBase):
@@ -415,11 +437,14 @@ class LogitScale(ScaleBase):
             The string used for ticks formatter to represent 1/2.
         """
         ...
+
     def get_transform(self):  # -> LogitTransform:
         """Return the `.LogitTransform` associated with this scale."""
         ...
+
     def set_default_locators_and_formatters(self, axis):  # -> None:
         ...
+
     def limit_range_for_scale(
         self, vmin, vmax, minpos
     ):  # -> tuple[float | Unknown, float | Unknown]:
@@ -447,7 +472,8 @@ def scale_factory(
     """
     ...
 
-if scale_factory.__doc__: ...
+if scale_factory.__doc__:
+    ...
 
 def register_scale(scale_class):  # -> None:
     """

@@ -40,6 +40,7 @@ class GridSpecBase:
             If not given, all rows will have the same height.
         """
         ...
+
     def __repr__(self):  # -> str:
         ...
     nrows = ...
@@ -49,8 +50,10 @@ class GridSpecBase:
         Return a tuple containing the number of rows and columns in the grid.
         """
         ...
+
     def get_subplot_params(self, figure=...):  # -> None:
         ...
+
     def new_subplotspec(self, loc, rowspan=..., colspan=...):  # -> SubplotSpec:
         """
         Create and return a `.SubplotSpec` instance.
@@ -64,6 +67,7 @@ class GridSpecBase:
             The number of rows and columns the subplot should span in the grid.
         """
         ...
+
     def set_width_ratios(self, width_ratios):  # -> None:
         """
         Set the relative widths of the columns.
@@ -72,6 +76,7 @@ class GridSpecBase:
         width of ``width_ratios[i] / sum(width_ratios)``.
         """
         ...
+
     def get_width_ratios(self):  # -> list[int]:
         """
         Return the width ratios.
@@ -79,6 +84,7 @@ class GridSpecBase:
         This is *None* if no width ratios have been set explicitly.
         """
         ...
+
     def set_height_ratios(self, height_ratios):  # -> None:
         """
         Set the relative heights of the rows.
@@ -87,6 +93,7 @@ class GridSpecBase:
         height of ``height_ratios[i] / sum(height_ratios)``.
         """
         ...
+
     def get_height_ratios(self):  # -> list[int]:
         """
         Return the height ratios.
@@ -94,6 +101,7 @@ class GridSpecBase:
         This is *None* if no height ratios have been set explicitly.
         """
         ...
+
     @_api.delete_parameter("3.7", "raw")
     def get_grid_positions(
         self, fig, raw=...
@@ -119,9 +127,11 @@ class GridSpecBase:
             figure coordinates.
         """
         ...
+
     def __getitem__(self, key):  # -> SubplotSpec:
         """Create and return a `.SubplotSpec` instance."""
         ...
+
     def subplots(
         self, *, sharex=..., sharey=..., squeeze=..., subplot_kw=...
     ):  # -> Any | ndarray[Any, dtype[Any]]:
@@ -213,6 +223,7 @@ class GridSpec(GridSpecBase):
             width / height.
         """
         ...
+
     def get_subplot_params(self, figure=...):
         """
         Return the `.SubplotParams` for the GridSpec.
@@ -226,6 +237,7 @@ class GridSpec(GridSpecBase):
         Note that the ``figure`` attribute of the GridSpec is always ignored.
         """
         ...
+
     def locally_modified_subplot_params(self):  # -> list[str]:
         """
         Return a list of the names of the subplot parameters explicitly set
@@ -234,6 +246,7 @@ class GridSpec(GridSpecBase):
         This is a subset of the attributes of `.SubplotParams`.
         """
         ...
+
     def tight_layout(
         self, figure, renderer=..., pad=..., h_pad=..., w_pad=..., rect=...
     ):  # -> None:
@@ -291,9 +304,11 @@ class GridSpecFromSubplotSpec(GridSpecBase):
             See `GridSpecBase` for details.
         """
         ...
+
     def get_subplot_params(self, figure=...):
         """Return a dictionary of subplot layout parameters."""
         ...
+
     def get_topmost_subplotspec(self):
         """
         Return the topmost `.SubplotSpec` instance associated with the subplot.
@@ -324,14 +339,18 @@ class SubplotSpec:
     def __init__(self, gridspec, num1, num2=...) -> None: ...
     def __repr__(self):  # -> str:
         ...
+
     @property
     def num2(self):  # -> Unknown:
         ...
+
     @num2.setter
     def num2(self, value):  # -> None:
         ...
+
     def get_gridspec(self):  # -> Unknown:
         ...
+
     def get_geometry(self):  # -> tuple[Unknown, Unknown, Unknown, Unknown]:
         """
         Return the subplot geometry as tuple ``(n_rows, n_cols, start, stop)``.
@@ -341,36 +360,44 @@ class SubplotSpec:
         ``start == stop``).
         """
         ...
+
     @property
     def rowspan(self):  # -> range:
         """The rows spanned by this subplot, as a `range` object."""
         ...
+
     @property
     def colspan(self):  # -> range:
         """The columns spanned by this subplot, as a `range` object."""
         ...
+
     def is_first_row(self):  # -> bool:
         ...
+
     def is_last_row(self): ...
     def is_first_col(self):  # -> bool:
         ...
+
     def is_last_col(self): ...
     def get_position(self, figure):  # -> Bbox:
         """
         Update the subplot position from ``figure.subplotpars``.
         """
         ...
+
     def get_topmost_subplotspec(self):  # -> Self@SubplotSpec:
         """
         Return the topmost `SubplotSpec` instance associated with the subplot.
         """
         ...
+
     def __eq__(self, other) -> bool:
         """
         Two SubplotSpecs are considered equal if they refer to the same
         position(s) in the same `GridSpec`.
         """
         ...
+
     def __hash__(self) -> int: ...
     def subgridspec(self, nrows, ncols, **kwargs):  # -> GridSpecFromSubplotSpec:
         """

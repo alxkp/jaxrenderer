@@ -93,10 +93,12 @@ class ConversionInterface:
     def axisinfo(unit, axis):  # -> None:
         """Return an `.AxisInfo` for the axis with the specified units."""
         ...
+
     @staticmethod
     def default_units(x, axis):  # -> None:
         """Return the default unit for *x* or ``None`` for the given axis."""
         ...
+
     @staticmethod
     def convert(obj, unit, axis):
         """

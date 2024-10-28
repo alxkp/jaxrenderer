@@ -55,9 +55,11 @@ class OffsetBox(martist.Artist):
         fig : `~matplotlib.figure.Figure`
         """
         ...
+
     @martist.Artist.axes.setter
     def axes(self, ax):  # -> None:
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown, Unknown]:
@@ -85,6 +87,7 @@ class OffsetBox(martist.Artist):
         .Artist.contains
         """
         ...
+
     def set_offset(self, xy):  # -> None:
         """
         Set the offset.
@@ -101,6 +104,7 @@ class OffsetBox(martist.Artist):
 -> (float, float)
         """
         ...
+
     @_compat_get_offset
     def get_offset(self, bbox, renderer):  # -> tuple[Literal[0], Literal[0]]:
         """
@@ -116,6 +120,7 @@ class OffsetBox(martist.Artist):
         renderer : `.RendererBase` subclass
         """
         ...
+
     def set_width(self, width):  # -> None:
         """
         Set the width of the box.
@@ -125,6 +130,7 @@ class OffsetBox(martist.Artist):
         width : float
         """
         ...
+
     def set_height(self, height):  # -> None:
         """
         Set the height of the box.
@@ -134,15 +140,19 @@ class OffsetBox(martist.Artist):
         height : float
         """
         ...
+
     def get_visible_children(self):  # -> list[Unknown]:
         r"""Return a list of the visible child `.Artist`\s."""
         ...
+
     def get_children(self):  # -> list[Unknown]:
         r"""Return a list of the child `.Artist`\s."""
         ...
+
     def get_bbox(self, renderer):
         """Return the bbox of the offsetbox, ignoring parent offsets."""
         ...
+
     @_api.deprecated("3.7", alternative="get_bbox and child.get_offset")
     def get_extent_offsets(
         self, renderer
@@ -163,10 +173,12 @@ class OffsetBox(martist.Artist):
         list of (xoffset, yoffset) pairs
         """
         ...
+
     @_api.deprecated("3.7", alternative="get_bbox")
     def get_extent(self, renderer):  # -> tuple[Unknown, Unknown, Unknown, Unknown]:
         """Return a tuple ``width, height, xdescent, ydescent`` of the box."""
         ...
+
     def get_window_extent(self, renderer=...): ...
     def draw(self, renderer):  # -> None:
         """
@@ -256,10 +268,13 @@ class PaddedBox(OffsetBox):
             Additional parameters passed to the contained `.FancyBboxPatch`.
         """
         ...
+
     def draw(self, renderer):  # -> None:
         ...
+
     def update_frame(self, bbox, fontsize=...):  # -> None:
         ...
+
     def draw_frame(self, renderer):  # -> None:
         ...
 
@@ -283,6 +298,7 @@ class DrawingArea(OffsetBox):
             Whether to clip the children to the box.
         """
         ...
+
     @property
     def clip_children(self):  # -> bool:
         """
@@ -290,9 +306,11 @@ class DrawingArea(OffsetBox):
         by DrawingArea bounding box.
         """
         ...
+
     @clip_children.setter
     def clip_children(self, val):  # -> None:
         ...
+
     def get_transform(
         self,
     ):  # -> Transform | Affine2D | CompositeAffine2D | CompositeGenericTransform | _NotImplementedType:
@@ -300,11 +318,13 @@ class DrawingArea(OffsetBox):
         Return the `~matplotlib.transforms.Transform` applied to the children.
         """
         ...
+
     def set_transform(self, t):  # -> None:
         """
         set_transform is ignored.
         """
         ...
+
     def set_offset(self, xy):  # -> None:
         """
         Set the offset of the container.
@@ -315,14 +335,18 @@ class DrawingArea(OffsetBox):
             The (x, y) coordinates of the offset in display units.
         """
         ...
+
     def get_offset(self):
         """Return offset of the container."""
         ...
+
     def get_bbox(self, renderer):  # -> Bbox:
         ...
+
     def add_artist(self, a):  # -> None:
         """Add an `.Artist` to the container box."""
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -350,12 +374,15 @@ class TextArea(OffsetBox):
             is (approximately) center-aligned with single-line text.
         """
         ...
+
     def set_text(self, s):  # -> None:
         """Set the text of this area as a string."""
         ...
+
     def get_text(self):  # -> str:
         """Return the string representation of this area's text."""
         ...
+
     def set_multilinebaseline(self, t):  # -> None:
         """
         Set multilinebaseline.
@@ -366,16 +393,19 @@ class TextArea(OffsetBox):
         baseline-aligned, but multiline labels are "center"-aligned with them.
         """
         ...
+
     def get_multilinebaseline(self):  # -> bool:
         """
         Get multilinebaseline.
         """
         ...
+
     def set_transform(self, t):  # -> None:
         """
         set_transform is ignored.
         """
         ...
+
     def set_offset(self, xy):  # -> None:
         """
         Set the offset of the container.
@@ -386,11 +416,14 @@ class TextArea(OffsetBox):
             The (x, y) coordinates of the offset in display units.
         """
         ...
+
     def get_offset(self):
         """Return offset of the container."""
         ...
+
     def get_bbox(self, renderer):  # -> Bbox:
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -413,17 +446,20 @@ class AuxTransformBox(OffsetBox):
     def add_artist(self, a):  # -> None:
         """Add an `.Artist` to the container box."""
         ...
+
     def get_transform(self):
         """
         Return the :class:`~matplotlib.transforms.Transform` applied
         to the children
         """
         ...
+
     def set_transform(self, t):  # -> None:
         """
         set_transform is ignored.
         """
         ...
+
     def set_offset(self, xy):  # -> None:
         """
         Set the offset of the container.
@@ -434,11 +470,14 @@ class AuxTransformBox(OffsetBox):
             The (x, y) coordinates of the offset in display units.
         """
         ...
+
     def get_offset(self):
         """Return offset of the container."""
         ...
+
     def get_bbox(self, renderer):  # -> Bbox:
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -500,19 +539,24 @@ class AnchoredOffsetbox(OffsetBox):
         See `.Legend` for a detailed description of the anchoring mechanism.
         """
         ...
+
     def set_child(self, child):  # -> None:
         """Set the child to be anchored."""
         ...
+
     def get_child(self):
         """Return the child."""
         ...
+
     def get_children(self):  # -> list[Unknown]:
         """Return the list of children."""
         ...
+
     def get_bbox(self, renderer): ...
     def get_bbox_to_anchor(self):  # -> BboxBase | Bbox | TransformedBbox:
         """Return the bbox that the box is anchored to."""
         ...
+
     def set_bbox_to_anchor(self, bbox, transform=...):  # -> None:
         """
         Set the bbox that the box is anchored to.
@@ -523,11 +567,14 @@ class AnchoredOffsetbox(OffsetBox):
         transformed to display coordinate by the given transform.
         """
         ...
+
     @_compat_get_offset
     def get_offset(self, bbox, renderer):  # -> tuple[Unknown, Unknown]:
         ...
+
     def update_frame(self, bbox, fontsize=...):  # -> None:
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -580,18 +627,24 @@ class OffsetImage(OffsetBox):
     ) -> None: ...
     def set_data(self, arr):  # -> None:
         ...
+
     def get_data(self):  # -> NDArray[Unknown]:
         ...
+
     def set_zoom(self, zoom):  # -> None:
         ...
+
     def get_zoom(self): ...
     def get_offset(self):  # -> tuple[Literal[0], Literal[0]]:
         """Return offset of the container."""
         ...
+
     def get_children(self):  # -> list[BboxImage]:
         ...
+
     def get_bbox(self, renderer):  # -> Bbox:
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -691,24 +744,32 @@ or callable, default: value of *xycoords*
             a list.
         """
         ...
+
     @property
     def xyann(self):  # -> Unknown:
         ...
+
     @xyann.setter
     def xyann(self, xyann):  # -> None:
         ...
+
     @property
     def anncoords(self):  # -> str:
         ...
+
     @anncoords.setter
     def anncoords(self, coords):  # -> None:
         ...
+
     def contains(self, mouseevent):  # -> tuple[Literal[False], dict[Unknown, Unknown]]:
         ...
+
     def get_children(self):  # -> list[Unknown | FancyBboxPatch]:
         ...
+
     def set_figure(self, fig):  # -> None:
         ...
+
     def set_fontsize(self, s=...):  # -> None:
         """
         Set the fontsize in points.
@@ -716,18 +777,23 @@ or callable, default: value of *xycoords*
         If *s* is not given, reset to :rc:`legend.fontsize`.
         """
         ...
+
     def get_fontsize(self):  # -> float:
         """Return the fontsize in points."""
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         ...
+
     def get_tightbbox(self, renderer=...):  # -> Bbox:
         ...
+
     def update_positions(self, renderer):  # -> None:
         """
         Update pixel positions for the annotated point, the text and the arrow.
         """
         ...
+
     def draw(self, renderer):  # -> None:
         ...
 
@@ -766,17 +832,23 @@ class DraggableBase:
     cids = ...
     def on_motion(self, evt):  # -> None:
         ...
+
     def on_pick(self, evt):  # -> None:
         ...
+
     def on_release(self, event):  # -> None:
         ...
+
     def disconnect(self):  # -> None:
         """Disconnect the callbacks."""
         ...
+
     def save_offset(self):  # -> None:
         ...
+
     def update_offset(self, dx, dy):  # -> None:
         ...
+
     def finalize_offset(self):  # -> None:
         ...
 
@@ -784,8 +856,10 @@ class DraggableOffsetBox(DraggableBase):
     def __init__(self, ref_artist, offsetbox, use_blit=...) -> None: ...
     def save_offset(self):  # -> None:
         ...
+
     def update_offset(self, dx, dy):  # -> None:
         ...
+
     def get_loc_in_canvas(self):  # -> tuple[Unknown, Unknown]:
         ...
 
@@ -793,5 +867,6 @@ class DraggableAnnotation(DraggableBase):
     def __init__(self, annotation, use_blit=...) -> None: ...
     def save_offset(self):  # -> None:
         ...
+
     def update_offset(self, dx, dy):  # -> None:
         ...

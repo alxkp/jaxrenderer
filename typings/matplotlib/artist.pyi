@@ -40,6 +40,7 @@ class Artist:
     def __init__(self) -> None: ...
     def __getstate__(self):  # -> dict[str, Any]:
         ...
+
     def remove(self):  # -> None:
         """
         Remove the artist from the figure if possible.
@@ -54,9 +55,11 @@ class Artist:
         Note: there is no support for removing the artist's legend entry.
         """
         ...
+
     def have_units(self):  # -> bool | None:
         """Return whether units are set on any axis."""
         ...
+
     def convert_xunits(self, x):  # -> Any:
         """
         Convert *x* using the unit type of the xaxis.
@@ -65,6 +68,7 @@ class Artist:
         have units, *x* itself is returned.
         """
         ...
+
     def convert_yunits(self, y):  # -> Any:
         """
         Convert *y* using the unit type of the yaxis.
@@ -73,13 +77,16 @@ class Artist:
         have units, *y* itself is returned.
         """
         ...
+
     @property
     def axes(self):  # -> None:
         """The `~.axes.Axes` instance the artist resides in, or *None*."""
         ...
+
     @axes.setter
     def axes(self, new_axes):  # -> None:
         ...
+
     @property
     def stale(self):  # -> bool:
         """
@@ -87,9 +94,11 @@ class Artist:
         to match the internal state of the artist.
         """
         ...
+
     @stale.setter
     def stale(self, val):  # -> None:
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         """
         Get the artist's bounding box in display space.
@@ -109,6 +118,7 @@ class Artist:
         but will save incorrectly.
         """
         ...
+
     def get_tightbbox(self, renderer=...):  # -> Bbox | None:
         """
         Like `.Artist.get_window_extent`, but includes any clipping.
@@ -125,6 +135,7 @@ class Artist:
             The enclosing bounding box (in figure pixel coordinates).
         """
         ...
+
     def add_callback(self, func):  # -> int:
         """
         Add a callback function that will be called whenever one of the
@@ -151,6 +162,7 @@ class Artist:
         remove_callback
         """
         ...
+
     def remove_callback(self, oid):  # -> None:
         """
         Remove a callback based on its observer id.
@@ -160,6 +172,7 @@ class Artist:
         add_callback
         """
         ...
+
     def pchanged(self):  # -> None:
         """
         Call all of the registered callbacks.
@@ -172,6 +185,7 @@ class Artist:
         remove_callback
         """
         ...
+
     def is_transform_set(self):  # -> bool:
         """
         Return whether the Artist has an explicitly set transform.
@@ -179,6 +193,7 @@ class Artist:
         This is *True* after `.set_transform` has been called.
         """
         ...
+
     def set_transform(self, t):  # -> None:
         """
         Set the artist transform.
@@ -188,12 +203,15 @@ class Artist:
         t : `.Transform`
         """
         ...
+
     def get_transform(self):  # -> IdentityTransform:
         """Return the `.Transform` instance used by this artist."""
         ...
+
     def get_children(self):  # -> list[Unknown]:
         r"""Return a list of the child `.Artist`\s of this `.Artist`."""
         ...
+
     def contains(self, mouseevent):  # -> tuple[Literal[False], dict[Unknown, Unknown]]:
         """
         Test whether the artist contains the mouse event.
@@ -212,6 +230,7 @@ class Artist:
             individual Artist subclasses for details.
         """
         ...
+
     def pickable(self):  # -> bool:
         """
         Return whether the artist is pickable.
@@ -221,6 +240,7 @@ class Artist:
         set_picker, get_picker, pick
         """
         ...
+
     def pick(self, mouseevent):  # -> None:
         """
         Process a pick event.
@@ -233,6 +253,7 @@ class Artist:
         set_picker, get_picker, pickable
         """
         ...
+
     def set_picker(self, picker):  # -> None:
         """
         Define the picking behavior of the artist.
@@ -267,6 +288,7 @@ class Artist:
               properties you want added to the PickEvent attributes.
         """
         ...
+
     def get_picker(self):  # -> None:
         """
         Return the picking behavior of the artist.
@@ -278,9 +300,11 @@ class Artist:
         set_picker, pickable, pick
         """
         ...
+
     def get_url(self):  # -> None:
         """Return the url."""
         ...
+
     def set_url(self, url):  # -> None:
         """
         Set the url for the artist.
@@ -290,9 +314,11 @@ class Artist:
         url : str
         """
         ...
+
     def get_gid(self):  # -> None:
         """Return the group id."""
         ...
+
     def set_gid(self, gid):  # -> None:
         """
         Set the (group) id for the artist.
@@ -302,6 +328,7 @@ class Artist:
         gid : str
         """
         ...
+
     def get_snap(self):  # -> Literal[False] | None:
         """
         Return the snap setting.
@@ -309,6 +336,7 @@ class Artist:
         See `.set_snap` for details.
         """
         ...
+
     def set_snap(self, snap):  # -> None:
         """
         Set the snapping behavior.
@@ -335,6 +363,7 @@ class Artist:
               segments, round to the nearest pixel center.
         """
         ...
+
     def get_sketch_params(
         self,
     ):  # -> tuple[Unknown, Unknown | float, Unknown | float] | None:
@@ -356,6 +385,7 @@ class Artist:
             Returns *None* if no sketch parameters were set.
         """
         ...
+
     def set_sketch_params(self, scale=..., length=..., randomness=...):  # -> None:
         """
         Set the sketch parameters.
@@ -379,6 +409,7 @@ class Artist:
             .. ACCEPTS: (scale: float, length: float, randomness: float)
         """
         ...
+
     def set_path_effects(self, path_effects):  # -> None:
         """
         Set the path effects.
@@ -388,11 +419,14 @@ class Artist:
         path_effects : `.AbstractPathEffect`
         """
         ...
+
     def get_path_effects(self):  # -> None:
         ...
+
     def get_figure(self):  # -> bool | None:
         """Return the `.Figure` instance the artist belongs to."""
         ...
+
     def set_figure(self, fig):  # -> None:
         """
         Set the `.Figure` instance the artist belongs to.
@@ -402,6 +436,7 @@ class Artist:
         fig : `.Figure`
         """
         ...
+
     def set_clip_box(self, clipbox):  # -> None:
         """
         Set the artist's clip `.Bbox`.
@@ -416,6 +451,7 @@ class Artist:
 
         """
         ...
+
     def set_clip_path(self, path, transform=...):  # -> None:
         """
         Set the artist's clip path.
@@ -442,18 +478,22 @@ class Artist:
         .. ACCEPTS: Patch or (Path, Transform) or None
         """
         ...
+
     def get_alpha(self):  # -> Number | NDArray[Any] | None:
         """
         Return the alpha value used for blending - not supported on all
         backends.
         """
         ...
+
     def get_visible(self):  # -> bool:
         """Return the visibility."""
         ...
+
     def get_animated(self):  # -> bool:
         """Return whether the artist is animated."""
         ...
+
     def get_in_layout(self):  # -> bool:
         """
         Return boolean flag, ``True`` if artist is included in layout
@@ -464,15 +504,19 @@ class Artist:
         ``fig.savefig(fname, bbox_inches='tight')``.
         """
         ...
+
     def get_clip_on(self):  # -> bool:
         """Return whether the artist uses clipping."""
         ...
+
     def get_clip_box(self):  # -> TransformedBbox | None:
         """Return the clipbox."""
         ...
+
     def get_clip_path(self):  # -> TransformedPatchPath | TransformedPath | None:
         """Return the clip path."""
         ...
+
     def get_transformed_clip_path_and_affine(
         self,
     ):  # -> tuple[Unknown | None, Unknown] | tuple[None, None]:
@@ -482,6 +526,7 @@ class Artist:
         transformation.
         """
         ...
+
     def set_clip_on(self, b):  # -> None:
         """
         Set whether the artist uses clipping.
@@ -494,9 +539,11 @@ class Artist:
         b : bool
         """
         ...
+
     def get_rasterized(self):  # -> bool:
         """Return whether the artist is to be rasterized."""
         ...
+
     def set_rasterized(self, rasterized):  # -> None:
         """
         Force rasterized (bitmap) drawing for vector graphics output.
@@ -514,9 +561,11 @@ class Artist:
         rasterized : bool
         """
         ...
+
     def get_agg_filter(self):  # -> None:
         """Return filter function to be used for agg filter."""
         ...
+
     def set_agg_filter(self, filter_func):  # -> None:
         """
         Set the agg filter.
@@ -533,6 +582,7 @@ class Artist:
                 from the bottom left corner of the image
         """
         ...
+
     def draw(self, renderer):  # -> None:
         """
         Draw the Artist (and its children) using the given renderer.
@@ -549,6 +599,7 @@ class Artist:
         This method is overridden in the Artist subclasses.
         """
         ...
+
     def set_alpha(self, alpha):  # -> None:
         """
         Set the alpha value used for blending - not supported on all backends.
@@ -559,6 +610,7 @@ class Artist:
             *alpha* must be within the 0-1 range, inclusive.
         """
         ...
+
     def set_visible(self, b):  # -> None:
         """
         Set the artist's visibility.
@@ -568,6 +620,7 @@ class Artist:
         b : bool
         """
         ...
+
     def set_animated(self, b):  # -> None:
         """
         Set whether the artist is intended to be used in an animation.
@@ -585,6 +638,7 @@ class Artist:
         b : bool
         """
         ...
+
     def set_in_layout(self, in_layout):  # -> None:
         """
         Set if artist is to be included in layout calculations,
@@ -597,9 +651,11 @@ class Artist:
         in_layout : bool
         """
         ...
+
     def get_label(self):  # -> str | None:
         """Return the label used for this artist in the legend."""
         ...
+
     def set_label(self, s):  # -> None:
         """
         Set a label that will be displayed in the legend.
@@ -610,9 +666,11 @@ class Artist:
             *s* will be converted to a string by calling `str`.
         """
         ...
+
     def get_zorder(self):  # -> int:
         """Return the artist's zorder."""
         ...
+
     def set_zorder(self, level):  # -> None:
         """
         Set the zorder for the artist.  Artists with lower zorder
@@ -623,6 +681,7 @@ class Artist:
         level : float
         """
         ...
+
     @property
     def sticky_edges(self):  # -> _XYPair:
         """
@@ -649,12 +708,15 @@ class Artist:
 
         """
         ...
+
     def update_from(self, other):  # -> None:
         """Copy properties from *other* to *self*."""
         ...
+
     def properties(self):  # -> dict[Unknown, Unknown]:
         """Return a dictionary of all the properties of the artist."""
         ...
+
     def update(self, props):  # -> list[Unknown]:
         """
         Update this artist's properties from the dict *props*.
@@ -664,8 +726,10 @@ class Artist:
         props : dict
         """
         ...
+
     def set(self, **kwargs):  # -> list[Unknown]:
         ...
+
     def findobj(self, match=..., include_self=...):  # -> list[Unknown]:
         """
         Find artist objects.
@@ -693,6 +757,7 @@ class Artist:
 
         """
         ...
+
     def get_cursor_data(self, event):  # -> None:
         """
         Return the cursor data for a given event.
@@ -723,6 +788,7 @@ class Artist:
 
         """
         ...
+
     def format_cursor_data(self, data):  # -> str:
         """
         Return a string representation of *data*.
@@ -742,12 +808,14 @@ class Artist:
         get_cursor_data
         """
         ...
+
     def get_mouseover(self):  # -> bool:
         """
         Return whether this artist is queried for custom context information
         when the mouse cursor moves over it.
         """
         ...
+
     def set_mouseover(self, mouseover):  # -> None:
         """
         Set whether this artist is queried for custom context information when
@@ -780,6 +848,7 @@ class ArtistInspector:
         responsibility to make sure this is so.
         """
         ...
+
     def get_aliases(self):  # -> dict[Unknown, Unknown]:
         """
         Get a dict mapping property fullnames to sets of aliases for each alias
@@ -802,6 +871,7 @@ class ArtistInspector:
         numpydoc-style documentation for the setter's first argument.
         """
         ...
+
     def get_setters(self):  # -> list[Unknown]:
         """
         Get the attribute strings with setters for object.
@@ -810,11 +880,13 @@ class ArtistInspector:
         ....]``.
         """
         ...
+
     @staticmethod
     @lru_cache(maxsize=None)
     def number_of_parameters(func):  # -> int:
         """Return number of parameters of the callable *func*."""
         ...
+
     @staticmethod
     @lru_cache(maxsize=None)
     def is_alias(method):  # -> bool:
@@ -822,6 +894,7 @@ class ArtistInspector:
         Return whether the object *method* is an alias for another method.
         """
         ...
+
     def aliased_name(self, s):
         """
         Return 'PROPNAME or alias' if *s* has an alias, else return 'PROPNAME'.
@@ -842,6 +915,7 @@ class ArtistInspector:
         property, which does not, return 'transform'.
         """
         ...
+
     def pprint_setters(self, prop=..., leadingspace=...):  # -> str | list[Unknown]:
         """
         If *prop* is *None*, return a list of strings of all settable
@@ -852,6 +926,7 @@ class ArtistInspector:
         values.
         """
         ...
+
     def pprint_setters_rest(
         self, prop=..., leadingspace=...
     ):  # -> str | list[str | Any]:
@@ -864,9 +939,11 @@ class ArtistInspector:
         values.
         """
         ...
+
     def properties(self):  # -> dict[Unknown, Unknown]:
         """Return a dictionary mapping property name -> value."""
         ...
+
     def pprint_getters(self):  # -> list[Unknown]:
         """Return the getters and actual values as list of strings."""
         ...

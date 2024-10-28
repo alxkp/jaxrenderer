@@ -48,11 +48,9 @@ T_co = TypeVar("T_co", covariant=True)
 
 
 class Wrapped(Protocol[ArgT, T_co]):
-    def __call__(self, *args: ArgT.args, **kwargs: ArgT.kwargs) -> T_co:
-        ...
+    def __call__(self, *args: ArgT.args, **kwargs: ArgT.kwargs) -> T_co: ...
 
-    def lower(self, *args: ArgT.args, **kwargs: ArgT.kwargs) -> jax.stages.Lowered:
-        ...
+    def lower(self, *args: ArgT.args, **kwargs: ArgT.kwargs) -> jax.stages.Lowered: ...
 
 
 def typed_jit(

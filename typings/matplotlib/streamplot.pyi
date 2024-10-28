@@ -125,18 +125,25 @@ class DomainMap:
     def grid2mask(self, xi, yi):  # -> tuple[Unknown, Unknown]:
         """Return nearest space in mask-coords from given grid-coords."""
         ...
+
     def mask2grid(self, xm, ym):  # -> tuple[Unknown, Unknown]:
         ...
+
     def data2grid(self, xd, yd):  # -> tuple[Unknown, Unknown]:
         ...
+
     def grid2data(self, xg, yg):  # -> tuple[Unknown, Unknown]:
         ...
+
     def start_trajectory(self, xg, yg, broken_streamlines=...):  # -> None:
         ...
+
     def reset_start_point(self, xg, yg):  # -> None:
         ...
+
     def update_trajectory(self, xg, yg, broken_streamlines=...):  # -> None:
         ...
+
     def undo_trajectory(self):  # -> None:
         ...
 
@@ -147,6 +154,7 @@ class Grid:
     @property
     def shape(self):  # -> tuple[int, int]:
         ...
+
     def within_grid(self, xi, yi):
         """Return whether (*xi*, *yi*) is a valid index of the grid."""
         ...

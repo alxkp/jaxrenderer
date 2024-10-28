@@ -57,6 +57,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
     mappable will be used to set the ``facecolors`` and ``edgecolors``,
     ignoring those that were manually passed in.
     """
+
     _transforms = np.empty((0, 3, 3))
     _edge_default = ...
     @_docstring.interpd
@@ -141,14 +142,18 @@ class Collection(artist.Artist, cm.ScalarMappable):
             :doc:`/gallery/misc/zorder_demo` for all defaults and examples.
         """
         ...
+
     def get_paths(self):  # -> None:
         ...
+
     def set_paths(self, paths): ...
     def get_transforms(self):  # -> NDArray[float64]:
         ...
+
     def get_offset_transform(self):  # -> IdentityTransform:
         """Return the `.Transform` instance used by this artist offset."""
         ...
+
     @_api.rename_parameter("3.6", "transOffset", "offset_transform")
     def set_offset_transform(self, offset_transform):  # -> None:
         """
@@ -159,13 +164,17 @@ class Collection(artist.Artist, cm.ScalarMappable):
         offset_transform : `.Transform`
         """
         ...
+
     def get_datalim(self, transData):  # -> Bbox:
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     @_api.rename_parameter("3.6", "pr", "pickradius")
     def set_pickradius(self, pickradius):  # -> None:
         """
@@ -177,6 +186,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
             Pick radius, in points.
         """
         ...
+
     def get_pickradius(self): ...
     def contains(
         self, mouseevent
@@ -188,6 +198,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
         contains the event.
         """
         ...
+
     def set_urls(self, urls):  # -> None:
         """
         Parameters
@@ -200,6 +211,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
         ignored by all other backends.
         """
         ...
+
     def get_urls(self):  # -> list[None]:
         """
         Return a list of URLs, one for each element of the collection.
@@ -208,6 +220,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
         :doc:`/gallery/misc/hyperlinks_sgskip` for an example.
         """
         ...
+
     def set_hatch(self, hatch):  # -> None:
         r"""
         Set the hatching pattern
@@ -241,9 +254,11 @@ class Collection(artist.Artist, cm.ScalarMappable):
         hatch : {'/', '\\', '|', '-', '+', 'x', 'o', 'O', '.', '*'}
         """
         ...
+
     def get_hatch(self):
         """Return the current hatching pattern."""
         ...
+
     def set_offsets(self, offsets):  # -> None:
         """
         Set the offsets for the collection.
@@ -253,9 +268,11 @@ class Collection(artist.Artist, cm.ScalarMappable):
         offsets : (N, 2) or (2,) array-like
         """
         ...
+
     def get_offsets(self):  # -> NDArray[float64] | ndarray[Any, dtype[Any]]:
         """Return the offsets for the collection."""
         ...
+
     def set_linewidth(self, lw):  # -> None:
         """
         Set the linewidth(s) for the collection.  *lw* can be a scalar
@@ -267,6 +284,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
         lw : float or list of floats
         """
         ...
+
     def set_linestyle(self, ls):  # -> None:
         """
         Set the linestyle(s) for the collection.
@@ -294,6 +312,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
             complete description.
         """
         ...
+
     @_docstring.interpd
     def set_capstyle(self, cs):  # -> None:
         """
@@ -304,8 +323,10 @@ class Collection(artist.Artist, cm.ScalarMappable):
         cs : `.CapStyle` or %(CapStyle)s
         """
         ...
+
     def get_capstyle(self):  # -> Literal['butt', 'projecting', 'round']:
         ...
+
     @_docstring.interpd
     def set_joinstyle(self, js):  # -> None:
         """
@@ -316,8 +337,10 @@ class Collection(artist.Artist, cm.ScalarMappable):
         js : `.JoinStyle` or %(JoinStyle)s
         """
         ...
+
     def get_joinstyle(self):  # -> Literal['miter', 'round', 'bevel']:
         ...
+
     def set_antialiased(self, aa):  # -> None:
         """
         Set the antialiasing state for rendering.
@@ -327,6 +350,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
         aa : bool or list of bools
         """
         ...
+
     def set_color(self, c):  # -> None:
         """
         Set both the edgecolor and the facecolor.
@@ -341,6 +365,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
             For setting the edge or face color individually.
         """
         ...
+
     def set_facecolor(self, c):  # -> None:
         """
         Set the facecolor(s) of the collection. *c* can be a color (all patches
@@ -354,10 +379,13 @@ class Collection(artist.Artist, cm.ScalarMappable):
         c : color or list of colors
         """
         ...
+
     def get_facecolor(self):  # -> None:
         ...
+
     def get_edgecolor(self):  # -> str | None:
         ...
+
     def set_edgecolor(self, c):  # -> None:
         """
         Set the edgecolor(s) of the collection.
@@ -369,6 +397,7 @@ class Collection(artist.Artist, cm.ScalarMappable):
             through it.  If 'face', match the facecolor.
         """
         ...
+
     def set_alpha(self, alpha):  # -> None:
         """
         Set the transparency of the collection.
@@ -382,12 +411,15 @@ class Collection(artist.Artist, cm.ScalarMappable):
             supported.
         """
         ...
+
     def get_linewidth(self):  # -> list[int] | list[Unknown]:
         ...
+
     def get_linestyle(
         self,
     ):  # -> list[tuple[Literal[0], None]] | list[tuple[Unknown | int, tuple[Unknown, ...] | Unknown | None]] | list[tuple[Unknown, Unknown] | tuple[Unknown, list[Unknown | None] | None]]:
         ...
+
     def update_scalarmappable(self):  # -> None:
         """
         Update colors from the scalar mappable array, if any.
@@ -396,9 +428,11 @@ class Collection(artist.Artist, cm.ScalarMappable):
         colors that were directly set, as appropriate.
         """
         ...
+
     def get_fill(self):  # -> bool:
         """Return whether face is colored."""
         ...
+
     def update_from(self, other):  # -> None:
         """Copy properties from other to self."""
         ...
@@ -419,6 +453,7 @@ class _CollectionWithSizes(Collection):
             The 'area' of each element.
         """
         ...
+
     def set_sizes(self, sizes, dpi=...):  # -> None:
         """
         Set the sizes of each member of the collection.
@@ -432,6 +467,7 @@ class _CollectionWithSizes(Collection):
             The dpi of the canvas.
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
@@ -440,6 +476,7 @@ class PathCollection(_CollectionWithSizes):
     r"""
     A collection of `~.path.Path`\s, as created by e.g. `~.Axes.scatter`.
     """
+
     def __init__(self, paths, sizes=..., **kwargs) -> None:
         """
         Parameters
@@ -454,8 +491,10 @@ class PathCollection(_CollectionWithSizes):
             Forwarded to `.Collection`.
         """
         ...
+
     def set_paths(self, paths):  # -> None:
         ...
+
     def get_paths(self): ...
     def legend_elements(
         self, prop=..., num=..., fmt=..., func=..., **kwargs
@@ -546,6 +585,7 @@ class PolyCollection(_CollectionWithSizes):
             Forwarded to `.Collection`.
         """
         ...
+
     def set_verts(self, verts, closed=...):  # -> None:
         """
         Set the vertices of the polygons.
@@ -565,6 +605,7 @@ class PolyCollection(_CollectionWithSizes):
     def set_verts_and_codes(self, verts, codes):  # -> None:
         """Initialize vertices with path codes."""
         ...
+
     @classmethod
     @_api.deprecated("3.7", alternative="fill_between")
     def span_where(cls, x, ymin, ymax, where, **kwargs):  # -> Any:
@@ -634,10 +675,13 @@ class RegularPolyCollection(_CollectionWithSizes):
                 )
         """
         ...
+
     def get_numsides(self):  # -> Unknown:
         ...
+
     def get_rotation(self):  # -> int:
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
@@ -669,6 +713,7 @@ class LineCollection(Collection):
     in :rc:`lines.*` instead of :rc:`patch.*`, and the property *colors* is
     added in place of *edgecolors*.
     """
+
     _edge_default = ...
     def __init__(self, segments, *, zorder=..., **kwargs) -> None:
         """
@@ -704,6 +749,7 @@ class LineCollection(Collection):
             Forwarded to `.Collection`.
         """
         ...
+
     def set_segments(self, segments):  # -> None:
         ...
     set_verts = ...
@@ -717,6 +763,7 @@ class LineCollection(Collection):
             array of vertices.
         """
         ...
+
     def set_color(self, c):  # -> None:
         """
         Set the edgecolor(s) of the LineCollection.
@@ -793,14 +840,17 @@ class EventCollection(LineCollection):
         .. plot:: gallery/lines_bars_and_markers/eventcollection_demo.py
         """
         ...
+
     def get_positions(self):  # -> list[Unknown]:
         """
         Return an array containing the floating-point values of the positions.
         """
         ...
+
     def set_positions(self, positions):  # -> None:
         """Set the positions of the events."""
         ...
+
     def add_positions(self, position):  # -> None:
         """Add one or more events at the specified positions."""
         ...
@@ -808,17 +858,20 @@ class EventCollection(LineCollection):
     def is_horizontal(self):  # -> bool:
         """True if the eventcollection is horizontal, False if vertical."""
         ...
+
     def get_orientation(self):  # -> Literal['horizontal', 'vertical']:
         """
         Return the orientation of the event line ('horizontal' or 'vertical').
         """
         ...
+
     def switch_orientation(self):  # -> None:
         """
         Switch the orientation of the event line, either from vertical to
         horizontal or vice versus.
         """
         ...
+
     def set_orientation(self, orientation):  # -> None:
         """
         Set the orientation of the event line.
@@ -828,23 +881,30 @@ class EventCollection(LineCollection):
         orientation : {'horizontal', 'vertical'}
         """
         ...
+
     def get_linelength(self):  # -> int:
         """Return the length of the lines used to mark each event."""
         ...
+
     def set_linelength(self, linelength):  # -> None:
         """Set the length of the lines used to mark each event."""
         ...
+
     def get_lineoffset(self):  # -> int:
         """Return the offset of the lines used to mark each event."""
         ...
+
     def set_lineoffset(self, lineoffset):  # -> None:
         """Set the offset of the lines used to mark each event."""
         ...
+
     def get_linewidth(self):  # -> int:
         """Get the width of the lines used to mark each event."""
         ...
+
     def get_linewidths(self):  # -> list[int] | list[Unknown]:
         ...
+
     def get_color(self):  # -> str:
         """Return the color of the lines used to mark each event."""
         ...
@@ -890,6 +950,7 @@ class EllipseCollection(Collection):
             Forwarded to `Collection`.
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
@@ -933,6 +994,7 @@ class PatchCollection(Collection):
         mappable will be made to set the face colors.
         """
         ...
+
     def set_paths(self, patches):  # -> None:
         ...
 
@@ -946,8 +1008,10 @@ class TriMesh(Collection):
     def __init__(self, triangulation, **kwargs) -> None: ...
     def get_paths(self):  # -> list[Path]:
         ...
+
     def set_paths(self):  # -> None:
         ...
+
     @staticmethod
     def convert_mesh_to_paths(tri):  # -> list[Path]:
         """
@@ -957,6 +1021,7 @@ class TriMesh(Collection):
         not directly support meshes.
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
@@ -994,13 +1059,16 @@ class QuadMesh(Collection):
     mesh quadrilaterals.
 
     """
+
     def __init__(
         self, coordinates, *, antialiased=..., shading=..., **kwargs
     ) -> None: ...
     def get_paths(self):  # -> list[Path]:
         ...
+
     def set_paths(self):  # -> None:
         ...
+
     def set_array(self, A):  # -> None:
         """
         Set the data values.
@@ -1024,6 +1092,7 @@ class QuadMesh(Collection):
             shading.
         """
         ...
+
     def get_datalim(self, transData): ...
     def get_coordinates(self):  # -> Unknown:
         """
@@ -1034,8 +1103,10 @@ class QuadMesh(Collection):
         The last dimension specifies the components (x, y).
         """
         ...
+
     @artist.allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def get_cursor_data(self, event):  # -> None:
         ...

@@ -18,6 +18,7 @@ class SecondaryAxis(_AxesBase):
         called by those higher level functions.
         """
         ...
+
     def set_alignment(self, align):  # -> None:
         """
         Set if axes spine and labels are drawn at top or bottom (or left/right)
@@ -30,6 +31,7 @@ class SecondaryAxis(_AxesBase):
             'left' or 'right' for orientation='y' axis.
         """
         ...
+
     def set_location(self, location):  # -> None:
         """
         Set the vertical or horizontal location of the axes in
@@ -45,11 +47,14 @@ class SecondaryAxis(_AxesBase):
             and 1.0 being the top (or right).
         """
         ...
+
     def apply_aspect(self, position=...):  # -> None:
         ...
+
     @_docstring.copy(Axis.set_ticks)
     def set_ticks(self, ticks, labels=..., *, minor=..., **kwargs):  # -> list[Unknown]:
         ...
+
     def set_functions(self, functions):  # -> None:
         """
         Set how the secondary axis converts limits from the parent axes.
@@ -68,6 +73,7 @@ class SecondaryAxis(_AxesBase):
             inverse.
         """
         ...
+
     def draw(self, renderer):  # -> None:
         """
         Draw the secondary axes.
@@ -78,12 +84,14 @@ class SecondaryAxis(_AxesBase):
         parameter when axes initialized.)
         """
         ...
+
     def set_aspect(self, *args, **kwargs):  # -> None:
         """
         Secondary axes cannot set the aspect ratio, so calling this just
         sets a warning.
         """
         ...
+
     def set_color(self, color):  # -> None:
         """
         Change the color of the secondary axes and all decorators.

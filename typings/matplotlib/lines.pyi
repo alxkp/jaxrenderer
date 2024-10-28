@@ -91,6 +91,7 @@ class Line2D(Artist):
 
         """
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[bool, dict[str, NDArray[signedinteger[_NBitIntP]] | Any | NDArray[unsignedinteger[Unknown]]]]:
@@ -118,6 +119,7 @@ class Line2D(Artist):
             TODO: sort returned indices by distance
         """
         ...
+
     def get_pickradius(self):  # -> int | Number:
         """
         Return the pick radius used for containment tests.
@@ -125,6 +127,7 @@ class Line2D(Artist):
         See `.contains` for more details.
         """
         ...
+
     @_api.rename_parameter("3.6", "d", "pickradius")
     def set_pickradius(self, pickradius):  # -> None:
         """
@@ -146,6 +149,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_fillstyle`.
         """
         ...
+
     def set_fillstyle(self, fs):  # -> None:
         """
         Set the marker fill style.
@@ -164,6 +168,7 @@ class Line2D(Artist):
             For examples see :ref:`marker_fill_styles`.
         """
         ...
+
     def set_markevery(self, every):  # -> None:
         """
         Set the markevery property to subsample the plot when using markers.
@@ -221,6 +226,7 @@ class Line2D(Artist):
 
         """
         ...
+
     def get_markevery(self):  # -> None:
         """
         Return the markevery setting for marker subsampling.
@@ -228,6 +234,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_markevery`.
         """
         ...
+
     def set_picker(self, p):  # -> None:
         """
         Set the event picker details for the line.
@@ -238,11 +245,14 @@ class Line2D(Artist):
             If a float, it is used as the pick radius in points.
         """
         ...
+
     def get_bbox(self):  # -> Bbox:
         """Get the bounding box of this line."""
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         ...
+
     def set_data(self, *args):  # -> None:
         """
         Set the x and y data.
@@ -252,17 +262,22 @@ class Line2D(Artist):
         *args : (2, N) array or two 1D arrays
         """
         ...
+
     def recache_always(self):  # -> None:
         ...
+
     def recache(self, always=...):  # -> None:
         ...
+
     def set_transform(self, t):  # -> None:
         ...
+
     @allow_rasterization
     def draw(self, renderer): ...
     def get_antialiased(self):  # -> None:
         """Return whether antialiased rendering is used."""
         ...
+
     def get_color(self):  # -> None:
         """
         Return the line color.
@@ -270,6 +285,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_color`.
         """
         ...
+
     def get_drawstyle(self):  # -> str | None:
         """
         Return the drawstyle.
@@ -277,6 +293,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_drawstyle`.
         """
         ...
+
     def get_gapcolor(self):  # -> None:
         """
         Return the line gapcolor.
@@ -284,6 +301,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_gapcolor`.
         """
         ...
+
     def get_linestyle(self):  # -> str:
         """
         Return the linestyle.
@@ -291,6 +309,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_linestyle`.
         """
         ...
+
     def get_linewidth(self):  # -> float | None:
         """
         Return the linewidth in points.
@@ -298,6 +317,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_linewidth`.
         """
         ...
+
     def get_marker(self):  # -> ndarray[Unknown, Unknown] | str | Path:
         """
         Return the line marker.
@@ -305,6 +325,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_marker`.
         """
         ...
+
     def get_markeredgecolor(self):  # -> Literal['k'] | None:
         """
         Return the marker edge color.
@@ -312,6 +333,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_markeredgecolor`.
         """
         ...
+
     def get_markeredgewidth(self):  # -> None:
         """
         Return the marker edge width in points.
@@ -319,6 +341,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_markeredgewidth`.
         """
         ...
+
     def get_markerfacecolor(self):  # -> Literal['none'] | None:
         """
         Return the marker face color.
@@ -326,6 +349,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_markerfacecolor`.
         """
         ...
+
     def get_markerfacecoloralt(self):  # -> Literal['none'] | None:
         """
         Return the alternate marker face color.
@@ -333,6 +357,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_markerfacecoloralt`.
         """
         ...
+
     def get_markersize(self):  # -> float | None:
         """
         Return the marker size in points.
@@ -340,6 +365,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_markersize`.
         """
         ...
+
     def get_data(
         self, orig=...
     ):  # -> tuple[NDArray[Unknown] | list[Unknown] | Iterable[Any] | Unknown | None, NDArray[Unknown] | list[Unknown] | Iterable[Any] | Unknown | None]:
@@ -349,6 +375,7 @@ class Line2D(Artist):
         If *orig* is *True*, return the original data.
         """
         ...
+
     def get_xdata(
         self, orig=...
     ):  # -> NDArray[Unknown] | list[Unknown] | Iterable[Any] | None:
@@ -359,6 +386,7 @@ class Line2D(Artist):
         processed data.
         """
         ...
+
     def get_ydata(
         self, orig=...
     ):  # -> NDArray[Unknown] | list[Unknown] | Iterable[Any] | None:
@@ -369,14 +397,17 @@ class Line2D(Artist):
         processed data.
         """
         ...
+
     def get_path(self):  # -> Path | None:
         """Return the `~matplotlib.path.Path` associated with this line."""
         ...
+
     def get_xydata(self):  # -> None:
         """
         Return the *xy* data as a Nx2 numpy array.
         """
         ...
+
     def set_antialiased(self, b):  # -> None:
         """
         Set whether to use antialiased rendering.
@@ -386,6 +417,7 @@ class Line2D(Artist):
         b : bool
         """
         ...
+
     def set_color(self, color):  # -> None:
         """
         Set the color of the line.
@@ -395,6 +427,7 @@ class Line2D(Artist):
         color : color
         """
         ...
+
     def set_drawstyle(self, drawstyle):  # -> None:
         """
         Set the drawstyle of the plot.
@@ -422,6 +455,7 @@ class Line2D(Artist):
             For examples see :doc:`/gallery/lines_bars_and_markers/step_demo`.
         """
         ...
+
     def set_gapcolor(self, gapcolor):  # -> None:
         """
         Set a color to fill the gaps in the dashed line style.
@@ -441,6 +475,7 @@ class Line2D(Artist):
             unfilled.
         """
         ...
+
     def set_linewidth(self, w):  # -> None:
         """
         Set the line width in points.
@@ -451,6 +486,7 @@ class Line2D(Artist):
             Line width, in points.
         """
         ...
+
     def set_linestyle(self, ls):  # -> None:
         """
         Set the linestyle of the line.
@@ -483,6 +519,7 @@ class Line2D(Artist):
             For examples see :doc:`/gallery/lines_bars_and_markers/linestyles`.
         """
         ...
+
     @_docstring.interpd
     def set_marker(self, marker):  # -> None:
         """
@@ -495,6 +532,7 @@ class Line2D(Artist):
             arguments.
         """
         ...
+
     def set_markeredgecolor(self, ec):  # -> None:
         """
         Set the marker edge color.
@@ -504,6 +542,7 @@ class Line2D(Artist):
         ec : color
         """
         ...
+
     def set_markerfacecolor(self, fc):  # -> None:
         """
         Set the marker face color.
@@ -513,6 +552,7 @@ class Line2D(Artist):
         fc : color
         """
         ...
+
     def set_markerfacecoloralt(self, fc):  # -> None:
         """
         Set the alternate marker face color.
@@ -522,6 +562,7 @@ class Line2D(Artist):
         fc : color
         """
         ...
+
     def set_markeredgewidth(self, ew):  # -> None:
         """
         Set the marker edge width in points.
@@ -532,6 +573,7 @@ class Line2D(Artist):
              Marker edge width, in points.
         """
         ...
+
     def set_markersize(self, sz):  # -> None:
         """
         Set the marker size in points.
@@ -542,6 +584,7 @@ class Line2D(Artist):
              Marker size, in points.
         """
         ...
+
     def set_xdata(self, x):  # -> None:
         """
         Set the data array for x.
@@ -551,6 +594,7 @@ class Line2D(Artist):
         x : 1D array
         """
         ...
+
     def set_ydata(self, y):  # -> None:
         """
         Set the data array for y.
@@ -560,6 +604,7 @@ class Line2D(Artist):
         y : 1D array
         """
         ...
+
     def set_dashes(self, seq):  # -> None:
         """
         Set the dash sequence.
@@ -580,9 +625,11 @@ class Line2D(Artist):
             to solid.
         """
         ...
+
     def update_from(self, other):  # -> None:
         """Copy properties from *other* to self."""
         ...
+
     @_docstring.interpd
     def set_dash_joinstyle(self, s):  # -> None:
         """
@@ -595,6 +642,7 @@ class Line2D(Artist):
         s : `.JoinStyle` or %(JoinStyle)s
         """
         ...
+
     @_docstring.interpd
     def set_solid_joinstyle(self, s):  # -> None:
         """
@@ -607,6 +655,7 @@ class Line2D(Artist):
         s : `.JoinStyle` or %(JoinStyle)s
         """
         ...
+
     def get_dash_joinstyle(self):  # -> Literal['miter', 'round', 'bevel']:
         """
         Return the `.JoinStyle` for dashed lines.
@@ -614,6 +663,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_dash_joinstyle`.
         """
         ...
+
     def get_solid_joinstyle(self):  # -> Literal['miter', 'round', 'bevel']:
         """
         Return the `.JoinStyle` for solid lines.
@@ -621,6 +671,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_solid_joinstyle`.
         """
         ...
+
     @_docstring.interpd
     def set_dash_capstyle(self, s):  # -> None:
         """
@@ -633,6 +684,7 @@ class Line2D(Artist):
         s : `.CapStyle` or %(CapStyle)s
         """
         ...
+
     @_docstring.interpd
     def set_solid_capstyle(self, s):  # -> None:
         """
@@ -645,6 +697,7 @@ class Line2D(Artist):
         s : `.CapStyle` or %(CapStyle)s
         """
         ...
+
     def get_dash_capstyle(self):  # -> Literal['butt', 'projecting', 'round']:
         """
         Return the `.CapStyle` for dashed lines.
@@ -652,6 +705,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_dash_capstyle`.
         """
         ...
+
     def get_solid_capstyle(self):  # -> Literal['butt', 'projecting', 'round']:
         """
         Return the `.CapStyle` for solid lines.
@@ -659,6 +713,7 @@ class Line2D(Artist):
         See also `~.Line2D.set_solid_capstyle`.
         """
         ...
+
     def is_dashed(self):  # -> bool:
         """
         Return whether line has a dashed linestyle.
@@ -732,6 +787,7 @@ class VertexSelector:
             The coordinates of the selected vertices.
         """
         ...
+
     def onpick(self, event):  # -> None:
         """When the line is picked, update the set of selected indices."""
         ...

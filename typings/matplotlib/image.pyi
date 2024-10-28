@@ -78,9 +78,11 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
     def __str__(self) -> str: ...
     def __getstate__(self):  # -> dict[str, Any | None]:
         ...
+
     def get_size(self):
         """Return the size of the image as tuple (numrows, numcols)."""
         ...
+
     def set_alpha(self, alpha):  # -> None:
         """
         Set the alpha value used for blending - not supported on all backends.
@@ -90,11 +92,13 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
         alpha : float or 2D array-like or None
         """
         ...
+
     def changed(self):  # -> None:
         """
         Call this whenever the mappable is changed so observers can update.
         """
         ...
+
     def make_image(self, renderer, magnification=..., unsampled=...):
         """
         Normalize, rescale, and colormap this image's data for rendering using
@@ -114,17 +118,21 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
             The affine transformation from image to pixel space.
         """
         ...
+
     @martist.allow_rasterization
     def draw(self, renderer, *args, **kwargs):  # -> None:
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown | Literal[False], dict[Unknown, Unknown]]:
         """Test whether the mouse event occurred within the image."""
         ...
+
     def write_png(self, fname):  # -> None:
         """Write the image to png file *fname*."""
         ...
+
     def set_data(self, A):  # -> None:
         """
         Set the image array.
@@ -136,6 +144,7 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
         A : array-like or `PIL.Image.Image`
         """
         ...
+
     def set_array(self, A):  # -> None:
         """
         Retained for backwards compatibility - use set_data instead.
@@ -145,6 +154,7 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
         A : array-like
         """
         ...
+
     def get_interpolation(self):
         """
         Return the interpolation method the image uses when resizing.
@@ -155,6 +165,7 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
         or 'none'.
         """
         ...
+
     def set_interpolation(self, s):  # -> None:
         """
         Set the interpolation method the image uses when resizing.
@@ -171,6 +182,7 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
 'gaussian', 'bessel', 'mitchell', 'sinc', 'lanczos', 'none'} or None
         """
         ...
+
     def set_interpolation_stage(self, s):  # -> None:
         """
         Set when interpolation happens during the transform to RGBA.
@@ -182,9 +194,11 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
             space.
         """
         ...
+
     def can_composite(self):  # -> Any | Literal[False]:
         """Return whether the image can be composited with its neighbors."""
         ...
+
     def set_resample(self, v):  # -> None:
         """
         Set whether image resampling is used.
@@ -195,9 +209,11 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
             If None, use :rc:`image.resample`.
         """
         ...
+
     def get_resample(self):  # -> None:
         """Return whether image resampling is used."""
         ...
+
     def set_filternorm(self, filternorm):  # -> None:
         """
         Set whether the resize filter normalizes the weights.
@@ -209,9 +225,11 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
         filternorm : bool
         """
         ...
+
     def get_filternorm(self):  # -> bool:
         """Return whether the resize filter normalizes the weights."""
         ...
+
     def set_filterrad(self, filterrad):  # -> None:
         """
         Set the resize filter radius only applicable to some
@@ -222,6 +240,7 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
         filterrad : positive float
         """
         ...
+
     def get_filterrad(self):  # -> float:
         """Return the filterrad setting."""
         ...
@@ -292,6 +311,7 @@ class AxesImage(_ImageBase):
     ) -> None: ...
     def get_window_extent(self, renderer=...):  # -> Bbox:
         ...
+
     def make_image(self, renderer, magnification=..., unsampled=...): ...
     def set_extent(self, extent, **kwargs):  # -> None:
         """
@@ -315,11 +335,13 @@ class AxesImage(_ImageBase):
         will redo the autoscaling in accord with ``dataLim``.
         """
         ...
+
     def get_extent(
         self,
     ):  # -> list[Unknown] | tuple[float, Unknown, Unknown, float] | tuple[float, Unknown, float, Unknown]:
         """Return the image extent as tuple (left, right, bottom, top)."""
         ...
+
     def get_cursor_data(self, event):  # -> None:
         """
         Return the image value at the event position or *None* if the event is
@@ -345,10 +367,12 @@ class NonUniformImage(AxesImage):
             All other keyword arguments are identical to those of `.AxesImage`.
         """
         ...
+
     def make_image(
         self, renderer, magnification=..., unsampled=...
     ):  # -> tuple[ndarray[Any, dtype[uint8]], Unknown, Unknown, IdentityTransform]:
         ...
+
     def set_data(self, x, y, A):  # -> None:
         """
         Set the grid for the pixel centers, and the pixel values.
@@ -363,6 +387,7 @@ class NonUniformImage(AxesImage):
             colormapped, or (M, N, 3) RGB array, or (M, N, 4) RGBA array.
         """
         ...
+
     def set_array(self, *args): ...
     def set_interpolation(self, s):  # -> None:
         """
@@ -372,14 +397,19 @@ class NonUniformImage(AxesImage):
             If None, use :rc:`image.interpolation`.
         """
         ...
+
     def get_extent(self):  # -> tuple[Any, Any, Any, Any]:
         ...
+
     def set_filternorm(self, s):  # -> None:
         ...
+
     def set_filterrad(self, s):  # -> None:
         ...
+
     def set_norm(self, norm):  # -> None:
         ...
+
     def set_cmap(self, cmap):  # -> None:
         ...
 
@@ -418,10 +448,12 @@ class PcolorImage(AxesImage):
         **kwargs : `~matplotlib.artist.Artist` properties
         """
         ...
+
     def make_image(
         self, renderer, magnification=..., unsampled=...
     ):  # -> tuple[Unknown, Unknown, Unknown, IdentityTransform]:
         ...
+
     def set_data(self, x, y, A):  # -> None:
         """
         Set the grid for the rectangle boundaries, and the data values.
@@ -441,6 +473,7 @@ class PcolorImage(AxesImage):
             - (M, N, 4): RGBA array
         """
         ...
+
     def set_array(self, *args): ...
     def get_cursor_data(self, event):  # -> None:
         ...
@@ -461,9 +494,11 @@ class FigureImage(_ImageBase):
         kwargs are an optional list of Artist keyword args
         """
         ...
+
     def get_extent(self):  # -> tuple[float, Unknown, float, Unknown]:
         """Return the image extent as tuple (left, right, bottom, top)."""
         ...
+
     def make_image(self, renderer, magnification=..., unsampled=...): ...
     def set_data(self, A):  # -> None:
         """Set the image array."""
@@ -492,13 +527,16 @@ class BboxImage(_ImageBase):
         kwargs are an optional list of Artist keyword args
         """
         ...
+
     def get_window_extent(self, renderer=...):  # -> BboxBase:
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown, dict[Unknown, Unknown]]:
         """Test whether the mouse event occurred within the image."""
         ...
+
     def make_image(self, renderer, magnification=..., unsampled=...): ...
 
 def imread(

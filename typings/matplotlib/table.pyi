@@ -80,25 +80,33 @@ class Cell(Rectangle):
             'vertical' (right and left).
         """
         ...
+
     def set_transform(self, trans):  # -> None:
         ...
+
     def set_figure(self, fig):  # -> None:
         ...
+
     def get_text(self):  # -> Text:
         """Return the cell `.Text` instance."""
         ...
+
     def set_fontsize(self, size):  # -> None:
         """Set the text fontsize."""
         ...
+
     def get_fontsize(self):  # -> float:
         """Return the cell fontsize."""
         ...
+
     def auto_set_font_size(self, renderer):  # -> float:
         """Shrink font size until the text fits into the cell width."""
         ...
+
     @allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def get_text_bounds(
         self, renderer
     ):  # -> tuple[Unknown, Unknown, Unknown, Unknown]:
@@ -106,9 +114,11 @@ class Cell(Rectangle):
         Return the text bounds as *(x, y, width, height)* in table coordinates.
         """
         ...
+
     def get_required_width(self, renderer):
         """Return the minimal required width for the cell."""
         ...
+
     @_docstring.dedent_interpd
     def set_text_props(self, **kwargs):  # -> None:
         """
@@ -119,6 +129,7 @@ class Cell(Rectangle):
         %(Text:kwdoc)s
         """
         ...
+
     @property
     def visible_edges(self):  # -> str:
         """
@@ -131,9 +142,11 @@ class Cell(Rectangle):
         of {'open', 'closed', 'horizontal', 'vertical'}.
         """
         ...
+
     @visible_edges.setter
     def visible_edges(self, value):  # -> None:
         ...
+
     def get_path(self):  # -> Path:
         """Return a `.Path` for the `.visible_edges`."""
         ...
@@ -178,6 +191,7 @@ class Table(Artist):
             `.Artist` properties.
         """
         ...
+
     def add_cell(self, row, col, *args, **kwargs):  # -> Cell:
         """
         Create a cell and add it to the table.
@@ -198,14 +212,17 @@ class Table(Artist):
 
         """
         ...
+
     def __setitem__(self, position, cell):  # -> None:
         """
         Set a custom cell in a given position.
         """
         ...
+
     def __getitem__(self, position):
         """Retrieve a custom cell from a given position."""
         ...
+
     @property
     def edges(self):  # -> None:
         """
@@ -224,21 +241,27 @@ class Table(Artist):
 
         """
         ...
+
     @edges.setter
     def edges(self, value):  # -> None:
         ...
+
     @allow_rasterization
     def draw(self, renderer):  # -> None:
         ...
+
     def contains(
         self, mouseevent
     ):  # -> tuple[Literal[False], dict[Unknown, Unknown]] | tuple[Unknown, dict[Unknown, Unknown]]:
         ...
+
     def get_children(self):  # -> list[Unknown]:
         """Return the Artists contained by the table."""
         ...
+
     def get_window_extent(self, renderer=...):  # -> Bbox:
         ...
+
     def auto_set_column_width(self, col):  # -> None:
         """
         Automatically set the widths of given columns to optimal sizes.
@@ -249,12 +272,15 @@ class Table(Artist):
             The indices of the columns to auto-scale.
         """
         ...
+
     def auto_set_font_size(self, value=...):  # -> None:
         """Automatically set font size."""
         ...
+
     def scale(self, xscale, yscale):  # -> None:
         """Scale column widths by *xscale* and row heights by *yscale*."""
         ...
+
     def set_fontsize(self, size):  # -> None:
         """
         Set the font size, in points, of the cell text.
@@ -277,6 +303,7 @@ class Table(Artist):
         text may exceed the cell boundary.
         """
         ...
+
     def get_celld(self):  # -> dict[Unknown, Unknown]:
         r"""
         Return a dict of cells in the table mapping *(row, column)* to

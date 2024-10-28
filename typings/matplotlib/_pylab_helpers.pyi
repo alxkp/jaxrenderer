@@ -36,6 +36,7 @@ class Gcf:
         otherwise return *None*.
         """
         ...
+
     @classmethod
     def destroy(cls, num):  # -> None:
         """
@@ -48,34 +49,42 @@ class Gcf:
         two managers share the same number.
         """
         ...
+
     @classmethod
     def destroy_fig(cls, fig):  # -> None:
         """Destroy figure *fig*."""
         ...
+
     @classmethod
     def destroy_all(cls):  # -> None:
         """Destroy all figures."""
         ...
+
     @classmethod
     def has_fignum(cls, num):  # -> bool:
         """Return whether figure number *num* exists."""
         ...
+
     @classmethod
     def get_all_fig_managers(cls):  # -> list[Unknown]:
         """Return a list of figure managers."""
         ...
+
     @classmethod
     def get_num_fig_managers(cls):  # -> int:
         """Return the number of figures being managed."""
         ...
+
     @classmethod
     def get_active(cls):  # -> None:
         """Return the active manager, or *None* if there is no manager."""
         ...
+
     @classmethod
     def set_active(cls, manager):  # -> None:
         """Make *manager* the active manager."""
         ...
+
     @classmethod
     def draw_all(cls, force=...):  # -> None:
         """

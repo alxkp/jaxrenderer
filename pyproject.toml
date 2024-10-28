@@ -91,7 +91,7 @@ skip_gitignore = true
 
 [tool.black]
 target-versions = ["py38", "py39", "py310", "py311"]
-required-version = 23
+required-version = 24
 
 [tool.pyright]
 include = ["renderer", "examples", "test_resources", "tests"]
