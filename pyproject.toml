@@ -32,22 +32,28 @@ include = [
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
-jax = "^0.4.0"
+python = "^3.9"
+jax = "==0.4.1"
 numpy = "^1.22.0"
-jaxlib = {version = "^0.4.0", source = "jax"}
+jaxlib = {version = "==0.4.1", source = "jax"}
 jaxtyping = [
-    {version = ">=0.2.13,<0.2.20", python = ">=3.8,<3.9"},
+    # {version = ">=0.2.13,<0.2.20", python = ">=3.8,<3.9"},
     {version = "^0.2.19", python = "^3.9"}
 ]
 importlib-metadata = "^6.6.0"
 typing_extensions = "^4.3.0"
+beartype = "^0.19.0"
+chex = "<0.1.87"
 
 
 [tool.poetry.group.dev.dependencies]
 matplotlib = "^3.6.2"
 pillow = "^9.4.0"
 importlib-resources = "^5.12.0"
+black = "^24.10.0"
+isort = "^5.13.2"
+pyright = "^1.1.386"
+pytest-beartype = "^0.1.0"
 
 
 [tool.poetry.group.test.dependencies]
@@ -56,10 +62,14 @@ pytest = "^7.0.0"
 tox = "^4.0.0"
 
 
+# [[tool.poetry.source]]
+# name = "jax"
+# url = "https://storage.googleapis.com/jax-releases/jax_releases.html"
+# priority = "explicit"
+
 [[tool.poetry.source]]
 name = "jax"
 url = "https://storage.googleapis.com/jax-releases/jax_releases.html"
-priority = "explicit"
 
 
 [tool.poetry.urls]
@@ -74,7 +84,15 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 addopts = [
     "--import-mode=importlib",
+    "-p", "no:typeguard",
 ]
+
+[tool.beartype]
+is_beartype = true
+violation_type = 2
+is_debug = true
+violation_terminal = true
+is_check_deps = false
 
 [tool.isort]
 profile = "black"
