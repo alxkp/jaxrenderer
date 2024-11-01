@@ -1,12 +1,10 @@
+from beartype import beartype
 from beartype.typing import Any, Generic, TypeVar, Union, cast
-
+import chex
 import jax
 import jax.lax as lax
 import jax.numpy as jnp
-from jaxtyping import Array, Bool, Float, Integer, Num
-from jaxtyping import jaxtyped
-from beartype import beartype
-import chex
+from jaxtyping import Array, Bool, Float, Integer, Num, jaxtyped
 
 from ._backport import JaxFloating, JaxInteger, NamedTuple, Tuple, Type, TypeAlias
 
@@ -148,14 +146,18 @@ _TargetsT = TypeVar("_TargetsT", bound=Tuple[Any, ...])
 """Extra target buffers, must be in shape of (width, height, ...)."""
 
 
-_TargetsT = TypeVar('_TargetsT', bound=tuple)
+_TargetsT = TypeVar("_TargetsT", bound=tuple)
+
 
 @chex.dataclass
 class Buffers(Generic[_TargetsT]):
     """Replace NamedTuple with dataclass for better type handling"""
+
     zbuffer: Float[Array, "width height"]
     targets: _TargetsT
-    
+
     @classmethod
-    def create(cls, zbuffer: Float[Array, "width height"], targets: _TargetsT) -> "Buffers[_TargetsT]":
+    def create(
+        cls, zbuffer: Float[Array, "width height"], targets: _TargetsT
+    ) -> "Buffers[_TargetsT]":
         return cls(zbuffer=zbuffer, targets=targets)

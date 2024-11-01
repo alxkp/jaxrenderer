@@ -3,8 +3,8 @@
 """
 
 import sys
-from beartype.typing import Any, TypeVar
 
+from beartype.typing import Any, TypeVar
 import jax.numpy as jnp
 
 if sys.version_info < (3, 11):

@@ -1,16 +1,15 @@
 from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
 from functools import partial
-from beartype.typing import Any, NamedTuple, TypeVar, cast
 
+from beartype import beartype
+from beartype.typing import Any, NamedTuple, TypeVar, cast
 import jax
 from jax import lax
 import jax.lax as lax
 import jax.numpy as jnp
 from jax.tree_util import tree_map
-from jaxtyping import Array, Bool, Float, Integer, Num
-from jaxtyping import jaxtyped
-from beartype import beartype
+from jaxtyping import Array, Bool, Float, Integer, Num, jaxtyped
 
 from ._backport import Tuple
 from ._meta_utils import add_tracing_name

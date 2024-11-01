@@ -1,12 +1,12 @@
-from beartype.typing import NamedTuple, cast
 from functools import partial
 
+from beartype import beartype
+from beartype.typing import NamedTuple, cast
 import jax
 import jax.lax as lax
 import jax.numpy as jnp
 from jaxtyping import Array, Bool, Float
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
-from beartype import beartype
 
 from renderer import Tuple, jit
 from renderer.geometry import Camera, normalise, to_homogeneous
@@ -23,7 +23,6 @@ from renderer.types import (
     Vec3f,
     Vec4f,
 )
-
 from renderer.utils import transpose_for_display
 
 
@@ -105,7 +104,9 @@ def test_render_batched_triangles():
     result = render(camera, GouraudShader, buffers, face_indices, extra)
 
     assert len(result) == 2, "The result should be a tuple of two elements"
-    assert len(result.targets) == 1, "The resultant attachment should has only one canvas"
+    assert (
+        len(result.targets) == 1
+    ), "The resultant attachment should has only one canvas"
 
     zbuffer, (canvas,) = result.zbuffer, result.targets
     zbuffer = transpose_for_display(zbuffer)
@@ -306,7 +307,9 @@ def test_perspective_interpolation():
     result = render(camera, _Shader, buffers, face_indices, extra)
 
     assert len(result) == 2, "The result should be a tuple of two elements"
-    assert len(result.targets) == 1, "The resultant attachment should has only one canvas"
+    assert (
+        len(result.targets) == 1
+    ), "The resultant attachment should has only one canvas"
 
     zbuffer, (canvas,) = result.zbuffer, result.targets
     zbuffer = transpose_for_display(zbuffer)

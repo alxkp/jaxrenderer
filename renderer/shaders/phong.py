@@ -1,8 +1,8 @@
 from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
 from functools import partial
-from beartype.typing import NamedTuple, cast
 
+from beartype.typing import NamedTuple, cast
 import jax
 import jax.lax as lax
 import jax.numpy as jnp

@@ -1,12 +1,12 @@
 from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
 from functools import partial
-from beartype.typing import NamedTuple
 
+from beartype import beartype
+from beartype.typing import NamedTuple
 import jax
 from jaxtyping import Array, Float
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
-from beartype import beartype
 
 from .._backport import Tuple
 from .._meta_utils import add_tracing_name

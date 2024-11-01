@@ -1,13 +1,12 @@
 from dataclasses import dataclass
 import re
-from beartype.typing import List
 
 from PIL import Image
+from beartype import beartype
+from beartype.typing import List
 import jax
 import jax.numpy as jnp
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
-from beartype import beartype
-
 import numpy as np
 
 from renderer import Tuple, TypeAlias

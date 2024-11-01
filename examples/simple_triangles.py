@@ -1,5 +1,4 @@
 from beartype.typing import NamedTuple, cast
-
 import jax
 import jax.lax as lax
 import jax.numpy as jnp

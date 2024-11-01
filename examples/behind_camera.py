@@ -96,7 +96,6 @@ images.append(rgb_array)
 # PROCESS: show
 
 from beartype.typing import cast
-
 import matplotlib.animation as animation
 import matplotlib.figure as figure
 import matplotlib.image as mimage

@@ -2,9 +2,9 @@
 
 import enum
 from functools import partial
-from beartype.typing import NamedTuple, Optional, Union, cast
 
 from beartype import beartype
+from beartype.typing import NamedTuple, Optional, Union, cast
 import jax
 import jax.lax as lax
 import jax.numpy as jnp

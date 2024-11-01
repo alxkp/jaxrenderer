@@ -1,17 +1,18 @@
 from functools import partial
+
+from beartype import beartype
+from beartype.typing import List, Tuple, cast
 import jax.numpy as jnp
 import jax.random as random
-from jaxtyping import Array, Float, Key, UInt
-from jaxtyping import jaxtyped
-from beartype import beartype
+from jaxtyping import Array, Float, Key, UInt, jaxtyped
 import numpy as np
 import pytest
-from beartype.typing import List, Tuple, cast
 
 from renderer.utils import transpose_for_display
 
 # Use seeds instead of directly storing PRNG keys
 SEEDS: List[int] = [20230701]
+
 
 class TestTransposeForDisplay:
     @pytest.mark.parametrize("seed", SEEDS)
@@ -28,17 +29,16 @@ class TestTransposeForDisplay:
     ) -> None:
         # Create PRNG key inside the test
         prng_key: UInt[Array, "2"] = random.PRNGKey(seed)
-        
+
         # Generate test matrix
         matrix: Float[Array, "fst snd *channel"] = random.uniform(
             prng_key,
             shape,
         )
-        
+
         # Get transposed matrix
         transposed: Float[Array, "snd fst *channel"] = transpose_for_display(
-            matrix, 
-            flip_vertical=flip_vertical
+            matrix, flip_vertical=flip_vertical
         )
 
         # Verify shapes
@@ -48,7 +48,7 @@ class TestTransposeForDisplay:
         assert (
             np.array(transposed.shape) == np.array([shape[1], shape[0], *shape[2:]])
         ).all(), "Transposed shape must be flipped along first two axises"
-        
+
         # Verify types
         assert isinstance(matrix, Float[Array, "fst snd *channel"])
         assert isinstance(transposed, Float[Array, "snd fst *channel"])
@@ -67,17 +67,16 @@ class TestTransposeForDisplay:
     ) -> None:
         # Create PRNG key inside the test
         prng_key: UInt[Array, "2"] = random.PRNGKey(seed)
-        
+
         # Generate test matrix
         matrix: Float[Array, "fst snd *channel"] = random.uniform(
             prng_key,
             shape,
         )
-        
+
         # Get transposed matrix
         transposed: Float[Array, "snd fst *channel"] = transpose_for_display(
-            matrix, 
-            flip_vertical=flip_vertical
+            matrix, flip_vertical=flip_vertical
         )
 
         # Get unique values and counts
@@ -91,12 +90,8 @@ class TestTransposeForDisplay:
         )
 
         # Verify uniqueness properties
-        assert jnp.all(
-            m == t
-        ), "Unique values must be the same"
-        assert jnp.all(
-            m_cnt == t_cnt
-        ), "Unique values count must be the same"
+        assert jnp.all(m == t), "Unique values must be the same"
+        assert jnp.all(m_cnt == t_cnt), "Unique values count must be the same"
 
     @pytest.mark.parametrize("seed", SEEDS)
     @pytest.mark.parametrize("shape", [(5, 3), (20, 31, 3), (11, 11, 4)])
@@ -108,7 +103,7 @@ class TestTransposeForDisplay:
     ) -> None:
         # Create PRNG key inside the test
         prng_key: UInt[Array, "2"] = random.PRNGKey(seed)
-        
+
         # Create partial functions for transform operations
         tf_f = partial(transpose_for_display, flip_vertical=True)
         t_f = partial(transpose_for_display, flip_vertical=False)
@@ -118,15 +113,13 @@ class TestTransposeForDisplay:
             prng_key,
             shape,
         )
-        
+
         # Apply transformations
         tf: Float[Array, "snd fst *channel"] = tf_f(matrix)
         t: Float[Array, "snd fst *channel"] = t_f(matrix)
 
         # Verify flipping changes the matrix
-        assert jnp.any(
-            t != tf
-        ), "flipped vertical will change the matrix"
+        assert jnp.any(t != tf), "flipped vertical will change the matrix"
 
         # Test composition of transformations
         ttfttf = t_f(tf_f(t_f(tf_f(matrix))))
@@ -135,9 +128,7 @@ class TestTransposeForDisplay:
         ), "flip twice, transpose 4 times should be identity"
 
         tt = t_f(t_f(matrix))
-        assert jnp.all(
-            tt == matrix
-        ), "transpose twice should be identity"
+        assert jnp.all(tt == matrix), "transpose twice should be identity"
 
         tftftftf = tf_f(tf_f(tf_f(tf_f(matrix))))
         assert jnp.all(

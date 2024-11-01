@@ -1,12 +1,11 @@
 from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
+from beartype import beartype
 from beartype.typing import NamedTuple, NewType, Optional, Union
-
 import jax.lax as lax
 import jax.numpy as jnp
 from jaxtyping import Array, Float
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
-from beartype import beartype
 
 from ._backport import DictT, Tuple, replace_dict
 from .model import Model, ModelObject

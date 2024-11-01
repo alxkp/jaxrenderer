@@ -1,6 +1,6 @@
 from functools import partial
-from beartype.typing import cast
 
+from beartype.typing import cast
 import jax
 import jax.lax as lax
 import jax.numpy as jnp

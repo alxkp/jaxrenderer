@@ -1,8 +1,8 @@
+from beartype import beartype
 import jax
 import jax.numpy as jnp
 from jaxtyping import Array, Float
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
-from beartype import beartype
 
 from ..model import Model
 from ..types import (

@@ -1,9 +1,8 @@
+from beartype import beartype
 from beartype.typing import Union
-
 import jax.numpy as jnp
 from jaxtyping import Array, Integer
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
-from beartype import beartype
 
 from .types import BoolV, IntV
 

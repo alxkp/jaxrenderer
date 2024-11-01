@@ -1,12 +1,11 @@
 from functools import partial
-from beartype.typing import Sequence, Union, cast
 
+from beartype import beartype
+from beartype.typing import Sequence, Union, cast
 import jax
 from jax import lax
 import jax.numpy as jnp
-from jaxtyping import Array, Integer, Num, Float
-from jaxtyping import jaxtyped
-from beartype import beartype
+from jaxtyping import Array, Float, Integer, Num, jaxtyped
 
 from ._backport import Tuple
 from ._meta_utils import add_tracing_name
@@ -68,7 +67,6 @@ def merge_canvases(
     return zbuffer, canvas
 
 
-
 @jaxtyped(typechecker=beartype)
 @partial(jit, inline=True, static_argnames=("flip_vertical",))
 @add_tracing_name
@@ -77,23 +75,17 @@ def transpose_for_display(
     flip_vertical: bool = True,
 ) -> Num[Array, "snd fst *channel"]:
     """Transpose matrix for display.
-    
+
     When flip_vertical is disabled, the matrix's origin ([0, 0]) is assumed to
     be at bottom-left. Thus, the correct way to display the matrix is to use
     tools like matplotlib with origin="lower".
     """
     # Use explicit cast to maintain type information
-    transposed = cast(
-        Num[Array, "snd fst *channel"],
-        jnp.swapaxes(matrix, 0, 1)
-    )
-    
+    transposed = cast(Num[Array, "snd fst *channel"], jnp.swapaxes(matrix, 0, 1))
+
     if flip_vertical:
-        transposed = cast(
-            Num[Array, "snd fst *channel"],
-            transposed[::-1, ...]
-        )
-    
+        transposed = cast(Num[Array, "snd fst *channel"], transposed[::-1, ...])
+
     return transposed
 
 
