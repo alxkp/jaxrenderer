@@ -6,6 +6,8 @@ from PIL import Image
 import jax
 import jax.numpy as jnp
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
+
 import numpy as np
 
 from renderer import Tuple, TypeAlias
@@ -27,7 +29,7 @@ class Model:
     faces_norm: FaceIndices
     faces_uv: FaceIndices
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     def __post_init__(self) -> None:
         assert isinstance(self.verts, Vertices), self.verts.shape
         assert isinstance(self.norms, Vertices), self.norms.shape
