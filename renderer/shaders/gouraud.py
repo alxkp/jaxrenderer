@@ -7,6 +7,7 @@ import jax
 import jax.numpy as jnp
 from jaxtyping import Array, Float
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
 
 from .._backport import Tuple
 from .._meta_utils import add_tracing_name
@@ -53,7 +54,7 @@ class GouraudShader(
     """Gouraud Shading with simple parallel lighting."""
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def vertex(
@@ -89,7 +90,7 @@ class GouraudShader(
         )
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def fragment(

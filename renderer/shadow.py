@@ -1,10 +1,11 @@
 from functools import partial
-from typing import NamedTuple
+from beartype.typing import NamedTuple
 
 import jax
 import jax.lax as lax
 import jax.numpy as jnp
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
 
 from ._backport import Tuple
 from ._meta_utils import add_tracing_name
@@ -38,7 +39,7 @@ class Shadow(NamedTuple):
     """Camera from world space to shadow map's screen space."""
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(
         jax.jit,  # pyright: ignore[reportUnknownMemberType]
         static_argnames=("loop_unroll",),
@@ -124,7 +125,7 @@ class Shadow(NamedTuple):
 
         return shadow
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @add_tracing_name
     def get(self, position: Vec2f) -> FloatV:
         """Get shadow depth at `position`.

@@ -8,6 +8,7 @@ import jax.lax as lax
 import jax.numpy as jnp
 from jaxtyping import Array, Bool, Float, Integer
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
 
 from .._backport import Tuple
 from .._meta_utils import add_tracing_name
@@ -99,7 +100,7 @@ class PhongReflectionTextureShader(
     """PhongReflection Shading with simple parallel lighting and texture."""
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def vertex(
@@ -133,7 +134,7 @@ class PhongReflectionTextureShader(
         )
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def interpolate(
@@ -153,7 +154,7 @@ class PhongReflectionTextureShader(
         return varying
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def fragment(
@@ -236,7 +237,7 @@ class PhongReflectionTextureShader(
         )
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def mix(

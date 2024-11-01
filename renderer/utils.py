@@ -1,13 +1,12 @@
-from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
-
 from functools import partial
-from typing import Sequence, Union, cast
+from beartype.typing import Sequence, Union, cast
 
 import jax
 from jax import lax
 import jax.numpy as jnp
-from jaxtyping import Array, Integer, Num, Shaped
-from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from jaxtyping import Array, Integer, Num, Float
+from jaxtyping import jaxtyped
+from beartype import beartype
 
 from ._backport import Tuple
 from ._meta_utils import add_tracing_name
@@ -15,30 +14,30 @@ from ._meta_utils import typed_jit as jit
 from .types import Canvas, IntV, Texture, ZBuffer
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def get_value_from_index(
-    matrix: Shaped[Array, "width height batch *valueDimensions"],
+    matrix: Float[Array, "width height batch *valueDimensions"],
     index: Integer[Array, "width height"],
-) -> Shaped[Array, "width height *valueDimensions"]:
+) -> Float[Array, "width height *valueDimensions"]:
     """Retrieve value along 3rd axis using index value from index matrix."""
 
     def _get(
-        mt: Shaped[Array, "batch *valueDimensions"],
+        mt: Float[Array, "batch *valueDimensions"],
         ix: IntV,
-    ) -> Shaped[Array, "*valueDimensions"]:
+    ) -> Float[Array, "*valueDimensions"]:
         return mt[ix]
 
     return jax.vmap(jax.vmap(_get))(matrix, index)
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def merge_canvases(
     zbuffers: Num[Array, "batch width height"],
-    canvases: Shaped[Array, "batch width height channel"],
+    canvases: Float[Array, "batch width height channel"],
 ) -> Tuple[ZBuffer, Canvas]:
     """Merge canvases by selecting each pixel with max z value in zbuffer,
     then merge zbuffer as well.
@@ -69,34 +68,36 @@ def merge_canvases(
     return zbuffer, canvas
 
 
-@jaxtyped
-@partial(
-    jit,
-    inline=True,
-    static_argnames=("flip_vertical",),
-)
+
+@jaxtyped(typechecker=beartype)
+@partial(jit, inline=True, static_argnames=("flip_vertical",))
 @add_tracing_name
 def transpose_for_display(
     matrix: Num[Array, "fst snd *channel"],
     flip_vertical: bool = True,
 ) -> Num[Array, "snd fst *channel"]:
     """Transpose matrix for display.
-
+    
     When flip_vertical is disabled, the matrix's origin ([0, 0]) is assumed to
-    be at bottom-left. Thus, the correct way to display the matrix is to using
-    tools like matplotlib is to specify `origin="lower"`.
-    To be compatible with PyTinyrenderer and most image processing programs,
-    the default behaviour is to flip vertically.
+    be at bottom-left. Thus, the correct way to display the matrix is to use
+    tools like matplotlib with origin="lower".
     """
-    mat = cast(Num[Array, "snd fst *channel"], jnp.swapaxes(matrix, 0, 1))
-    assert isinstance(mat, Num[Array, "snd fst *channel"])
+    # Use explicit cast to maintain type information
+    transposed = cast(
+        Num[Array, "snd fst *channel"],
+        jnp.swapaxes(matrix, 0, 1)
+    )
+    
     if flip_vertical:
-        mat = mat[::-1, ...]
+        transposed = cast(
+            Num[Array, "snd fst *channel"],
+            transposed[::-1, ...]
+        )
+    
+    return transposed
 
-    return mat
 
-
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @add_tracing_name
 def build_texture_from_PyTinyrenderer(
     texture: Union[Num[Array, "length"], Sequence[float]],

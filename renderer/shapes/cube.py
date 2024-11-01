@@ -2,6 +2,7 @@ import jax
 import jax.numpy as jnp
 from jaxtyping import Array, Float
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
 
 from ..model import Model
 from ..types import (
@@ -140,7 +141,7 @@ with jax.ensure_compile_time_eval():
     )
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 def create_cube(
     half_extents: Float[Array, "3"],
     texture_scaling: Float[Array, "2"],

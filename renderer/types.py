@@ -1,10 +1,12 @@
-from typing import Any, Generic, TypeVar, Union, cast
+from beartype.typing import Any, Generic, TypeVar, Union, cast
 
 import jax
 import jax.lax as lax
 import jax.numpy as jnp
 from jaxtyping import Array, Bool, Float, Integer, Num
-from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from jaxtyping import jaxtyped
+from beartype import beartype
+import chex
 
 from ._backport import JaxFloating, JaxInteger, NamedTuple, Tuple, Type, TypeAlias
 
@@ -100,7 +102,7 @@ class DtypeInfo(NamedTuple, Generic[_DtypeT]):
     dtype: Type
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     # cannot be jitted as `dtype` will not be a valid JAX type
     def create(cls, dtype: Type[_DtypeT]) -> "DtypeInfo[_DtypeT]":
         with jax.ensure_compile_time_eval():
@@ -146,11 +148,14 @@ _TargetsT = TypeVar("_TargetsT", bound=Tuple[Any, ...])
 """Extra target buffers, must be in shape of (width, height, ...)."""
 
 
-class Buffers(NamedTuple, Generic[_TargetsT]):
-    """Use lax.full to create buffers and attach here.
+_TargetsT = TypeVar('_TargetsT', bound=tuple)
 
-    targets must be a tuple of arrays with shape of (width, height, ...).
-    """
-
-    zbuffer: ZBuffer
+@chex.dataclass
+class Buffers(Generic[_TargetsT]):
+    """Replace NamedTuple with dataclass for better type handling"""
+    zbuffer: Float[Array, "width height"]
     targets: _TargetsT
+    
+    @classmethod
+    def create(cls, zbuffer: Float[Array, "width height"], targets: _TargetsT) -> "Buffers[_TargetsT]":
+        return cls(zbuffer=zbuffer, targets=targets)

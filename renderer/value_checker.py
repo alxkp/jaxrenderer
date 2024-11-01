@@ -1,13 +1,14 @@
-from typing import Union
+from beartype.typing import Union
 
 import jax.numpy as jnp
 from jaxtyping import Array, Integer
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
 
 from .types import BoolV, IntV
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 def index_in_bound(
     indices: Integer[Array, "*any"],
     bound: Union[int, IntV, Integer[Array, "2"]],

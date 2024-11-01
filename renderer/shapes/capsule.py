@@ -4,6 +4,7 @@ import jax
 import jax.numpy as jnp
 from jaxtyping import Array, Integer
 from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from beartype import beartype
 
 from ..model import Model
 from ..types import (
@@ -1961,7 +1962,7 @@ class UpAxis(enum.IntEnum):
     Z = 2
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 def create_capsule(
     radius: FloatV,
     half_height: FloatV,

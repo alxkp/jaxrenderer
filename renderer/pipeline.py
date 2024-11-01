@@ -1,7 +1,7 @@
 from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
 from functools import partial
-from typing import Any, NamedTuple, TypeVar, cast
+from beartype.typing import Any, NamedTuple, TypeVar, cast
 
 import jax
 from jax import lax
@@ -9,7 +9,8 @@ import jax.lax as lax
 import jax.numpy as jnp
 from jax.tree_util import tree_map
 from jaxtyping import Array, Bool, Float, Integer, Num
-from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from jaxtyping import jaxtyped
+from beartype import beartype
 
 from ._backport import Tuple
 from ._meta_utils import add_tracing_name
@@ -75,7 +76,7 @@ class PerPrimitive(NamedTuple):
     """inverse of the matrix described above (of [x, y, w])."""
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, static_argnames=("cls",), inline=True)
     @add_tracing_name
     def create(cls, per_vertex: PerVertex) -> "PerPrimitive":
@@ -117,7 +118,7 @@ class PerPrimitive(NamedTuple):
 T = TypeVar("T", bound=Tuple[Any, ...])
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(
     jit,
     static_argnames=("shader", "loop_unroll"),
@@ -126,8 +127,10 @@ T = TypeVar("T", bound=Tuple[Any, ...])
 )
 @add_tracing_name
 def _postprocessing(
-    shader: type[Shader[ShaderExtraInputT, VaryingT, MixedExtraT]],
-    buffers: Buffers[T],
+    # shader: type[Shader[ShaderExtraInputT, VaryingT, MixedExtraT]],
+    shader: Any,
+    # buffers: Buffers[T],
+    buffers: Buffers[Tuple[Float[Array, "width height channels"], ...]],
     per_primitive: Tuple[Any, ...],  # Batch PerPrimitive
     varyings: VaryingT,
     extra: ShaderExtraInputT,
@@ -136,13 +139,13 @@ def _postprocessing(
 ) -> Buffers[T]:
     with jax.ensure_compile_time_eval():
         # vmap batch along second axis
-        batch_size: int = int(buffers[0].shape[1])
+        batch_size: int = int(buffers.zbuffer.shape[1])
         row_indices: Integer[Array, "width"]
         row_indices = lax.iota(  # pyright: ignore[reportUnknownMemberType]
-            int, int(buffers[0].shape[0])
+            int, int(buffers.zbuffer.shape[0])
         )
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def _per_pixel(coord: Vec2i) -> Tuple[MixerOutput, MixedExtraT]:
@@ -158,7 +161,7 @@ def _postprocessing(
             Float[Array, "kept_primitives 3"],  #
         ]
 
-        @jaxtyped
+        @jaxtyped(typechecker=beartype)
         @partial(jit, inline=True)
         @add_tracing_name
         def _per_primitive_preprocess(
@@ -361,7 +364,7 @@ def _postprocessing(
 
     # END OF `_per_pixel`
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def _per_row(
@@ -396,7 +399,7 @@ def _postprocessing(
 
     # END OF `_per_row`
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, donate_argnums=(1,), inline=True)
     @add_tracing_name
     def merge_buffers(
@@ -460,7 +463,7 @@ def _postprocessing(
     return buffers
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(
     jit,
     static_argnames=("shader", "loop_unroll"),
@@ -470,7 +473,8 @@ def _postprocessing(
 @add_tracing_name
 def render(
     camera: Camera,
-    shader: type[Shader[ShaderExtraInputT, VaryingT, MixedExtraT]],
+    # shader: type[Shader[ShaderExtraInputT, VaryingT, MixedExtraT]],
+    shader: Any,
     buffers: Buffers[T],
     face_indices: FaceIndices,
     extra: ShaderExtraInputT,
@@ -495,7 +499,7 @@ def render(
         assert isinstance(vertices_count, int)
         assert isinstance(gl_InstanceID, ID)
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def vertex_processing(gl_VertexID: IntV) -> Tuple[PerVertex, VaryingT]:
@@ -520,7 +524,7 @@ def render(
 
     # everything after vertex processing, will directly update buffers
     buffers = _postprocessing(
-        shader=shader,
+        shader,
         buffers=buffers,
         per_primitive=jax.vmap(PerPrimitive.create)(
             tree_map(

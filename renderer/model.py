@@ -1,7 +1,7 @@
 from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
 from functools import partial
-from typing import Optional, Union, cast
+from beartype.typing import Optional, Union, cast
 
 import jax
 import jax.experimental.checkify as checkify
@@ -9,7 +9,8 @@ import jax.lax as lax
 import jax.numpy as jnp
 from jax.tree_util import tree_map
 from jaxtyping import Array, Bool, Float, Integer, Num, Shaped
-from jaxtyping import jaxtyped  # pyright: ignore[reportUnknownVariableType]
+from jaxtyping import jaxtyped
+from beartype import beartype
 
 from ._backport import List, NamedTuple, Sequence, Tuple, TypeAlias
 from ._meta_utils import add_tracing_name
@@ -53,7 +54,7 @@ class Model(NamedTuple):
     specular_map: SpecularMap
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     def create(
         cls,
         verts: Vertices,
@@ -89,7 +90,7 @@ class Model(NamedTuple):
             specular_map=specular_map,
         )
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @jit
     def asserts(self) -> None:
         """Asserts that all fields are of correct shape and type."""
@@ -102,7 +103,7 @@ class Model(NamedTuple):
         assert isinstance(self.diffuse_map, Texture), f"{self.diffuse_map}"
         assert isinstance(self.specular_map, SpecularMap), f"{self.specular_map}"
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @checkify.checkify
     @jit
     def value_checks(self) -> None:
@@ -177,7 +178,7 @@ class MergedModel(NamedTuple):
     specular_map: SpecularMap
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @add_tracing_name
     def generate_object_vert_info(
         counts: Sequence[int],
@@ -212,7 +213,7 @@ class MergedModel(NamedTuple):
         return map_indices
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def merge_verts(
@@ -243,7 +244,7 @@ class MergedModel(NamedTuple):
         return verts, faces
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def merge_maps(maps: MapsT) -> Tuple[MapT, Tuple[int, int]]:
@@ -301,7 +302,7 @@ class MergedModel(NamedTuple):
         return new_map, (single_shape[0], single_shape[1])
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @add_tracing_name
     def uv_repeat(
         uv: Float[Array, "2"],
@@ -352,7 +353,7 @@ class ModelObject(NamedTuple):
     double_sided: BoolV = FALSE_ARRAY
     """Whether the object is double-sided."""
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     def replace_with_position(self, position: Vec3f) -> "ModelObject":
         """Return a new ModelObject with given position.
 
@@ -365,7 +366,7 @@ class ModelObject(NamedTuple):
             transform=self.transform.at[:3, 3].set(position)  # pyright: ignore
         )
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     def replace_with_orientation(
         self,
         orientation: Optional[Vec4f] = None,
@@ -398,7 +399,7 @@ class ModelObject(NamedTuple):
             transform=self.transform.at[:3, :3].set(rotation_matrix)  # pyright: ignore
         )
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     def replace_with_local_scaling(self, local_scaling: Vec3f) -> "ModelObject":
         """Return a new ModelObject with given local_scaling.
 
@@ -409,7 +410,7 @@ class ModelObject(NamedTuple):
         """
         return self._replace(local_scaling=local_scaling)
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     def replace_with_double_sided(self, double_sided: BoolV) -> "ModelObject":
         """Return a new ModelObject with given double_sided.
 
@@ -442,7 +443,7 @@ def batch_models(models: Sequence[MergedModel]) -> MergedModel:
     return merged_model
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @add_tracing_name
 def merge_objects(objects: Sequence[ModelObject]) -> MergedModel:
     """Merge objects into a single model.
@@ -483,7 +484,7 @@ def merge_objects(objects: Sequence[ModelObject]) -> MergedModel:
     )
     specular_map = MergedModel.merge_maps([m.specular_map for m in models])[0]
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def transform_vert(
@@ -510,7 +511,7 @@ def merge_objects(objects: Sequence[ModelObject]) -> MergedModel:
         [m.faces for m in models],
     )
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def transform_normals(

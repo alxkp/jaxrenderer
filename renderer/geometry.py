@@ -1,9 +1,10 @@
-from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
+# from __future__ import annotations  # tolerate "subscriptable 'type' for < 3.9
 
 import enum
 from functools import partial
 from typing import NamedTuple, Optional, Union, cast
 
+from beartype import beartype
 import jax
 import jax.lax as lax
 import jax.numpy as jnp
@@ -20,20 +21,23 @@ from .types import FloatV, JaxFloating, NumV, Triangle2Df, Vec2f, Vec2i, Vec3f, 
 #
 # The result of x-y values in screen space may be float, and thus further
 # conversion to integers are needed.
-World2Screen: TypeAlias = Float[Array, "4 4"]
+World2Screen = Float[Array, "4 4"]
+
 # Transform all coordinates from world space to view space, with camera at
 # origin. (Object Coordinates -> Eye Coordinates)
-View: TypeAlias = Float[Array, "4 4"]
+View = Float[Array, "4 4"]
+
 # Transform all coordinates from view space to viewing volume.
 # (Eye Coordinates -> Clip Coordinates)
-Projection: TypeAlias = Float[Array, "4 4"]
+Projection = Float[Array, "4 4"]
+
 # Transform all coordinates from clip space in a bi-unit cube ([-1...1]^3) to
 # a screen cube ([x, x+width] * [y, y+height] * [0, depth]) in view space.
 # (Normalised Device Coordinates -> Window Coordinates)
-Viewport: TypeAlias = Float[Array, "4 4"]
+Viewport = Float[Array, "4 4"]
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, donate_argnums=(0,), inline=True)
 @add_tracing_name
 def normalise(vector: Float[Array, "*a dim"]) -> Float[Array, "*a dim"]:
@@ -61,7 +65,7 @@ class Interpolation(enum.Enum):
     SMOOTH = 2
     """Perspective correction: linear interpolation in clip space"""
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(
         jit,
         static_argnames=("self",),
@@ -110,7 +114,7 @@ class Interpolation(enum.Enum):
         return interpolated
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(
     jit,
     static_argnames=("mode",),
@@ -138,7 +142,7 @@ def interpolate(
     return interpolated
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def to_homogeneous(
@@ -163,7 +167,7 @@ def to_homogeneous(
     return homo_coords
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def normalise_homogeneous(
@@ -179,7 +183,7 @@ def normalise_homogeneous(
     return coordinates / coordinates[..., -1:]
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def to_cartesian(
@@ -225,7 +229,7 @@ class Camera(NamedTuple):
     screen_to_world: World2Screen
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(
         jit,
         static_argnames=("cls",),
@@ -278,7 +282,7 @@ class Camera(NamedTuple):
         )
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def apply(
@@ -315,7 +319,7 @@ class Camera(NamedTuple):
         return transformed
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, static_argnames=("cls",), inline=True)
     @add_tracing_name
     def apply_pos(
@@ -346,7 +350,7 @@ class Camera(NamedTuple):
         return transformed
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, static_argnames=("cls",), inline=True)
     @add_tracing_name
     def apply_vec(
@@ -388,7 +392,7 @@ class Camera(NamedTuple):
 
         return transformed_normalised
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def to_screen(
@@ -414,7 +418,7 @@ class Camera(NamedTuple):
 
         return normalised
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def to_clip(
@@ -437,7 +441,7 @@ class Camera(NamedTuple):
 
         return clip_space
 
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def to_screen_inv(
@@ -485,7 +489,7 @@ class Camera(NamedTuple):
         return world
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def inv_scale_translation_matrix(
@@ -530,7 +534,7 @@ class Camera(NamedTuple):
         return scale_translation_inv
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def view_matrix(
@@ -575,7 +579,7 @@ class Camera(NamedTuple):
         return view
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def view_matrix_inv(
@@ -632,7 +636,7 @@ class Camera(NamedTuple):
         return view_matrix_inv
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def perspective_projection_matrix(
@@ -684,7 +688,7 @@ class Camera(NamedTuple):
         return projection
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, static_argnames=("cls",), inline=True)
     @add_tracing_name
     def perspective_projection_matrix_inv(cls, mat: Projection) -> Projection:
@@ -714,7 +718,7 @@ class Camera(NamedTuple):
         return inv
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def orthographic_projection_matrix(
@@ -763,7 +767,7 @@ class Camera(NamedTuple):
         return projection
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, static_argnames=("cls",))
     @add_tracing_name
     def orthographic_projection_matrix_inv(cls, mat: Projection) -> Projection:
@@ -778,7 +782,7 @@ class Camera(NamedTuple):
         return inv
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def perspective_projection_matrix_tinyrenderer(
@@ -807,7 +811,7 @@ class Camera(NamedTuple):
         return projection
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def viewport_matrix(
@@ -845,7 +849,7 @@ class Camera(NamedTuple):
         return viewport
 
     @classmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, static_argnames=("cls",), inline=True)
     @add_tracing_name
     def viewport_matrix_inv(cls, viewport: Viewport) -> Viewport:
@@ -862,7 +866,7 @@ class Camera(NamedTuple):
         return viewport_inv
 
     @staticmethod
-    @jaxtyped
+    @jaxtyped(typechecker=beartype)
     @partial(jit, inline=True)
     @add_tracing_name
     def world_to_screen_matrix(width: int, height: int) -> World2Screen:
@@ -886,7 +890,7 @@ class Camera(NamedTuple):
         return world2screen
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def compute_normal(triangle_verts: Float[Array, "3 3"]) -> Float[Array, "3"]:
@@ -903,7 +907,7 @@ def compute_normal(triangle_verts: Float[Array, "3 3"]) -> Float[Array, "3"]:
     return normal
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def quaternion(
@@ -933,7 +937,7 @@ def quaternion(
     return quaternion
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def quaternion_mul(quatA: Vec4f, quatB: Vec4f) -> Vec4f:
@@ -963,7 +967,7 @@ def quaternion_mul(quatA: Vec4f, quatB: Vec4f) -> Vec4f:
     )
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def rotation_matrix(
@@ -997,7 +1001,7 @@ def rotation_matrix(
     return rotation_matrix
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def transform_matrix_from_rotation(rotation: Vec4f) -> Float[Array, "3 3"]:
@@ -1031,7 +1035,7 @@ def transform_matrix_from_rotation(rotation: Vec4f) -> Float[Array, "3 3"]:
     return mat
 
 
-@jaxtyped
+@jaxtyped(typechecker=beartype)
 @partial(jit, inline=True)
 @add_tracing_name
 def barycentric(pts: Triangle2Df, p: Vec2f) -> Vec3f:
