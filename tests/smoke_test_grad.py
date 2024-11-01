@@ -1,5 +1,5 @@
 from functools import partial
-from typing import cast
+from beartype.typing import cast
 
 import jax
 import jax.lax as lax

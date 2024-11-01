@@ -1,7 +1,7 @@
 import functools
 import inspect
 import sys
-from typing import Any, Callable, Protocol, TypeVar, cast
+from beartype.typing import Any, Callable, Protocol, TypeVar, cast
 
 import jax
 

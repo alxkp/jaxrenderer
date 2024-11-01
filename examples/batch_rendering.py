@@ -96,7 +96,7 @@ _, (images,) = jax.vmap(  # pyright: ignore[reportUnknownVariableType]
 
 # PROCESS: show
 
-from typing import cast
+from beartype.typing import cast
 
 import matplotlib.animation as animation
 import matplotlib.figure as figure

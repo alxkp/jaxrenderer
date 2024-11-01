@@ -1,4 +1,4 @@
-from typing import NamedTuple, cast
+from beartype.typing import NamedTuple, cast
 
 import jax
 import jax.lax as lax

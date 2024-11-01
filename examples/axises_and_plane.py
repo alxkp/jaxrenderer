@@ -174,7 +174,7 @@ images.append(rgb_array)
 
 # PROCESS: show
 
-from typing import cast
+from beartype.typing import cast
 
 import matplotlib.animation as animation
 import matplotlib.figure as figure

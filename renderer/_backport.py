@@ -3,23 +3,23 @@
 """
 
 import sys
-from typing import Any, TypeVar
+from beartype.typing import Any, TypeVar
 
 import jax.numpy as jnp
 
 if sys.version_info < (3, 11):
     from typing_extensions import NamedTuple
 else:
-    from typing import NamedTuple
+    from beartype.typing import NamedTuple
 
 if sys.version_info < (3, 10):
     from typing_extensions import ParamSpec, TypeAlias
 else:
-    from typing import ParamSpec, TypeAlias
+    from beartype.typing import ParamSpec, TypeAlias
 
 if sys.version_info < (3, 9):
     """Type subscription requires python >= 3.9."""
-    from typing import List, Sequence, Tuple, Type
+    from beartype.typing import List, Sequence, Tuple, Type
 else:
     from builtins import list as List
     from builtins import tuple as Tuple
@@ -37,7 +37,7 @@ else:
 K = TypeVar("K")
 V = TypeVar("V")
 if sys.version_info < (3, 9):
-    from typing import Dict
+    from beartype.typing import Dict
 
     DictT: TypeAlias = Dict[K, V]
 else:

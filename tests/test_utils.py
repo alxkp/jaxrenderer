@@ -6,7 +6,7 @@ from jaxtyping import jaxtyped
 from beartype import beartype
 import numpy as np
 import pytest
-from typing import List, Tuple, cast
+from beartype.typing import List, Tuple, cast
 
 from renderer.utils import transpose_for_display
 

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import re
-from typing import List
+from beartype.typing import List
 
 from PIL import Image
 import jax

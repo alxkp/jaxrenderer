@@ -1,4 +1,4 @@
-from typing import NamedTuple, cast
+from beartype.typing import NamedTuple, cast
 from functools import partial
 
 import jax

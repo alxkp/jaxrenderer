@@ -2,7 +2,7 @@
 
 import enum
 from functools import partial
-from typing import NamedTuple, Optional, Union, cast
+from beartype.typing import NamedTuple, Optional, Union, cast
 
 from beartype import beartype
 import jax
