@@ -15,35 +15,34 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
-
+    
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Install poetry
-      - run: pipx install poetry
-
+        run: pipx install poetry
+      
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           cache: 'poetry'
           python-version: ${{ matrix.python-version }}
-
-
-          # Install all dependencies through poetry
+      
+      # Install all dependencies through poetry
       - name: Install dependencies
         run: poetry install --all-extras --with dev,test
-
-        # Run linting and tests within poetry environment
+      
+      # Run linting and tests within poetry environment
       - name: Lint with isort
         run: poetry run isort --check-only --jobs -1 .
-
+      
       - name: Lint with black
         run: poetry run black --check .
-
+      
       - name: Run pyright
         uses: jakebailey/pyright-action@v1.6.0
         with:
           python-version: ${{ matrix.python-version }}
-
+      
       - name: Run test
         run: poetry run pytest tests/ --import-mode importlib
