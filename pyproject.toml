@@ -2,11 +2,11 @@
 name = "jaxrenderer"
 version = "0.3.2"
 description = "Jax implementation of rasterizer renderer."
-authors = ["Joey Teng <joey.teng.dev@gmail.com>"]
+authors = ["Joey Teng <joey.teng.dev@gmail.com>","Alexander Kyimpopkin"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://github.com/JoeyTeng/jaxrenderer"
-repository = "https://github.com/JoeyTeng/jaxrenderer"
+homepage = "https://github.com/alxkp/jaxrenderer"
+repository = "https://github.com/alxkp/jaxrenderer"
 classifiers = [
     "Topic :: Multimedia :: Graphics :: 3D Rendering",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -60,11 +60,6 @@ pre-commit = "^3.3.3"
 pytest = "^7.0.0"
 tox = "^4.0.0"
 
-
-# [[tool.poetry.source]]
-# name = "jax"
-# url = "https://storage.googleapis.com/jax-releases/jax_releases.html"
-# priority = "explicit"
 
 [[tool.poetry.source]]
 name = "jax"
